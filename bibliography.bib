@@ -1,0 +1,951 @@
+@inproceedings{vaswani2017attention,
+  title     = {Attention is All You Need},
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {30},
+  pages     = {5998--6008},
+  year      = {2017},
+  url       = {https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf}
+}%% -----------------------------------------------------------------
+%% World Models
+
+% ------------------------------------------------------------
+% Related Work: Physics-aware Video Generative Models
+% ------------------------------------------------------------
+
+@article{wang2026physctrl,
+  title={Physctrl: Generative physics for controllable and physics-grounded video generation},
+  author={Wang, Chen and Chen, Chuhao and Huang, Yiming and Dou, Zhiyang and Liu, Yuan and Gu, Jiatao and Liu, Lingjie},
+  journal={Advances in Neural Information Processing Systems},
+  volume={38},
+  pages={167907--167932},
+  year={2026}
+}
+
+
+@inproceedings{liu2024physgen,
+  title={Physgen: Rigid-body physics-grounded image-to-video generation},
+  author={Liu, Shaowei and Ren, Zhongzheng and Gupta, Saurabh and Wang, Shenlong},
+  booktitle={European Conference on Computer Vision},
+  pages={360--378},
+  year={2024},
+  organization={Springer}
+}
+
+
+
+@inproceedings{xue2025phyt2v,
+  title={Phyt2v: Llm-guided iterative self-refinement for physics-grounded text-to-video generation},
+  author={Xue, Qiyao and Yin, Xiangyu and Yang, Boyuan and Gao, Wei},
+  booktitle={2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={18826--18836},
+  year={2025},
+  organization={IEEE}
+}
+
+@article{li2025pisa,
+  title={Pisa experiments: Exploring physics post-training for video diffusion models by watching stuff drop},
+  author={Li, Chenyu and Michel, Oscar and Pan, Xichen and Liu, Sainan and Roberts, Mike and Xie, Saining},
+  journal={arXiv preprint arXiv:2503.09595},
+  year={2025}
+}
+
+@article{wang2026wisa,
+  title={Wisa: World simulator assistant for physics-aware text-to-video generation},
+  author={Wang, Jing and Ma, Ao and Cao, Ke and Zheng, Jun and Feng, Jiasong and Zhang, Zhanjie and Pang, Wanyuan and Liang, Xiaodan},
+  journal={Advances in Neural Information Processing Systems},
+  volume={38},
+  pages={5388--5416},
+  year={2026}
+}
+
+@inproceedings{yuan2026newtongen,
+  title={Newtongen: Physics-consistent and controllable text-to-video generation via neural newtonian dynamics},
+  author={Yuan, Yu and Wang, Xijun and Wickremasinghe, Tharindu and Nadir, Zeeshan and Ma, Bole and Chan, Stanley},
+  booktitle={International Conference on Learning Representations},
+  volume={2026},
+  pages={12847--12878},
+  year={2026}
+}
+
+
+
+@article{seedance2026seedance,
+  title={Seedance 2.0: Advancing video generation for world complexity},
+  author={Seedance, Team and Chen, De and Chen, Liyang and Chen, Xin and Chen, Ying and Chen, Zhuo and Chen, Zhuowei and Cheng, Feng and Cheng, Tianheng and Cheng, Yufeng and others},
+  journal={arXiv preprint arXiv:2604.14148},
+  year={2026}
+}
+
+@article{wan2025wan,
+  title={Wan: Open and advanced large-scale video generative models},
+  author={Wan, Team and Wang, Ang and Ai, Baole and Wen, Bin and Mao, Chaojie and Xie, Chen-Wei and Chen, Di and Yu, Feiwu and Zhao, Haiming and Yang, Jianxiao and others},
+  journal={arXiv preprint arXiv:2503.20314},
+  year={2025}
+}
+
+@inproceedings{yang2025cogvideox,
+  title={Cogvideox: Text-to-video diffusion models with an expert transformer},
+  author={Yang, Zhuoyi and Teng, Jiayan and Zheng, Wendi and Ding, Ming and Huang, Shiyu and Xu, Jiazheng and Yang, Yuanming and Hong, Wenyi and Zhang, Xiaohan and Feng, Guanyu and others},
+  booktitle={International Conference on Learning Representations},
+  volume={2025},
+  pages={83048--83077},
+  year={2025}
+}
+
+@article{zheng2025open,
+  title={Open-sora 2.0: Training a commercial-level video generation model in \$200 k},
+  author={Zheng, Zangwei and Peng, Xiangyu and Lou, Yuxuan and Shen, Chenhui and Young, Tom and Guo, Xinying and Wang, Binluo and Xu, Hang and Liu, Hongxin and Jiang, Mingyan and others},
+  journal={arXiv preprint arXiv:2503.09642},
+  year={2025}
+}
+
+
+@article{huang2026self,
+  title={Self forcing: Bridging the train-test gap in autoregressive video diffusion},
+  author={Huang, Xun and Li, Zhengqi and He, Guande and Zhou, Mingyuan and Shechtman, Eli},
+  journal={Advances in Neural Information Processing Systems},
+  volume={38},
+  pages={167283--167308},
+  year={2026}
+}
+
+
+@inproceedings{chen2026sana,
+  title={Sana-video: Efficient video generation with block linear diffusion transformer},
+  author={Chen, Junsong and Zhao, Yuyang and Yu, Jincheng and Chu, Ruihang and Chen, Junyu and Yang, Shuai and Wang, Xianbang and Pan, Yicheng and Daquan, Zhou and Ling, Huan and others},
+  booktitle={International Conference on Learning Representations},
+  volume={2026},
+  pages={38973--38997},
+  year={2026}
+}
+
+@inproceedings{xie2025physanimator,
+  title={Physanimator: Physics-guided generative cartoon animation},
+  author={Xie, Tianyi and Zhao, Yiwei and Jiang, Ying and Jiang, Chenfanfu},
+  booktitle={2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={10793--10804},
+  year={2025},
+  organization={IEEE}
+}
+
+
+@article{bordes2025intphys,
+  title={Intphys 2: Benchmarking intuitive physics understanding in complex synthetic environments},
+  author={Bordes, Florian and Garrido, Quentin and Kao, Justine T and Williams, Adina and Rabbat, Michael and Dupoux, Emmanuel},
+  journal={arXiv preprint arXiv:2506.09849},
+  year={2025}
+}
+
+@inproceedings{zhang2024physdreamer,
+  title={Physdreamer: Physics-based interaction with 3d objects via video generation},
+  author={Zhang, Tianyuan and Yu, Hong-Xing and Wu, Rundi and Feng, Brandon Y and Zheng, Changxi and Snavely, Noah and Wu, Jiajun and Freeman, William T},
+  booktitle={European Conference on Computer Vision},
+  pages={388--406},
+  year={2024},
+  organization={Springer}
+}
+
+@article{zhang2026physrvg,
+  title={Physrvg: Physics-aware unified reinforcement learning for video generative models},
+  author={Zhang, Qiyuan and Gong, Biao and Tan, Shuai and Zhang, Zheng and Shen, Yujun and Zhu, Xing and Li, Yuyuan and Yao, Kelu and Shen, Chunhua and Zou, Changqing},
+  journal={arXiv preprint arXiv:2601.11087},
+  year={2026}
+}
+
+@article{zhang2026videorepa,
+  title={Videorepa: Learning physics for video generation through relational alignment with foundation models},
+  author={Zhang, Xiangdong and Liao, Jiaqi and Zhang, Shaofeng and Meng, Fanqing and Wan, Xiangpeng and Yan, Junchi and Cheng, Yu},
+  journal={Advances in Neural Information Processing Systems},
+  volume={38},
+  pages={122647--122676},
+  year={2026}
+}
+
+
+
+@article{meng2024towards,
+  title={Towards world simulator: Crafting physical commonsense-based benchmark for video generation},
+  author={Meng, Fanqing and Liao, Jiaqi and Tan, Xinyu and Shao, Wenqi and Lu, Quanfeng and Zhang, Kaipeng and Cheng, Yu and Li, Dianqi and Qiao, Yu and Luo, Ping},
+  journal={arXiv preprint arXiv:2410.05363},
+  year={2024}
+}
+
+@inproceedings{foo2026physical,
+  title={Physical simulator in-the-loop video generation},
+  author={Foo, Lin Geng and Huang, Mark He and Lattas, Alexandros and Moschoglou, Stylianos and Beeler, Thabo and Theobalt, Christian},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={4301--4311},
+  year={2026}
+}
+
+
+
+
+
+
+
+
+
+%% General World Model Literature
+@article{agarwal2025cosmos,
+  title={Cosmos world foundation model platform for physical ai},
+  author={Agarwal, Niket and Ali, Arslan and Bala, Maciej and Balaji, Yogesh and Barker, Erik and Cai, Tiffany and Chattopadhyay, Prithvijit and Chen, Yongxin and Cui, Yin and Ding, Yifan and others},
+  journal={arXiv preprint arXiv:2501.03575},
+  year={2025}
+}
+
+
+
+
+@article{wang2026temporal,
+  title={Temporal straightening for latent planning},
+  author={Wang, Ying and Bounou, Oumayma and Zhou, Gaoyue and Balestriero, Randall and Rudner, Tim GJ and LeCun, Yann and Ren, Mengye},
+  journal={arXiv preprint arXiv:2603.12231},
+  year={2026}
+}
+
+@inproceedings{zhou2025dino,
+  title={DINO-WM: World Models on Pre-trained Visual Features enable Zero-shot Planning},
+  author={Zhou, Gaoyue and Pan, Hengkai and Lecun, Yann and Pinto, Lerrel},
+  booktitle={International Conference on Machine Learning},
+  pages={79115--79135},
+  year={2025},
+  organization={PMLR}
+}
+
+@inproceedings{he2016deep,
+  title={Deep Residual Learning for Image Recognition},
+  author={He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={770--778},
+  year={2016}
+}
+
+@inproceedings{vaswani2017attention,
+  title={Attention Is All You Need},
+  author={Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, Lukasz and Polosukhin, Illia},
+  booktitle={Advances in Neural Information Processing Systems},
+  volume={30},
+  year={2017}
+}
+
+@inproceedings{chi2023diffusion,
+  title={Diffusion Policy: Visuomotor Policy Learning via Action Diffusion},
+  author={Chi, Cheng and Xu, Zhenjia and Feng, Siyuan and Cousineau, Eric and Du, Yilun and Burchfiel, Benjamin and Tedrake, Russ and Song, Shuran},
+  booktitle={Robotics: Science and Systems},
+  year={2023}
+}
+
+
+%% ============================================
+%% Foundational World Models
+%% ============================================
+
+@article{team2026advancing,
+  title={Advancing open-source world models},
+  author={Team, Robbyant and Gao, Zelin and Wang, Qiuyu and Zeng, Yanhong and Zhu, Jiapeng and Cheng, Ka Leong and Li, Yixuan and Wang, Hanlin and Xu, Yinghao and Ma, Shuailei and others},
+  journal={arXiv preprint arXiv:2601.20540},
+  year={2026}
+}
+
+@inproceedings{bruce2024genie,
+  title={Genie: Generative interactive environments},
+  author={Bruce, Jake and Dennis, Michael D and Edwards, Ashley and Parker-Holder, Jack and Shi, Yuge and Hughes, Edward and Lai, Matthew and Mavalankar, Aditi and Steigerwald, Richie and Apps, Chris and others},
+  booktitle={Forty-first international conference on machine learning},
+  year={2024}
+}
+
+@article{yang2023learning,
+  title={Learning interactive real-world simulators},
+  author={Yang, Sherry and Du, Yilun and Ghasemipour, Kamyar and Tompson, Jonathan and Kaelbling, Leslie and Schuurmans, Dale and Abbeel, Pieter},
+  journal={arXiv preprint arXiv:2310.06114},
+  year={2023}
+}
+
+@article{agarwal2026cosmos,
+  title={Cosmos 3: Omnimodal world models for physical ai},
+  author={Agarwal, Niket and Ali, Arslan and Allen, Jon and Antolini, Martin and Aubame, Adeline and Azzolini, Alisson and Bai, Junjie and Bala, Maciej and Balaji, Yogesh and Bapst, Josh and others},
+  journal={arXiv preprint arXiv:2606.02800},
+  year={2026}
+}
+
+@article{russell2025gaia,
+  title={Gaia-2: A controllable multi-view generative world model for autonomous driving},
+  author={Russell, Lloyd and Hu, Anthony and Bertoni, Lorenzo and Fedoseev, George and Shotton, Jamie and Arani, Elahe and Corrado, Gianluca},
+  journal={arXiv preprint arXiv:2503.20523},
+  year={2025}
+}
+
+@article{feng2025survey,
+  title={A survey of world models for autonomous driving},
+  author={Feng, Tuo and Wang, Wenguan and Yang, Yi},
+  journal={arXiv preprint arXiv:2501.11260},
+  year={2025}
+}
+
+
+@inproceedings{quevedo2026worldgym,
+  title={Worldgym: World model as an environment for policy evaluation},
+  author={Quevedo, Julian and Sharma, Ansh Kumar and Sun, Yixiang and Suryavanshi, Varad and Liang, Percy and Yang, Sherry},
+  booktitle={International Conference on Learning Representations},
+  volume={2026},
+  pages={78932--78957},
+  year={2026}
+}
+
+@article{maes2026leworldmodel,
+  title={Leworldmodel: Stable end-to-end joint-embedding predictive architecture from pixels},
+  author={Maes, Lucas and Lidec, Quentin Le and Scieur, Damien and LeCun, Yann and Balestriero, Randall},
+  journal={arXiv preprint arXiv:2603.19312},
+  year={2026}
+}
+
+@misc{liu2026tcsigreg,
+  title         = {Temporally Centered SIGReg Improves LeWorldModel Representations for Robot Policy Learning},
+  author        = {Chang Liu and Fei Suo and Yanzhou Jin and Zeyu Ping and Yusuke Iwasawa and Yutaka Matsuo and Yaonan Zhu},
+  year          = {2026},
+  eprint        = {2607.26924},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2607.26924}
+}
+
+@article{team2025evaluating,
+  title={Evaluating gemini robotics policies in a veo world simulator},
+  author={Team, Gemini Robotics and Choromanski, Krzysztof and Devin, Coline and Du, Yilun and Dwibedi, Debidatta and Gao, Ruiqi and Jindal, Abhishek and Kipf, Thomas and Kirmani, Sean and Leal, Isabel and others},
+  journal={arXiv preprint arXiv:2512.10675},
+  year={2025}
+}
+
+
+
+
+@article{li2025pin,
+  title={Pin-wm: Learning physics-informed world models for non-prehensile manipulation},
+  author={Li, Wenxuan and Zhao, Hang and Yu, Zhiyuan and Du, Yu and Zou, Qin and Hu, Ruizhen and Xu, Kai},
+  journal={arXiv preprint arXiv:2504.16693},
+  year={2025}
+}
+
+@article{wang2026contactgaussian,
+  title={Contactgaussian-wm: Learning physics-grounded world model from videos},
+  author={Wang, Meizhong and Jin, Wanxin and Cao, Kun and Xie, Lihua and Hong, Yiguang},
+  journal={arXiv preprint arXiv:2602.11021},
+  year={2026}
+}
+
+
+
+
+
+
+
+
+@article{brown2020language,
+  title={Language models are few-shot learners},
+  author={Brown, Tom and Mann, Benjamin and Ryder, Nick and Subbiah, Melanie and Kaplan, Jared D and Dhariwal, Prafulla and Neelakantan, Arvind and Shyam, Pranav and Sastry, Girish and Askell, Amanda and others},
+  journal={Advances in neural information processing systems},
+  volume={33},
+  pages={1877--1901},
+  year={2020}
+}
+
+@article{bar2022visual,
+  title={Visual prompting via image inpainting},
+  author={Bar, Amir and Gandelsman, Yossi and Darrell, Trevor and Globerson, Amir and Efros, Alexei},
+  journal={Advances in neural information processing systems},
+  volume={35},
+  pages={25005--25017},
+  year={2022}
+}
+
+
+@article{bahng2022exploring,
+  title={Exploring visual prompts for adapting large-scale models},
+  author={Bahng, Hyojin and Jahanian, Ali and Sankaranarayanan, Swami and Isola, Phillip},
+  journal={arXiv preprint arXiv:2203.17274},
+  year={2022}
+}
+
+
+
+
+
+
+
+
+
+%% =======================
+%% physics  sys-id
+%% ========================
+@article{yu2017preparing,
+  title={Preparing for the unknown: Learning a universal policy with online system identification},
+  author={Yu, Wenhao and Tan, Jie and Liu, C Karen and Turk, Greg},
+  journal={arXiv preprint arXiv:1702.02453},
+  year={2017}
+}
+
+
+@inproceedings{memmel2024asid,
+  title={Asid: Active exploration for system identification in robotic manipulation},
+  author={Memmel, Marius and Wagenmaker, Andrew and Zhu, Chuning and Fox, Dieter and Gupta, Abhishek},
+  booktitle={International Conference on Learning Representations},
+  volume={2024},
+  pages={39979--39997},
+  year={2024}
+}
+
+@article{wu2015galileo,
+  title={Galileo: Perceiving physical object properties by integrating a physics engine with deep learning},
+  author={Wu, Jiajun and Yildirim, Ilker and Lim, Joseph J and Freeman, Bill and Tenenbaum, Josh},
+  journal={Advances in neural information processing systems},
+  volume={28},
+  year={2015}
+}
+
+@article{kumar2021rma,
+  title={Rma: Rapid motor adaptation for legged robots},
+  author={Kumar, Ashish and Fu, Zipeng and Pathak, Deepak and Malik, Jitendra},
+  journal={arXiv preprint arXiv:2107.04034},
+  year={2021}
+}
+
+
+
+
+% ===========================================
+% Infer the Physics, not world models, not in-context
+% Many benchmarking or Dataset papers
+% ===========================================
+@article{chen2022comphy,
+  title={Comphy: Compositional physical reasoning of objects and events from videos},
+  author={Chen, Zhenfang and Yi, Kexin and Li, Yunzhu and Ding, Mingyu and Torralba, Antonio and Tenenbaum, Joshua B and Gan, Chuang},
+  journal={arXiv preprint arXiv:2205.01089},
+  year={2022}
+}
+
+@inproceedings{motamed2026generative,
+  title={Do generative video models understand physical principles?},
+  author={Motamed, Saman and Culp, Laura and Swersky, Kevin and Jaini, Priyank and Geirhos, Robert},
+  booktitle={2026 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  pages={948--958},
+  year={2026},
+  organization={IEEE}
+}
+
+
+% propose a benchmark
+@article{upadhyay2026worldbench,
+  title={Worldbench: Disambiguating physics for diagnostic evaluation of world models},
+  author={Upadhyay, Rishi and Zhang, Howard and Solomon, Jim and Agrawal, Ayush and Boreddy, Pranay and Narayana, Shruti Satya and Ba, Yunhao and Wong, Alex and de Melo, Celso M and Kadambi, Achuta},
+  journal={arXiv preprint arXiv:2601.21282},
+  year={2026}
+}
+
+@inproceedings{bansal2025videophy,
+  title={Videophy: Evaluating physical commonsense for video generation},
+  author={Bansal, Hritik and Lin, Zongyu and Xie, Tianyi and Zong, Zeshun and Yarom, Michal and Bitton, Yonatan and Jiang, Chenfanfu and Sun, Yizhou and Chang, Kai-Wei and Grover, Aditya},
+  booktitle={International Conference on Learning Representations},
+  volume={2025},
+  pages={102075--102121},
+  year={2025}
+}
+
+@article{kang2024far,
+  title={How far is video generation from world model: A physical law perspective},
+  author={Kang, Bingyi and Yue, Yang and Lu, Rui and Lin, Zhijie and Zhao, Yang and Wang, Kaixin and Huang, Gao and Feng, Jiashi},
+  journal={arXiv preprint arXiv:2411.02385},
+  year={2024}
+}
+
+
+@inproceedings{guo2026ctrl,
+  title={Ctrl-world: A controllable generative world model for robot manipulation},
+  author={Guo, Yanjiang and Shi, Lucy and Chen, Jianyu and Finn, Chelsea},
+  booktitle={International Conference on Learning Representations},
+  volume={2026},
+  pages={6121--6138},
+  year={2026}
+}
+
+@article{lee2020learning,
+  title={Learning quadrupedal locomotion over challenging terrain},
+  author={Lee, Joonho and Hwangbo, Jemin and Wellhausen, Lorenz and Koltun, Vladlen and Hutter, Marco},
+  journal={Science robotics},
+  volume={5},
+  number={47},
+  pages={eabc5986},
+  year={2020},
+  publisher={American Association for the Advancement of Science}
+}
+
+
+
+
+
+% ===================================================
+% Some Survey
+% ===================================================
+
+
+@article{hou2026world,
+  title={World model for robot learning: A comprehensive survey},
+  author={Hou, Bohan and Li, Gen and Jia, Jindou and An, Tuo and Guo, Xinying and Leng, Sicong and Geng, Haoran and Ze, Yanjie and Harada, Tatsuya and Torr, Philip and others},
+  journal={arXiv preprint arXiv:2605.00080},
+  year={2026}
+}
+
+% ===========================================
+% Memory and Context in World Models
+% ===========================================
+
+@article{wu2026video,
+  title={Video world models with long-term spatial memory},
+  author={Wu, Tong and Yang, Shuai and Po, Ryan and Xu, Yinghao and Liu, Ziwei and Lin, Dahua and Wetzstein, Gordon},
+  journal={Advances in Neural Information Processing Systems},
+  volume={38},
+  pages={49371--49393},
+  year={2026}
+}
+
+
+%% -----------------------------------------------------------------
+%% -----------------------------------------------------------------
+
+
+%% In-Context Learning
+@article{fu2024context,
+  title={In-context imitation learning via next-token prediction},
+  author={Fu, Letian and Huang, Huang and Datta, Gaurav and Chen, Lawrence Yunliang and Panitch, William Chung-Ho and Liu, Fangchen and Li, Hui and Goldberg, Ken},
+  journal={arXiv preprint arXiv:2408.15980},
+  year={2024}
+}
+
+
+@article{wang2026context,
+  title={In-Context World Modeling for Robotic Control},
+  author={Wang, Siyin and Shi, Junhao and Fei, Senyu and Fu, Zhaoyang and Ji, Li and Gong, Jingjing and Qiu, Xipeng},
+  journal={arXiv preprint arXiv:2606.26025},
+  year={2026}
+}
+
+@inproceedings{hwang2024promptable,
+  title={Promptable behaviors: Personalizing multi-objective rewards from human preferences},
+  author={Hwang, Minyoung and Weihs, Luca and Park, Chanwoo and Lee, Kimin and Kembhavi, Aniruddha and Ehsani, Kiana},
+  booktitle={2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={16216--16226},
+  year={2024},
+  organization={IEEE}
+}
+
+@inproceedings{vosylius2025instant,
+  title={Instant policy: In-context imitation learning via graph diffusion},
+  author={Vosylius, Vitalis and Johns, Edward},
+  booktitle={International Conference on Learning Representations},
+  volume={2025},
+  pages={35011--35030},
+  year={2025}
+}
+
+
+
+@article{zhang2025dynamics,
+  title={Dynamics as prompts: In-context learning for sim-to-real system identifications},
+  author={Zhang, Xilun and Liu, Shiqi and Huang, Peide and Han, William Jongwon and Lyu, Yiqi and Xu, Mengdi and Zhao, Ding},
+  journal={IEEE Robotics and Automation Letters},
+  volume={10},
+  number={4},
+  pages={3190--3197},
+  year={2025},
+  publisher={IEEE}
+}
+
+@article{shah2025mimicdroid,
+  title={Mimicdroid: In-context learning for humanoid robot manipulation from human play videos},
+  author={Shah, Rutav and Liu, Shuijing and Wang, Qi and Jiang, Zhenyu and Kumar, Sateesh and Seo, Mingyo and Mart{\'\i}n-Mart{\'\i}n, Roberto and Zhu, Yuke},
+  journal={arXiv preprint arXiv:2509.09769},
+  year={2025}
+}
+
+
+
+@article{ding2026contextflow,
+  title={ContextFlow: In-Context Flow Matching for Robot Manipulation},
+  author={Ding, Jian and Dai, Xianjie and Herzig, Roei and Hroub, Nussair and Mai, Jinjie and Dai, Dengxin and Ghanem, Bernard and Elhoseiny, Mohamed},
+  journal={arXiv preprint arXiv:2609.06852},
+  year={2026}
+}
+
+
+
+
+
+
+@article{dai2026robomme,
+  title={Robomme: Benchmarking and understanding memory for robotic generalist policies},
+  author={Dai, Yinpei and Fu, Hongze and Lee, Jayjun and Liu, Yuejiang and Zhang, Haoran and Yang, Jianing and Finn, Chelsea and Fazeli, Nima and Chai, Joyce},
+  journal={arXiv preprint arXiv:2603.04639},
+  year={2026}
+}
+
+
+
+@article{di2024keypoint,
+  title={Keypoint action tokens enable in-context imitation learning in robotics},
+  author={Di Palo, Norman and Johns, Edward},
+  journal={arXiv preprint arXiv:2403.19578},
+  year={2024}
+}
+
+
+@article{lee2023supervised,
+  title={Supervised pretraining can learn in-context reinforcement learning},
+  author={Lee, Jonathan and Xie, Annie and Pacchiano, Aldo and Chandak, Yash and Finn, Chelsea and Nachum, Ofir and Brunskill, Emma},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  pages={43057--43083},
+  year={2023}
+}
+
+
+@article{lu2023structured,
+  title={Structured state space models for in-context reinforcement learning},
+  author={Lu, Chris and Schroecker, Yannick and Gu, Albert and Parisotto, Emilio and Foerster, Jakob and Singh, Satinder and Behbahani, Feryal},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  pages={47016--47031},
+  year={2023}
+}
+
+@article{wu2026mixture,
+  title={Mixture-of-experts meets in-context reinforcement learning},
+  author={Wu, Wenhao and Liu, Fuhong and Li, Haoru and Hu, Zican and Dong, Daoyi and Chen, Chunlin and Wang, Zhi},
+  journal={Advances in Neural Information Processing Systems},
+  volume={38},
+  pages={24751--24785},
+  year={2026}
+}
+
+@article{yang2026syncworld,
+  title={SyncWorld: Visual Calibration Enables World Models as Zero-Shot Simulators},
+  author={Yang, Yuncong and Han, Zhengtao and Ozyurt, Furkan and Yang, Zeyuan and Yang, Han and Cao, Junyi and Zhen, Haoyu and Du, Yilun and Gan, Chuang},
+  journal={arXiv preprint arXiv:2609.09155},
+  year={2026}
+}
+
+
+
+@article{liu2025locoformer,
+  title={Locoformer: Generalist locomotion via long-context adaptation},
+  author={Liu, Min and Pathak, Deepak and Agarwal, Ananye},
+  journal={arXiv preprint arXiv:2509.23745},
+  year={2025}
+}
+
+
+
+
+
+%% -----------------------------------------------------------------
+
+
+@article{li2025comprehensive,
+  title={A comprehensive survey on world models for embodied ai},
+  author={Li, Xinqing and He, Xin and Zhang, Le and Wu, Min and Li, Xiaoli and Liu, Yun},
+  journal={arXiv preprint arXiv:2510.16732},
+  year={2025}
+}
+
+@article{ha2018world,
+  title={World models},
+  author={Ha, David and Schmidhuber, J{\"u}rgen},
+  journal={arXiv preprint arXiv:1803.10122},
+  volume={2},
+  number={3},
+  pages={440},
+  year={2018}
+}
+
+
+
+@article{ding2025understanding,
+  title={Understanding world or predicting future? a comprehensive survey of world models},
+  author={Ding, Jingtao and Zhang, Yunke and Shang, Yu and Zhang, Yuheng and Zong, Zefang and Feng, Jie and Yuan, Yuan and Su, Hongyuan and Li, Nian and Sukiennik, Nicholas and others},
+  journal={ACM Computing Surveys},
+  volume={58},
+  number={3},
+  pages={1--38},
+  year={2025},
+  publisher={ACM New York, NY}
+}
+
+
+@article{gao2026dreamdojo,
+  title={Dreamdojo: A generalist robot world model from large-scale human videos},
+  author={Gao, Shenyuan and Liang, William and Zheng, Kaiyuan and Malik, Ayaan and Ye, Seonghyeon and Yu, Sihyun and Tseng, Wei-Cheng and Dong, Yuzhu and Mo, Kaichun and Lin, Chen-Hsuan and others},
+  journal={arXiv preprint arXiv:2602.06949},
+  year={2026}
+}
+
+
+
+@article{wang2026interactive,
+  title={Interactive world simulator for robot policy training and evaluation},
+  author={Wang, Yixuan and Syed, Rhythm and Wu, Fangyu and Zhang, Mengchao and Onol, Aykut and Barreiros, Jose and Nayyeri, Hooshang and Dear, Tony and Zhang, Huan and Li, Yunzhu},
+  journal={arXiv preprint arXiv:2603.08546},
+  year={2026}
+}
+
+
+
+
+%% -----------------------------------------------------------------
+%% ------------------- Reinforcement Learning ----------------------
+%% -----------------------------------------------------------------
+
+
+@inproceedings{wu2023daydreamer,
+  title={Daydreamer: World models for physical robot learning},
+  author={Wu, Philipp and Escontrela, Alejandro and Hafner, Danijar and Abbeel, Pieter and Goldberg, Ken},
+  booktitle={Conference on robot learning},
+  pages={2226--2240},
+  year={2023},
+  organization={PMLR}
+}
+
+@inproceedings{hafner2019learning,
+  title={Learning latent dynamics for planning from pixels},
+  author={Hafner, Danijar and Lillicrap, Timothy and Fischer, Ian and Villegas, Ruben and Ha, David and Lee, Honglak and Davidson, James},
+  booktitle={International conference on machine learning},
+  pages={2555--2565},
+  year={2019},
+  organization={PMLR}
+}
+
+@article{hansen2022temporal,
+  title={Temporal difference learning for model predictive control},
+  author={Hansen, Nicklas and Wang, Xiaolong and Su, Hao},
+  journal={arXiv preprint arXiv:2203.04955},
+  year={2022}
+}
+
+@article{micheli2022transformers,
+  title={Transformers are sample-efficient world models},
+  author={Micheli, Vincent and Alonso, Eloi and Fleuret, Fran{\c{c}}ois},
+  journal={arXiv preprint arXiv:2209.00588},
+  year={2022}
+}
+
+@inproceedings{seo2023masked,
+  title={Masked world models for visual control},
+  author={Seo, Younggyo and Hafner, Danijar and Liu, Hao and Liu, Fangchen and James, Stephen and Lee, Kimin and Abbeel, Pieter},
+  booktitle={Conference on Robot Learning},
+  pages={1332--1344},
+  year={2023},
+  organization={PMLR}
+}
+
+
+@article{assran2025v,
+  title={V-jepa 2: Self-supervised video models enable understanding, prediction and planning},
+  author={Assran, Mido and Bardes, Adrien and Fan, David and Garrido, Quentin and Howes, Russell and Muckley, Matthew and Rizvi, Ammar and Roberts, Claire and Sinha, Koustuv and Zholus, Artem and others},
+  journal={arXiv preprint arXiv:2506.09985},
+  year={2025}
+}
+
+@inproceedings{zhang2026compositional,
+  title={Compositional visual planning via inference-time diffusion scaling},
+  author={Zhang, Yixin and Luo, Yunhao and Mishra, Utkarsh and Shin, Woo and Chen, Yongxin and Xu, Danfei},
+  booktitle={International Conference on Learning Representations},
+  volume={2026},
+  pages={61905--61929},
+  year={2026}
+}
+
+@article{saxena2026nostra,
+  title={Nostra: Enabling Robust Robot Imitation via Multimodal Latent Imagination},
+  author={Saxena, Vaibhav and Luo, Yunhao and Koga, Yotto and Xu, Danfei},
+  journal={IEEE Robotics and Automation Letters},
+  year={2026},
+  publisher={IEEE}
+}
+
+
+
+@inproceedings{wang2024driving,
+  title={Driving into the future: Multiview visual forecasting and planning with world model for autonomous driving},
+  author={Wang, Yuqi and He, Jiawei and Fan, Lue and Li, Hongxin and Chen, Yuntao and Zhang, Zhaoxiang},
+  booktitle={2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={14749--14759},
+  year={2024},
+  organization={IEEE}
+}
+
+
+
+%% -----------------------------------------------------------------
+%% -----------------------------------------------------------------
+
+
+@software{gymnasium_robotics2023github,
+  author={Rodrigo de Lazcano and Kallinteris Andreas and Jun Jet Tai and Seungjae Ryan Lee and Jordan Terry},
+  title={Gymnasium Robotics},
+  url={https://github.com/Farama-Foundation/Gymnasium-Robotics},
+  version={1.4.0},
+  year={2024}
+}
+
+@software{fancy_gym,
+  title={Fancy Gym},
+  author={Otto, Fabian and Celik, Onur and Roth, Dominik and Zhou, Hongyi},
+  organization={Autonomous Learning Robots Lab (ALR) at KIT},
+  url={https://github.com/ALRhub/fancy_gym}
+}
+
+@article{tassa2018deepmind,
+  title={DeepMind Control Suite},
+  author={Tassa, Yuval and Doron, Yotam and Muldal, Alistair and Erez, Tom and Li, Yazhe and Casas, Diego de Las and Budden, David and Abdolmaleki, Abbas and Merel, Josh and Lefrancq, Andrew and others},
+  journal={arXiv preprint arXiv:1801.00690},
+  year={2018}
+}
+
+
+
+@inproceedings{luo2025grounding,
+  title={Grounding video models to actions through goal conditioned exploration},
+  author={Luo, Yunhao and Du, Yilun},
+  booktitle={International Conference on Learning Representations},
+  volume={2025},
+  pages={92200--92232},
+  year={2025}
+}
+
+
+
+
+
+
+%% =====================================================
+%% Physics-Grounded Generative Models, 
+%% such as algorithms
+%% =====================================================
+
+@article{pathak2026physvid,
+  title={PhysVid: Physics Aware Local Conditioning for Generative Video Models},
+  author={Pathak, Saurabh and Arani, Elahe and Pechenizkiy, Mykola and Zonooz, Bahram},
+  journal={arXiv preprint arXiv:2603.26285},
+  year={2026}
+}
+
+@article{chen2026towards,
+  title={Towards physical understanding in video generation: A 3d point regularization approach},
+  author={Chen, Yunuo and Cao, Junli and Goel, Vidit and Korolev, Sergei and Jiang, Chenfanfu and Ren, Jian and Tulyakov, Sergey and Kag, Anil},
+  journal={Advances in Neural Information Processing Systems},
+  volume={38},
+  pages={102842--102866},
+  year={2026}
+}
+
+% finetune + DPO, no in-context
+@article{zhao2026phyworld,
+  title={PhyWorld: Physics-Faithful World Model for Video Generation},
+  author={Zhao, Pu and Lin, Juyi and Rupprecht, Timothy and Akbari, Arash and Yang, Chence and Chowdhury, Rahul and Motamedi, Elaheh and Akbari, Arman and He, Yumei and Wang, Chen and others},
+  journal={arXiv preprint arXiv:2605.19242},
+  year={2026}
+}
+
+@article{yuan2026inference,
+  title={Inference-time physics alignment of video generative models with latent world models},
+  author={Yuan, Jianhao and Zhang, Xiaofeng and Friedrich, Felix and Beltran-Velez, Nicolas and Hall, Melissa and Askari-Hemmat, Reyhane and Han, Xiaochuang and Ballas, Nicolas and Drozdzal, Michal and Romero-Soriano, Adriana},
+  journal={arXiv preprint arXiv:2601.10553},
+  year={2026}
+}
+
+
+
+
+
+
+
+% ========================================================
+
+%% cosmos-predict 2.5
+@article{ali2025world,
+  title={World simulation with video foundation models for physical ai},
+  author={Ali, Arslan and Bai, Junjie and Bala, Maciej and Balaji, Yogesh and Blakeman, Aaron and Cai, Tiffany and Cao, Jiaxin and Cao, Tianshi and Cha, Elizabeth and Chao, Yu-Wei and others},
+  journal={arXiv preprint arXiv:2511.00062},
+  year={2025}
+}
+
+
+%% World Model and Decision-Making, Planning
+@article{fragkiadaki2015learning,
+  title={Learning visual predictive models of physics for playing billiards},
+  author={Fragkiadaki, Katerina and Agrawal, Pulkit and Levine, Sergey and Malik, Jitendra},
+  journal={arXiv preprint arXiv:1511.07404},
+  year={2015}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@incollection{Bengio+chapter2007,
+author = {Bengio, Yoshua and LeCun, Yann},
+booktitle = {Large Scale Kernel Machines},
+publisher = {MIT Press},
+title = {Scaling Learning Algorithms Towards {AI}},
+year = {2007}
+}
+
+@article{Hinton06,
+author = {Hinton, Geoffrey E. and Osindero, Simon and Teh, Yee Whye},
+journal = {Neural Computation},
+pages = {1527--1554},
+title = {A Fast Learning Algorithm for Deep Belief Nets},
+volume = {18},
+year = {2006}
+}
+
+@book{goodfellow2016deep,
+title={Deep learning},
+author={Goodfellow, Ian and Bengio, Yoshua and Courville, Aaron and Bengio, Yoshua},
+volume={1},
+year={2016},
+publisher={MIT Press}
+}
+
+
+
+
+
+@article{oquab2023dinov2,
+  title={Dinov2: Learning robust visual features without supervision},
+  author={Oquab, Maxime and Darcet, Timoth{\'e}e and Moutakanni, Th{\'e}o and Vo, Huy and Szafraniec, Marc and Khalidov, Vasil and Fernandez, Pierre and Haziza, Daniel and Massa, Francisco and El-Nouby, Alaaeldin and others},
+  journal={arXiv preprint arXiv:2304.07193},
+  year={2023}
+}
