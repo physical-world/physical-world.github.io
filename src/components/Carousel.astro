@@ -3,6 +3,8 @@ import { Icon } from "astro-icon/components";
 import { parseHTML } from "linkedom";
 // https://cassidysmith.dev/posts/modify-astro-slot-children
 
+const { contained = false } = Astro.props;
+
 const html = await Astro.slots.render("default");
 const { document } = parseHTML(html);
 const children = Array.from(document.children);
@@ -15,9 +17,13 @@ children.forEach((child, index) => {
 const slidesHtml = children.map((child) => child.outerHTML).join("");
 ---
 
-<div class="carousel-wrapper">
+<div
+  class:list={["carousel-wrapper", { "carousel-contained": contained }]}
+  data-current-index="0"
+>
   <div class="not-prose my-4 flex items-center justify-center">
     <button
+      aria-label="Previous example"
       class="navigation-button prev-button h-[3rem] w-[3rem] cursor-pointer content-center disabled:cursor-not-allowed disabled:opacity-50 active:[&>svg]:scale-none!"
       type="button"
       ><Icon
@@ -27,8 +33,9 @@ const slidesHtml = children.map((child) => child.outerHTML).join("");
     >
     <div class="flex">
       {
-        Array.from({ length: numSlides }).map(() => (
+        Array.from({ length: numSlides }).map((_, index) => (
           <button
+            aria-label={`Go to example ${index + 1}`}
             class="page-button h-[3rem] w-[3rem] cursor-pointer content-center active:[&>div]:scale-none!"
             type="button"
           >
@@ -38,6 +45,7 @@ const slidesHtml = children.map((child) => child.outerHTML).join("");
       }
     </div>
     <button
+      aria-label="Next example"
       class="navigation-button next-button h-[3rem] w-[3rem] cursor-pointer content-center disabled:cursor-not-allowed disabled:opacity-50 active:[&>svg]:scale-none!"
       type="button"
       ><Icon
@@ -94,10 +102,13 @@ const slidesHtml = children.map((child) => child.outerHTML).join("");
     let currentIndex = 0;
 
     function updateButtonStates() {
+      wrapper.dataset.currentIndex = String(currentIndex);
+      wrapper.dispatchEvent(new CustomEvent("carousel:change"));
       prevButton.disabled = currentIndex === 0;
       nextButton.disabled = currentIndex === slides.length - 1;
       paginationButtons.forEach((item, index) => {
         item.classList.toggle("active", index === currentIndex);
+        item.setAttribute("aria-current", String(index === currentIndex));
       });
     }
 
@@ -106,6 +117,7 @@ const slidesHtml = children.map((child) => child.outerHTML).join("");
         return;
       }
 
+      currentIndex = index;
       slideViewports[index].scrollIntoView({
         behavior: "smooth",
         block: "nearest",
@@ -168,6 +180,25 @@ const slidesHtml = children.map((child) => child.outerHTML).join("");
   @reference "../styles/global.css";
   :root {
     --slide-gap: 1rem;
+  }
+
+  .carousel-contained :global(.carousel-viewport) {
+    margin-inline: 0;
+    width: 100%;
+  }
+  .carousel-contained :global(.carousel) {
+    margin-inline: 0;
+    padding-inline: 0;
+    scroll-padding-inline: 0;
+    overflow-y: hidden;
+  }
+  .carousel-contained :global(.slide-viewport) {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding-inline: 0;
+  }
+  .carousel-contained :global(.slide) {
+    width: 100%;
   }
 
   @media (hover: none) and (pointer: coarse) {

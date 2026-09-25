@@ -1,0 +1,150 @@
+---
+import Carousel from "./Carousel.astro";
+import CarouselSlide from "./CarouselSlide.astro";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "./starwind/tabs";
+interface Props {
+  environments: {
+    id: string;
+    label: string;
+    videos: string[];
+    rgbVideos?: string[];
+    videoLabels?: string[];
+  }[];
+  title: string;
+  description: string;
+}
+
+const { environments, title, description } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<section data-video-gallery aria-label={title} class="not-prose my-8">
+  <Tabs defaultValue="pusht">
+    <TabsList class="flex h-auto flex-wrap" aria-label="Environment">
+      {
+        environments.map((env) => (
+          <TabsTrigger value={env.id}>{env.label}</TabsTrigger>
+        ))
+      }
+    </TabsList>
+    {
+      environments.map((env) => (
+        <TabsContent value={env.id}>
+          <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-3 sm:p-5 dark:border-zinc-700 dark:bg-zinc-800">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <span class="text-sm font-medium">
+                {env.label} · {description}
+              </span>
+              {env.rgbVideos && (
+                <label class="flex items-center gap-2 text-sm font-medium">
+                  <input
+                    data-mask-toggle
+                    type="checkbox"
+                    role="switch"
+                    checked
+                    class="rounded border-zinc-400 text-blue-600 focus:ring-blue-500"
+                  />
+                  Show mask
+                </label>
+              )}
+            </div>
+            <Carousel contained>
+              {env.videos.map((src, i) => (
+                <CarouselSlide>
+                  <p class="pb-3 text-center text-sm">
+                    {env.videoLabels?.[i] ??
+                      `Example ${i + 1} of ${env.videos.length}`}
+                  </p>
+                  <video
+                    data-src={base + src}
+                    data-rgb-src={
+                      env.rgbVideos?.[i] ? base + env.rgbVideos[i] : undefined
+                    }
+                    controls
+                    muted
+                    playsinline
+                    preload="metadata"
+                    aria-label={`${env.label} ${title} example ${i + 1}`}
+                    class="h-auto w-full rounded-lg"
+                  />
+                </CarouselSlide>
+              ))}
+            </Carousel>
+          </div>
+        </TabsContent>
+      ))
+    }
+  </Tabs>
+</section>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-video-gallery]")
+    .forEach((gallery) => {
+      const toggles =
+        gallery.querySelectorAll<HTMLInputElement>("[data-mask-toggle]");
+      let maskEnabled = true;
+      const updates: (() => void)[] = [];
+      gallery
+        .querySelectorAll<HTMLElement>("[data-tabs-content]")
+        .forEach((panel) => {
+          const carousel =
+            panel.querySelector<HTMLElement>(".carousel-wrapper")!;
+          panel
+            .querySelectorAll<HTMLVideoElement>("video")
+            .forEach((video, index) => {
+              let pendingTime: number | null = null;
+              let resumePlayback = false;
+              const active = () =>
+                !panel.hidden &&
+                Number(carousel.dataset.currentIndex ?? 0) === index;
+              video.addEventListener("loadedmetadata", () => {
+                if (pendingTime !== null) {
+                  video.currentTime = Math.min(
+                    pendingTime,
+                    video.duration || 0,
+                  );
+                  pendingTime = null;
+                }
+                if (resumePlayback && active())
+                  void video.play().catch(() => {});
+                resumePlayback = false;
+              });
+              const update = () => {
+                if (!active()) {
+                  video.pause();
+                  resumePlayback = false;
+                  return;
+                }
+                const src = !maskEnabled
+                  ? (video.dataset.rgbSrc ?? video.dataset.src!)
+                  : video.dataset.src!;
+                if (video.getAttribute("src") !== src) {
+                  pendingTime = pendingTime ?? video.currentTime;
+                  resumePlayback = !video.paused || resumePlayback;
+                  video.pause();
+                  video.src = src;
+                  video.load();
+                }
+              };
+              updates.push(update);
+              carousel.addEventListener("carousel:change", update);
+              new MutationObserver(update).observe(panel, {
+                attributes: true,
+                attributeFilter: ["hidden"],
+              });
+              update();
+            });
+        });
+      toggles.forEach((toggle) =>
+        toggle.addEventListener("change", () => {
+          maskEnabled = toggle.checked;
+          toggles.forEach((other) => {
+            other.checked = maskEnabled;
+          });
+          updates.forEach((update) => update());
+        }),
+      );
+    });
+</script>

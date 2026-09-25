@@ -1,0 +1,58 @@
+[
+  {
+    "id": "pusht",
+    "label": "PushT",
+    "videos": [
+      "videos/openloop/pusht/1.mp4",
+      "videos/openloop/pusht/2.mp4",
+      "videos/openloop/pusht/3.mp4"
+    ],
+    "rgbVideos": [
+      "videos/openloop/pusht/1-rgb.mp4",
+      "videos/openloop/pusht/2-rgb.mp4",
+      "videos/openloop/pusht/3-rgb.mp4"
+    ]
+  },
+  {
+    "id": "reacher",
+    "label": "Reacher",
+    "videos": [
+      "videos/openloop/reacher/1.mp4",
+      "videos/openloop/reacher/2.mp4",
+      "videos/openloop/reacher/3.mp4"
+    ],
+    "rgbVideos": [
+      "videos/openloop/reacher/1-rgb.mp4",
+      "videos/openloop/reacher/2-rgb.mp4",
+      "videos/openloop/reacher/3-rgb.mp4"
+    ]
+  },
+  {
+    "id": "beerpong",
+    "label": "Beerpong",
+    "videos": [
+      "videos/openloop/beerpong/1.mp4",
+      "videos/openloop/beerpong/2.mp4",
+      "videos/openloop/beerpong/3.mp4"
+    ],
+    "rgbVideos": [
+      "videos/openloop/beerpong/1-rgb.mp4",
+      "videos/openloop/beerpong/2-rgb.mp4",
+      "videos/openloop/beerpong/3-rgb.mp4"
+    ]
+  },
+  {
+    "id": "fetch_slide",
+    "label": "FetchSlide",
+    "videos": [
+      "videos/openloop/fetch_slide/1.mp4",
+      "videos/openloop/fetch_slide/2.mp4",
+      "videos/openloop/fetch_slide/3.mp4"
+    ],
+    "rgbVideos": [
+      "videos/openloop/fetch_slide/1-rgb.mp4",
+      "videos/openloop/fetch_slide/2-rgb.mp4",
+      "videos/openloop/fetch_slide/3-rgb.mp4"
+    ]
+  }
+]
