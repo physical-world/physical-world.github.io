@@ -6,6 +6,7 @@ description: "PhysiCalWorld: A framework that calibrates action-conditioned worl
 thumbnail: screenshot-light.png
 ---
 
+import PlanningVideos from "./components/PlanningVideos.astro";
 import OpenLoopVideos from "./components/OpenLoopVideos.astro";
 import Header from "./components/Header.astro";
 import Video from "./components/Video.astro";
@@ -116,9 +117,15 @@ Compare open-loop predictions across methods with foreground mask overlays. Sele
 
 <OpenLoopVideos />
 
+### Visual Planning Videos
+
+Compare world-model rollouts and executed trajectories against the goal. Each environment includes three examples for DINO-WM and three for LeWM (TC-LeWM for Beerpong). Use the carousel arrows or dots to switch between models and examples.
+
+<PlanningVideos />
+
 ### Quantitative Evaluation
 
-We evaluate PhysiCalWorld across four challenging benchmark environments with diverse physical property variations. Across all environments, in-context physics calibration consistently improves next-frame visual fidelity, substantially mitigates open-loop rollout drift, and elevates visual planning success rates, matching or exceeding privileged baselines that access ground-truth physical parameters.
+We evaluate PhysiCalWorld across four challenging benchmark environments with diverse physical property variations. Across all environments, in-context physics calibration consistently improves next-frame visual fidelity, substantially mitigates open-loop rollout drift, and elevates visual planning success rates, matching or exceeding privileged baselines that access ground-truth physical parameters. In each table, **bold** indicates the best result and <u>underline</u> marks the second-best.
 
 <Tabs defaultValue="pusht">
   <TabsList>
@@ -129,74 +136,74 @@ We evaluate PhysiCalWorld across four challenging benchmark environments with di
   </TabsList>
   <TabsContent value="pusht">
 
-| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU $\uparrow$ | Planning Success (%) $\uparrow$ |
+| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU (%) $\uparrow$ | Planning Success (%) $\uparrow$ |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **TS-WM** | 21.38 | 0.954 | 0.0405 | 0.534 | 53.3% |
-| **DINO-WM** (Baseline) | 21.87 | 0.955 | 0.0402 | 0.515 | 53.3% |
-| ~ + Long History | 22.41 | 0.959 | 0.0331 | 0.576 | 57.3% |
-| ~ + Context Prefix | 22.98 | 0.961 | 0.0295 | 0.614 | 58.7% |
-| ~ + Privileged Physics* | 23.36 | 0.962 | 0.0299 | 0.609 | 60.0% |
-| ~ + **PhysiCal (Ours)** | 23.83 | **0.964** | **0.0267** | 0.651 | 62.7% |
-| **LeWM** (Baseline) | 23.72 | 0.957 | 0.0450 | 0.643 | 48.0% |
-| ~ + **PhysiCal (Ours)** | **25.50** | **0.964** | 0.0358 | **0.733** | **65.3%** |
+| **TS-WM** | 21.38 | 0.954 | 0.0405 | 53.4 | 53.3% |
+| **DINO-WM** (Baseline) | 21.87 | 0.955 | 0.0402 | 51.5 | 53.3% |
+| ~ + Long History | 22.41 | 0.959 | 0.0331 | 57.6 | 57.3% |
+| ~ + Context Prefix | 22.98 | 0.961 | <u>0.0295</u> | 61.4 | 58.7% |
+| ~ + Privileged Physics$^\dagger$ | 23.36 | <u>0.962</u> | 0.0299 | 60.9 | 60.0% |
+| ~ + **PhysiCal (Ours)** | <u>23.83</u> | **0.964** | **0.0267** | <u>65.1</u> | **62.7%** |
+| **LeWM** (Baseline) | 23.72 | 0.957 | 0.0450 | 64.3 | 48.0% |
+| ~ + **PhysiCal (Ours)** | **25.50** | **0.964** | 0.0358 | **73.3** | <u>61.3%</u> |
 
 <p class="text-center font-medium text-lg mt-3">PushT (Varying Center of Mass)</p>
 
-<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated on 15 unseen Center of Mass (CoM) configurations. IoU is computed on the combined foreground mask of agent and T-block. Privileged Physics* directly receives ground-truth CoM as input.</p>
+<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated on 15 unseen Center of Mass (CoM) configurations. IoU is computed on the combined foreground mask of agent and T-block. Privileged Physics$^\dagger$ directly receives ground-truth CoM as input.</p>
 
   </TabsContent>
   <TabsContent value="reacher">
 
-| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU $\uparrow$ | Planning Success (%) $\uparrow$ |
+| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU (%) $\uparrow$ | Planning Success (%) $\uparrow$ |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **TS-WM** | 19.51 | 0.967 | 0.0469 | 0.309 | 41.3% |
-| **DINO-WM** (Baseline) | 19.43 | 0.968 | 0.0407 | 0.326 | 52.0% |
-| ~ + Long History | 20.47 | 0.971 | 0.0311 | 0.412 | 53.3% |
-| ~ + Context Prefix | 20.73 | 0.972 | 0.0290 | 0.441 | 61.3% |
-| ~ + Privileged Physics* | **22.92** | **0.979** | **0.0155** | **0.593** | **86.7%** |
-| ~ + **PhysiCal (Ours)** | 21.58 | 0.975 | 0.0222 | 0.510 | 61.3% |
-| **LeWM** (Baseline) | 20.45 | 0.964 | 0.0404 | 0.406 | 60.0% |
-| ~ + **PhysiCal (Ours)** | 21.08 | 0.964 | 0.0377 | 0.457 | **64.0%** |
+| **TS-WM** | 19.51 | 0.967 | 0.0469 | 30.9 | 41.3% |
+| **DINO-WM** (Baseline) | 19.43 | 0.968 | 0.0407 | 32.6 | 52.0% |
+| ~ + Long History | 20.47 | 0.971 | 0.0311 | 41.2 | 53.3% |
+| ~ + Context Prefix | 20.73 | 0.972 | 0.0290 | 44.1 | 61.3% |
+| ~ + Privileged Physics$^\dagger$ | **22.92** | **0.979** | **0.0155** | **59.3** | **86.7%** |
+| ~ + **PhysiCal (Ours)** | <u>21.58</u> | <u>0.975</u> | <u>0.0222</u> | <u>51.0</u> | 61.3% |
+| **LeWM** (Baseline) | 20.45 | 0.964 | 0.0404 | 40.6 | 60.0% |
+| ~ + **PhysiCal (Ours)** | 21.08 | 0.964 | 0.0377 | 45.7 | <u>64.0%</u> |
 
 <p class="text-center font-medium text-lg mt-3">Reacher (Varying Joint Damping)</p>
 
-<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated across 15 unseen joint damping combinations. Planning optimizes action sequences so the arm reaches the joint configuration shown in the goal image.</p>
+<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated across 15 unseen joint damping combinations. Planning optimizes action sequences so the arm reaches the joint configuration shown in the goal image. $^\dagger$ denotes privileged baseline with ground-truth damping.</p>
 
   </TabsContent>
   <TabsContent value="beerpong">
 
-| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU $\uparrow$ | Planning Success (%) $\uparrow$ |
+| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU (%) $\uparrow$ | Planning Success (%) $\uparrow$ |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **TS-WM** | 26.97 | 0.992 | 0.0129 | 0.248 | 60.0% |
-| **DINO-WM** (Baseline) | 27.35 | 0.993 | 0.0125 | 0.277 | 44.0% |
-| ~ + Long History | 27.11 | 0.993 | 0.0138 | 0.248 | 50.7% |
-| ~ + Context Prefix | 29.10 | 0.994 | 0.0089 | 0.408 | 82.7% |
-| ~ + Privileged Physics* | **30.27** | **0.995** | **0.0062** | **0.503** | **86.7%** |
-| ~ + **PhysiCal (Ours)** | 29.49 | **0.995** | 0.0067 | 0.463 | 80.0% |
-| **TC-LeWM** (Baseline) | 25.09 | 0.982 | 0.0246 | 0.273 | 60.0% |
-| ~ + **PhysiCal (Ours)** | 27.47 | 0.985 | 0.0187 | **0.478** | **84.0%** |
+| **TS-WM** | 26.97 | 0.992 | 0.0129 | 24.8 | 60.0% |
+| **DINO-WM** (Baseline) | 27.35 | 0.993 | 0.0125 | 27.7 | 44.0% |
+| ~ + Long History | 27.11 | 0.993 | 0.0138 | 24.8 | 50.7% |
+| ~ + Context Prefix | 29.10 | <u>0.994</u> | 0.0089 | 40.8 | 82.7% |
+| ~ + Privileged Physics$^\dagger$ | **30.27** | **0.995** | **0.0062** | **50.3** | **86.7%** |
+| ~ + **PhysiCal (Ours)** | <u>29.49</u> | **0.995** | <u>0.0067</u> | 46.3 | 80.0% |
+| **TC-LeWM** (Baseline) | 25.05 | 0.983 | 0.0230 | 27.2 | 60.0% |
+| ~ + **PhysiCal (Ours)** | 27.58 | 0.986 | 0.0170 | <u>47.7</u> | <u>84.0%</u> |
 
 <p class="text-center font-medium text-lg mt-3">Beerpong (Varying Ball-Table Contact Damping)</p>
 
-<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated across varying table contact damping (energy dissipation upon bounce). Planning optimizes release velocity so the ball lands inside the target cup.</p>
+<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated across varying table contact damping (energy dissipation upon bounce). Planning optimizes release velocity so the ball lands inside the target cup. $^\dagger$ denotes privileged baseline with ground-truth contact damping.</p>
 
   </TabsContent>
   <TabsContent value="fetchslide">
 
-| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU $\uparrow$ | Planning Error (m) $\downarrow$ | Planning Success (%) $\uparrow$ |
+| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU (%) $\uparrow$ | Planning Error (m) $\downarrow$ | Planning Success (%) $\uparrow$ |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **TS-WM** | 24.07 | 0.984 | 0.0131 | 0.499 | 0.071 | 26.7% |
-| **DINO-WM** (Baseline) | 25.67 | 0.989 | 0.0077 | 0.586 | 0.089 | 26.7% |
-| ~ + Long History | 25.17 | 0.989 | 0.0090 | 0.510 | 0.117 | 24.0% |
-| ~ + Context Prefix | 27.14 | **0.991** | 0.0048 | 0.715 | 0.045 | 54.7% |
-| ~ + Privileged Physics* | 27.68 | **0.991** | **0.0043** | **0.758** | **0.024** | **66.7%** |
-| ~ + **PhysiCal (Ours)** | **27.87** | **0.991** | 0.0047 | 0.738 | 0.033 | 56.0% |
-| **LeWM** (Baseline) | 25.15 | 0.981 | 0.0336 | 0.511 | 0.093 | 17.3% |
-| ~ + **PhysiCal (Ours)** | 26.43 | 0.982 | 0.0321 | 0.618 | 0.071 | 28.0% |
+| **TS-WM** | 24.07 | 0.984 | 0.0131 | 49.9 | 0.071 | 26.7% |
+| **DINO-WM** (Baseline) | 25.67 | <u>0.989</u> | 0.0077 | 58.6 | 0.089 | 26.7% |
+| ~ + Long History | 25.17 | <u>0.989</u> | 0.0090 | 51.0 | 0.117 | 24.0% |
+| ~ + Context Prefix | 27.14 | **0.991** | 0.0048 | 71.5 | 0.045 | 54.7% |
+| ~ + Privileged Physics$^\dagger$ | <u>27.68</u> | **0.991** | **0.0043** | **75.8** | **0.024** | **66.7%** |
+| ~ + **PhysiCal (Ours)** | **27.87** | **0.991** | <u>0.0047</u> | <u>73.8</u> | <u>0.033</u> | <u>56.0%</u> |
+| **LeWM** (Baseline) | 25.15 | 0.981 | 0.0336 | 51.1 | 0.093 | 17.3% |
+| ~ + **PhysiCal (Ours)** | 26.43 | 0.982 | 0.0321 | 61.8 | 0.071 | 28.0% |
 
 <p class="text-center font-medium text-lg mt-3">FetchSlide (Multi-Physics: Puck Mass, Table Friction, Air Drag)</p>
 
-<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Three physical properties vary simultaneously: puck mass, table surface friction, and aerodynamic drag. Planning optimizes the striking action so the puck stops at the goal image position.</p>
+<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Three physical properties vary simultaneously: puck mass, table surface friction, and aerodynamic drag. Planning optimizes the striking action so the puck stops at the goal image position. $^\dagger$ denotes privileged baseline with ground-truth physics.</p>
 
   </TabsContent>
 </Tabs>

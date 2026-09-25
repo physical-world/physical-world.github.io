@@ -27,3 +27,10 @@ pnpm-debug.log*
 *.swp
 *~
 
+
+# Local video provenance notes (also covered by dist/)
+/dist/videos/README.md
+
+# Local-only video metadata and selection provenance
+/.local/video-metadata/
+/src/data/planning-selection.json

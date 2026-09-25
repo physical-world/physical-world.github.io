@@ -8,7 +8,7 @@ interface Props {
     label: string;
     videos: string[];
     rgbVideos?: string[];
-    videoLabels?: string[];
+    contexts?: string[];
   }[];
   title: string;
   description: string;
@@ -36,26 +36,35 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
               <span class="text-sm font-medium">
                 {env.label} · {description}
               </span>
-              {env.rgbVideos && (
-                <label class="flex items-center gap-2 text-sm font-medium">
-                  <input
-                    data-mask-toggle
-                    type="checkbox"
-                    role="switch"
-                    checked
-                    class="rounded border-zinc-400 text-blue-600 focus:ring-blue-500"
-                  />
-                  Show mask
-                </label>
-              )}
+              <div class="flex flex-wrap items-center gap-4">
+                {env.contexts && (
+                  <label class="flex items-center gap-2 text-sm font-medium">
+                    <input
+                      data-context-toggle
+                      type="checkbox"
+                      role="switch"
+                      class="rounded border-zinc-400 text-blue-600 focus:ring-blue-500"
+                    />
+                    Show context
+                  </label>
+                )}
+                {env.rgbVideos && (
+                  <label class="flex items-center gap-2 text-sm font-medium">
+                    <input
+                      data-mask-toggle
+                      type="checkbox"
+                      role="switch"
+                      checked
+                      class="rounded border-zinc-400 text-blue-600 focus:ring-blue-500"
+                    />
+                    Show mask
+                  </label>
+                )}
+              </div>
             </div>
             <Carousel contained>
               {env.videos.map((src, i) => (
                 <CarouselSlide>
-                  <p class="pb-3 text-center text-sm">
-                    {env.videoLabels?.[i] ??
-                      `Example ${i + 1} of ${env.videos.length}`}
-                  </p>
                   <video
                     data-src={base + src}
                     data-rgb-src={
@@ -68,6 +77,16 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
                     aria-label={`${env.label} ${title} example ${i + 1}`}
                     class="h-auto w-full rounded-lg"
                   />
+                  {env.contexts?.[i] && (
+                    <figure data-context-clip hidden class="pt-4">
+                      <img
+                        src={base + env.contexts[i]}
+                        alt={`${env.label} context clip for example ${i + 1}`}
+                        loading="lazy"
+                        class="h-auto w-full rounded-lg bg-white"
+                      />
+                    </figure>
+                  )}
                 </CarouselSlide>
               ))}
             </Carousel>
@@ -84,6 +103,22 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     .forEach((gallery) => {
       const toggles =
         gallery.querySelectorAll<HTMLInputElement>("[data-mask-toggle]");
+      const contextToggles = gallery.querySelectorAll<HTMLInputElement>(
+        "[data-context-toggle]",
+      );
+      contextToggles.forEach((toggle) =>
+        toggle.addEventListener("change", () => {
+          const enabled = toggle.checked;
+          contextToggles.forEach((other) => {
+            other.checked = enabled;
+          });
+          gallery
+            .querySelectorAll<HTMLElement>("[data-context-clip]")
+            .forEach((clip) => {
+              clip.hidden = !enabled;
+            });
+        }),
+      );
       let maskEnabled = true;
       const updates: (() => void)[] = [];
       gallery
