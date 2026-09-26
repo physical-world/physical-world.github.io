@@ -58,7 +58,7 @@ Existing world models typically perceive a scene through current visual frame or
       alt="PhysiCalWorld Method Overview"
     />
     <Fragment slot="caption">
-      <strong>Method Overview.</strong> PhysiCalWorld enables physics calibration for world models such that future predictions adhere to the actual dynamics of the given test scene. Starting from the top left, exploratory actions $a_{1:T_c}^c$ are first executed in the test scene, yielding observations ${o}_{1:T_c}^c$. The context encoder $g_\phi$ then extracts physics information from this observation-action sequence and compresses it into a physics descriptor token $\mathbf{z}_{\text{phy}}$ (a latent representation of the test scene). Conditioned on $\mathbf{z}_{\text{phy}}$, the world model is able to generate future prediction $\hat{o}_{t+1}$ consistent with the test scene's dynamics.
+      <strong>Method Overview.</strong> PhysiCalWorld calibrates action-conditioned world models to the actual dynamics of a test scene via prompting with in-context interaction. In <strong>(a)</strong>, current visual observation alone cannot identify the physical dynamics of the test scene $\mathcal{T}$, forcing the world model to guess among multiple potential future states. In <strong>(b)</strong>, starting from the top left, exploratory actions $a_{1:T_c}^c$ are first executed in the test scene $\mathcal{T}$, yielding observations ${o}_{1:T_c}^c$. The context encoder $g_\phi$ then extracts physics information from this obs-action sequence and compresses it into a physics descriptor token $\mathbf{z}_{\text{phy}}$. Conditioned on $\mathbf{z}_{\text{phy}}$, the world model is able to generate future prediction $\hat{o}_{t+1}$ consistent with the test scene's dynamics.
     </Fragment>
   </Figure>
 
