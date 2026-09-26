@@ -2,30 +2,21 @@
 title: "PhysiCalWorld: In-Context Physics Calibration for World Models"
 theme: device
 favicon: favicon.svg
-description: "PhysiCalWorld: A framework that calibrates action-conditioned world models to instance-specific dynamics via in-context prompting."
-thumbnail: screenshot-light.png
+description: "Existing world models typically perceive a scene through current visual frame or a narrow history window."
+thumbnail: teaser.png
 ---
 
 import PlanningVideos from "./components/PlanningVideos.astro";
 import OpenLoopVideos from "./components/OpenLoopVideos.astro";
 import Header from "./components/Header.astro";
-import Video from "./components/Video.astro";
 import HighlightedSection from "./components/HighlightedSection.astro";
-import SmallCaps from "./components/SmallCaps.astro";
 import Figure from "./components/Figure.astro";
 import Picture from "./components/Picture.astro";
-import TwoColumns from "./components/TwoColumns.astro";
-import Wide from "./components/Wide.astro";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/starwind/tabs";
 
 import teaser from "./assets/images/teaser.png";
 import method from "./assets/images/method.png";
 import envDemo from "./assets/images/env-demo.png";
-import pushtResults from "./assets/images/pusht-results.png";
-import fetchslideResults from "./assets/images/fetchslide-results.png";
-import inferenceTime from "./assets/images/inference-time.png";
-import ctxToken from "./assets/images/ctx-token.png";
-import successThresholds from "./assets/images/success-thresholds.png";
 
 <Header
   title="PhysiCalWorld: In-Context Physics Calibration for World Models"
@@ -35,21 +26,18 @@ import successThresholds from "./assets/images/success-thresholds.png";
       name: "Anonymous Authors",
     },
   ]}
-  links={[
-    { name: "Paper (PDF)", url: "#", icon: "ri:file-pdf-2-line" },
-    { name: "Code", url: "#", icon: "ri:github-line" },
-  ]}
 />
 
   <Figure>
-    <Picture
-      slot="figure"
-      src={teaser}
-      alt="In-Context Physics Calibration in World Models"
-      priority
-    />
+    <div slot="figure" class="w-full max-w-xl">
+      <Picture
+        src={teaser}
+        alt="In-Context Physics Calibration for World Models"
+        priority
+      />
+    </div>
     <Fragment slot="caption">
-      <strong>In-Context Physics Calibration in World Models.</strong> In a test environment with unknown transition dynamics, an embodied agent first executes exploratory actions to collect an in-context interaction sequence. This context sequence is then provided as prompt to the world model, which calibrates the world model to the actual dynamics of the test scene and enables physics-grounded future prediction.
+      <strong>In-Context Physics Calibration for World Models.</strong> In a test environment with unknown transition dynamics, an embodied agent first executes exploratory actions to collect an in-context interaction sequence. This sequence is then provided as prompt to calibrate the world model such that future predictions adhere to the actual dynamics of the test environment.
     </Fragment>
   </Figure>
 
@@ -57,7 +45,7 @@ import successThresholds from "./assets/images/success-thresholds.png";
 
 ## Abstract
 
-We propose PhysiCalWorld, a framework that calibrates action-conditioned world models to the instance-specific dynamics of novel test scenes via in-context prompting, without requiring test-time fine-tuning or analytical physics modeling. Given an exploratory interaction clip collected within the test scene, our method is able to encode its dynamics into a compact physics descriptor token, which calibrates subsequent predictions to adhere to the scene's actual physical behavior. During training, this descriptor is learned end-to-end through self-supervised video prediction; at inference time, it is extracted once and can be reused across rollouts with negligible computational overhead. We evaluate PhysiCalWorld across four environments featuring diverse physical variations and show that it substantially improves rollout prediction accuracy and enables effective visual planning, closely matching or exceeding privileged baselines that access ground-truth physical parameters.
+Existing world models typically perceive a scene through current visual frame or a narrow history window. However, these observations may not reveal the physics properties that govern transition dynamics, such as an object's mass distribution, joint damping, or surface friction. Without calibrating these physics factors for world models, predictions tend to regress toward an empirical prior and induce severe drift in novel test scenes. To this end, we propose PhysiCalWorld, which calibrates action-conditioned world models to the instance-specific dynamics via in-context prompting, without fine-tuning or analytical physics modeling. Our method encodes an exploratory interaction clip collected within the test scene into a compact physics descriptor token, which grounds subsequent predictions in the scene's actual physical behavior. PhysiCalWorld is trained end-to-end with the latent prediction loss alone, without physics labels. At inference time, the descriptor token is extracted once and can be reused across rollouts with negligible compute overhead. We evaluate PhysiCalWorld across four environments covering diverse physics variations and show that it substantially improves rollout prediction accuracy and visual planning success rate. The learned descriptors also form a physically structured latent space and generalize beyond the physics ranges seen during training.
 
 </HighlightedSection>
 
@@ -70,7 +58,7 @@ We propose PhysiCalWorld, a framework that calibrates action-conditioned world m
       alt="PhysiCalWorld Method Overview"
     />
     <Fragment slot="caption">
-      <strong>Method Pipeline.</strong> Exploratory actions $a_{1:T_c}^c$ are executed in the test scene, yielding observations $o_{1:T_c}^c$. The context encoder $g_\phi$ extracts physical dynamics and compresses the sequence into a compact physics descriptor token $\mathbf{z}_{\text{phy}}$. Conditioned on $\mathbf{z}_{\text{phy}}$, the world model synthesizes physics-grounded predictions $\hat{o}_{t+1}$ consistent with the test scene's actual dynamics.
+      <strong>Method Overview.</strong> PhysiCalWorld enables physics calibration for world models such that future predictions adhere to the actual dynamics of the given test scene. Starting from the top left, exploratory actions $a_{1:T_c}^c$ are first executed in the test scene, yielding observations ${o}_{1:T_c}^c$. The context encoder $g_\phi$ then extracts physics information from this observation-action sequence and compresses it into a physics descriptor token $\mathbf{z}_{\text{phy}}$ (a latent representation of the test scene). Conditioned on $\mathbf{z}_{\text{phy}}$, the world model is able to generate future prediction $\hat{o}_{t+1}$ consistent with the test scene's dynamics.
     </Fragment>
   </Figure>
 
@@ -84,28 +72,28 @@ We propose PhysiCalWorld, a framework that calibrates action-conditioned world m
       alt="Four simulation environments with physical variations"
     />
     <Fragment slot="caption">
-      <strong>Environment Demonstrations.</strong> Four simulation environments featuring diverse variations of physical properties. The top-left of each quad shows an initial observation; the remaining three demonstrate how executing the <em>same</em> action sequence produces diverging future states under different physics parameters.
+      <strong>Environment Demonstrations.</strong> We evaluate our method on four simulation environments featuring diverse variations of physics properties. For each environment, we show four images: the top-left image is a random initial observation, while the remaining three images demonstrate how executing the <em>same</em> action sequence yields different future states due to different physics parameters of the scenes. Specifically, in (a) Push-T, the center of mass of the T-block is varied; in (b) Reacher, the joint damping of the two-link arm is varied; in (c) BeerPong, the energy dissipation upon table contact is varied; in (d) FetchSlide, <em>three</em> physics properties vary concurrently: puck mass, surface friction, and aerodynamic drag.
     </Fragment>
   </Figure>
 
 <Tabs defaultValue="pusht">
   <TabsList>
-    <TabsTrigger value="pusht">PushT</TabsTrigger>
+    <TabsTrigger value="pusht">Push-T</TabsTrigger>
     <TabsTrigger value="reacher">Reacher</TabsTrigger>
-    <TabsTrigger value="beerpong">Beerpong</TabsTrigger>
+    <TabsTrigger value="beerpong">BeerPong</TabsTrigger>
     <TabsTrigger value="fetchslide">FetchSlide</TabsTrigger>
   </TabsList>
   <TabsContent value="pusht">
-    **PushT:** The center of mass of the T-shaped block varies across instances, causing distinct rotational moments and sliding behaviors under identical robotic pusher contacts.
+    The block's center of mass (CoM) is randomly sampled. Different CoMs will not change the block's appearance but will alter how the block rotates and slides when pushed, hence resulting in significantly different state even under the identical push actions.
   </TabsContent>
   <TabsContent value="reacher">
-    **Reacher:** Joint damping and link friction of a two-link robotic arm vary across test episodes, affecting momentum transfer and target reachability.
+    This environment consists of a two-link robot arm actuated by continuous joint torques. The damping coefficients of the two joints can affect how much the arm moves under the same applied torques.
   </TabsContent>
   <TabsContent value="beerpong">
-    **Beerpong:** Features complex projectile dynamics, air resistance, and restitution / energy dissipation upon table contact.
+    In BeerPong, a robot arm throws a ball toward a target cup on a tabletop. The ball needs to bounce off the table at least once to enter the cup due to the long distance. We vary impact energy dissipation by changing the table's contact damping (e.g., higher damping causes greater energy loss, resulting in lower bounce height).
   </TabsContent>
   <TabsContent value="fetchslide">
-    **FetchSlide:** A challenging multi-physics setting where *three* physical properties vary simultaneously: puck mass, tabletop surface friction, and aerodynamic drag.
+    Hence, in FetchSlide, we concurrently vary three physics parameters: puck mass, table surface friction, and aerodynamic drag. In this environment, a robot arm strikes a flat puck across a tabletop, where these three properties jointly determine the puck's post-strike deceleration and sliding distance.
   </TabsContent>
 </Tabs>
 
@@ -113,115 +101,10 @@ We propose PhysiCalWorld, a framework that calibrates action-conditioned world m
 
 ### Open-Loop Rollout Videos
 
-Compare open-loop predictions across methods with foreground mask overlays. Select an environment, then choose one of three examples.
 
 <OpenLoopVideos />
 
 ### Visual Planning Videos
 
-Compare world-model rollouts and executed trajectories against the goal. Each environment includes three examples for DINO-WM and three for LeWM (TC-LeWM for Beerpong). Use the carousel arrows or dots to switch between models and examples.
 
 <PlanningVideos />
-
-### Quantitative Evaluation
-
-We evaluate PhysiCalWorld across four challenging benchmark environments with diverse physical property variations. Across all environments, in-context physics calibration consistently improves next-frame visual fidelity, substantially mitigates open-loop rollout drift, and elevates visual planning success rates, matching or exceeding privileged baselines that access ground-truth physical parameters. In each table, **bold** indicates the best result and <u>underline</u> marks the second-best.
-
-<Tabs defaultValue="pusht">
-  <TabsList>
-    <TabsTrigger value="pusht">PushT</TabsTrigger>
-    <TabsTrigger value="reacher">Reacher</TabsTrigger>
-    <TabsTrigger value="beerpong">Beerpong</TabsTrigger>
-    <TabsTrigger value="fetchslide">FetchSlide</TabsTrigger>
-  </TabsList>
-  <TabsContent value="pusht">
-
-| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU (%) $\uparrow$ | Planning Success (%) $\uparrow$ |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **TS-WM** | 21.38 | 0.954 | 0.0405 | 53.4 | 53.3% |
-| **DINO-WM** (Baseline) | 21.87 | 0.955 | 0.0402 | 51.5 | 53.3% |
-| ~ + Long History | 22.41 | 0.959 | 0.0331 | 57.6 | 57.3% |
-| ~ + Context Prefix | 22.98 | 0.961 | <u>0.0295</u> | 61.4 | 58.7% |
-| ~ + Privileged Physics$^\dagger$ | 23.36 | <u>0.962</u> | 0.0299 | 60.9 | 60.0% |
-| ~ + **PhysiCal (Ours)** | <u>23.83</u> | **0.964** | **0.0267** | <u>65.1</u> | **62.7%** |
-| **LeWM** (Baseline) | 23.72 | 0.957 | 0.0450 | 64.3 | 48.0% |
-| ~ + **PhysiCal (Ours)** | **25.50** | **0.964** | 0.0358 | **73.3** | <u>61.3%</u> |
-
-<p class="text-center font-medium text-lg mt-3">PushT (Varying Center of Mass)</p>
-
-<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated on 15 unseen Center of Mass (CoM) configurations. IoU is computed on the combined foreground mask of agent and T-block. Privileged Physics$^\dagger$ directly receives ground-truth CoM as input.</p>
-
-  </TabsContent>
-  <TabsContent value="reacher">
-
-| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU (%) $\uparrow$ | Planning Success (%) $\uparrow$ |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **TS-WM** | 19.51 | 0.967 | 0.0469 | 30.9 | 41.3% |
-| **DINO-WM** (Baseline) | 19.43 | 0.968 | 0.0407 | 32.6 | 52.0% |
-| ~ + Long History | 20.47 | 0.971 | 0.0311 | 41.2 | 53.3% |
-| ~ + Context Prefix | 20.73 | 0.972 | 0.0290 | 44.1 | 61.3% |
-| ~ + Privileged Physics$^\dagger$ | **22.92** | **0.979** | **0.0155** | **59.3** | **86.7%** |
-| ~ + **PhysiCal (Ours)** | <u>21.58</u> | <u>0.975</u> | <u>0.0222</u> | <u>51.0</u> | 61.3% |
-| **LeWM** (Baseline) | 20.45 | 0.964 | 0.0404 | 40.6 | 60.0% |
-| ~ + **PhysiCal (Ours)** | 21.08 | 0.964 | 0.0377 | 45.7 | <u>64.0%</u> |
-
-<p class="text-center font-medium text-lg mt-3">Reacher (Varying Joint Damping)</p>
-
-<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated across 15 unseen joint damping combinations. Planning optimizes action sequences so the arm reaches the joint configuration shown in the goal image. $^\dagger$ denotes privileged baseline with ground-truth damping.</p>
-
-  </TabsContent>
-  <TabsContent value="beerpong">
-
-| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU (%) $\uparrow$ | Planning Success (%) $\uparrow$ |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **TS-WM** | 26.97 | 0.992 | 0.0129 | 24.8 | 60.0% |
-| **DINO-WM** (Baseline) | 27.35 | 0.993 | 0.0125 | 27.7 | 44.0% |
-| ~ + Long History | 27.11 | 0.993 | 0.0138 | 24.8 | 50.7% |
-| ~ + Context Prefix | 29.10 | <u>0.994</u> | 0.0089 | 40.8 | 82.7% |
-| ~ + Privileged Physics$^\dagger$ | **30.27** | **0.995** | **0.0062** | **50.3** | **86.7%** |
-| ~ + **PhysiCal (Ours)** | <u>29.49</u> | **0.995** | <u>0.0067</u> | 46.3 | 80.0% |
-| **TC-LeWM** (Baseline) | 25.05 | 0.983 | 0.0230 | 27.2 | 60.0% |
-| ~ + **PhysiCal (Ours)** | 27.58 | 0.986 | 0.0170 | <u>47.7</u> | <u>84.0%</u> |
-
-<p class="text-center font-medium text-lg mt-3">Beerpong (Varying Ball-Table Contact Damping)</p>
-
-<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Evaluated across varying table contact damping (energy dissipation upon bounce). Planning optimizes release velocity so the ball lands inside the target cup. $^\dagger$ denotes privileged baseline with ground-truth contact damping.</p>
-
-  </TabsContent>
-  <TabsContent value="fetchslide">
-
-| Method | Open-Loop Rollout PSNR $\uparrow$ | Open-Loop Rollout SSIM $\uparrow$ | Open-Loop Rollout LPIPS $\downarrow$ | Open-Loop Rollout IoU (%) $\uparrow$ | Planning Error (m) $\downarrow$ | Planning Success (%) $\uparrow$ |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **TS-WM** | 24.07 | 0.984 | 0.0131 | 49.9 | 0.071 | 26.7% |
-| **DINO-WM** (Baseline) | 25.67 | <u>0.989</u> | 0.0077 | 58.6 | 0.089 | 26.7% |
-| ~ + Long History | 25.17 | <u>0.989</u> | 0.0090 | 51.0 | 0.117 | 24.0% |
-| ~ + Context Prefix | 27.14 | **0.991** | 0.0048 | 71.5 | 0.045 | 54.7% |
-| ~ + Privileged Physics$^\dagger$ | <u>27.68</u> | **0.991** | **0.0043** | **75.8** | **0.024** | **66.7%** |
-| ~ + **PhysiCal (Ours)** | **27.87** | **0.991** | <u>0.0047</u> | <u>73.8</u> | <u>0.033</u> | <u>56.0%</u> |
-| **LeWM** (Baseline) | 25.15 | 0.981 | 0.0336 | 51.1 | 0.093 | 17.3% |
-| ~ + **PhysiCal (Ours)** | 26.43 | 0.982 | 0.0321 | 61.8 | 0.071 | 28.0% |
-
-<p class="text-center font-medium text-lg mt-3">FetchSlide (Multi-Physics: Puck Mass, Table Friction, Air Drag)</p>
-
-<p class="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-1">Three physical properties vary simultaneously: puck mass, table surface friction, and aerodynamic drag. Planning optimizes the striking action so the puck stops at the goal image position. $^\dagger$ denotes privileged baseline with ground-truth physics.</p>
-
-  </TabsContent>
-</Tabs>
-
-
-
-
-## Citation
-
-```bibtex
-@article{anonymous2026physicalworld,
-  title   = {PhysiCalWorld: In-Context Physics Calibration for World Models},
-  author  = {Anonymous Authors},
-  journal = {Under Review},
-  year    = {2026}
-}
-```
-
-## Bibliography
-
-[^ref]

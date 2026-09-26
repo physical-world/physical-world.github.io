@@ -3,76 +3,76 @@
     "id": "pusht",
     "label": "PushT",
     "videos": [
-      "videos/openloop/pusht/1.mp4",
-      "videos/openloop/pusht/2.mp4",
-      "videos/openloop/pusht/3.mp4"
+      "videos/openloop/pusht/pusht-openloop-001.mp4",
+      "videos/openloop/pusht/pusht-openloop-002.mp4",
+      "videos/openloop/pusht/pusht-openloop-003.mp4"
     ],
     "rgbVideos": [
-      "videos/openloop/pusht/1-rgb.mp4",
-      "videos/openloop/pusht/2-rgb.mp4",
-      "videos/openloop/pusht/3-rgb.mp4"
+      "videos/openloop/pusht/pusht-openloop-001-rgb.mp4",
+      "videos/openloop/pusht/pusht-openloop-002-rgb.mp4",
+      "videos/openloop/pusht/pusht-openloop-003-rgb.mp4"
     ],
     "contexts": [
-      "videos/openloop/pusht/1-context.png",
-      "videos/openloop/pusht/2-context.png",
-      "videos/openloop/pusht/3-context.png"
+      "videos/openloop/pusht/pusht-openloop-001-context.png",
+      "videos/openloop/pusht/pusht-openloop-002-context.png",
+      "videos/openloop/pusht/pusht-openloop-003-context.png"
     ]
   },
   {
     "id": "reacher",
     "label": "Reacher",
     "videos": [
-      "videos/openloop/reacher/1.mp4",
-      "videos/openloop/reacher/2.mp4",
-      "videos/openloop/reacher/3.mp4"
+      "videos/openloop/reacher/reacher-openloop-001.mp4",
+      "videos/openloop/reacher/reacher-openloop-002.mp4",
+      "videos/openloop/reacher/reacher-openloop-003.mp4"
     ],
     "rgbVideos": [
-      "videos/openloop/reacher/1-rgb.mp4",
-      "videos/openloop/reacher/2-rgb.mp4",
-      "videos/openloop/reacher/3-rgb.mp4"
+      "videos/openloop/reacher/reacher-openloop-001-rgb.mp4",
+      "videos/openloop/reacher/reacher-openloop-002-rgb.mp4",
+      "videos/openloop/reacher/reacher-openloop-003-rgb.mp4"
     ],
     "contexts": [
-      "videos/openloop/reacher/1-context.png",
-      "videos/openloop/reacher/2-context.png",
-      "videos/openloop/reacher/3-context.png"
+      "videos/openloop/reacher/reacher-openloop-001-context.png",
+      "videos/openloop/reacher/reacher-openloop-002-context.png",
+      "videos/openloop/reacher/reacher-openloop-003-context.png"
     ]
   },
   {
     "id": "beerpong",
     "label": "Beerpong",
     "videos": [
-      "videos/openloop/beerpong/1.mp4",
-      "videos/openloop/beerpong/2.mp4",
-      "videos/openloop/beerpong/3.mp4"
+      "videos/openloop/beerpong/beerpong-openloop-001.mp4",
+      "videos/openloop/beerpong/beerpong-openloop-002.mp4",
+      "videos/openloop/beerpong/beerpong-openloop-003.mp4"
     ],
     "rgbVideos": [
-      "videos/openloop/beerpong/1-rgb.mp4",
-      "videos/openloop/beerpong/2-rgb.mp4",
-      "videos/openloop/beerpong/3-rgb.mp4"
+      "videos/openloop/beerpong/beerpong-openloop-001-rgb.mp4",
+      "videos/openloop/beerpong/beerpong-openloop-002-rgb.mp4",
+      "videos/openloop/beerpong/beerpong-openloop-003-rgb.mp4"
     ],
     "contexts": [
-      "videos/openloop/beerpong/1-context.png",
-      "videos/openloop/beerpong/2-context.png",
-      "videos/openloop/beerpong/3-context.png"
+      "videos/openloop/beerpong/beerpong-openloop-001-context.png",
+      "videos/openloop/beerpong/beerpong-openloop-002-context.png",
+      "videos/openloop/beerpong/beerpong-openloop-003-context.png"
     ]
   },
   {
     "id": "fetch_slide",
     "label": "FetchSlide",
     "videos": [
-      "videos/openloop/fetch_slide/1.mp4",
-      "videos/openloop/fetch_slide/2.mp4",
-      "videos/openloop/fetch_slide/3.mp4"
+      "videos/openloop/fetchslide/fetchslide-openloop-001.mp4",
+      "videos/openloop/fetchslide/fetchslide-openloop-002.mp4",
+      "videos/openloop/fetchslide/fetchslide-openloop-003.mp4"
     ],
     "rgbVideos": [
-      "videos/openloop/fetch_slide/1-rgb.mp4",
-      "videos/openloop/fetch_slide/2-rgb.mp4",
-      "videos/openloop/fetch_slide/3-rgb.mp4"
+      "videos/openloop/fetchslide/fetchslide-openloop-001-rgb.mp4",
+      "videos/openloop/fetchslide/fetchslide-openloop-002-rgb.mp4",
+      "videos/openloop/fetchslide/fetchslide-openloop-003-rgb.mp4"
     ],
     "contexts": [
-      "videos/openloop/fetch_slide/1-context.png",
-      "videos/openloop/fetch_slide/2-context.png",
-      "videos/openloop/fetch_slide/3-context.png"
+      "videos/openloop/fetchslide/fetchslide-openloop-001-context.png",
+      "videos/openloop/fetchslide/fetchslide-openloop-002-context.png",
+      "videos/openloop/fetchslide/fetchslide-openloop-003-context.png"
     ]
   }
 ]
