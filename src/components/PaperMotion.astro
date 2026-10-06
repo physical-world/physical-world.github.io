@@ -1,0 +1,71 @@
+<div class="reading-progress" aria-hidden="true"></div>
+<nav class="chapter-nav" aria-label="Paper sections"></nav>
+
+<script>
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const headings = [
+    ...document.querySelectorAll<HTMLHeadingElement>("main h2[id]"),
+  ];
+  const nav = document.querySelector<HTMLElement>(".chapter-nav")!;
+  headings.forEach((heading) => {
+    const link = document.createElement("a");
+    link.href = `#${heading.id}`;
+    link.textContent = heading.textContent;
+    nav.append(link);
+  });
+  const links = [...nav.querySelectorAll("a")];
+  const progress = document.querySelector<HTMLElement>(".reading-progress")!;
+  let scheduled = false;
+  const update = () => {
+    const range = document.documentElement.scrollHeight - innerHeight;
+    progress.style.transform = `scaleX(${range > 0 ? Math.min(1, scrollY / range) : 0})`;
+    let active = -1;
+    headings.forEach((h, i) => {
+      if (h.getBoundingClientRect().top < innerHeight * 0.4) active = i;
+    });
+    links.forEach((a, i) => {
+      if (i === active) a.setAttribute("aria-current", "location");
+      else a.removeAttribute("aria-current");
+    });
+    scheduled = false;
+  };
+  addEventListener(
+    "scroll",
+    () => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
+  addEventListener("resize", update);
+  update();
+
+  const targets = document.querySelectorAll<HTMLElement>(
+    "main > h2, main > figure, .abstract-panel, [data-video-gallery], .analysis-card",
+  );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) {
+          target.classList.add("is-revealed");
+          observer.unobserve(target);
+        }
+      });
+    },
+    { threshold: 0.06, rootMargin: "0px 0px -24px 0px" },
+  );
+  targets.forEach((target) => {
+    if (!reduced.matches && target.getBoundingClientRect().top > innerHeight) {
+      target.classList.add("reveal-on-scroll");
+      observer.observe(target);
+    }
+  });
+  reduced.addEventListener("change", () => {
+    if (reduced.matches) {
+      targets.forEach((target) => target.classList.add("is-revealed"));
+      observer.disconnect();
+    }
+  });
+</script>

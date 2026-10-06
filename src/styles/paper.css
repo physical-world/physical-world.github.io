@@ -1,0 +1,445 @@
+/* Presentation layer: the paper's content and data colors stay independent. */
+:root {
+  --paper: #fafaf7;
+  --ink: #182421;
+  --subtle: #66736d;
+  --teal: #087f6d;
+  --mint: #e8f3ed;
+  --edge: #dee5df;
+  --brand-gradient: linear-gradient(
+    110deg,
+    #087f6d 0%,
+    #2563eb 52%,
+    #7c3aed 100%
+  );
+}
+.brand-name {
+  color: var(--teal);
+  font-weight: 700;
+  white-space: nowrap;
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .brand-name {
+    background-image: var(--brand-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+@media (forced-colors: active) {
+  .brand-name {
+    background: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+}
+html[data-theme="light"] {
+  background: var(--paper);
+  scroll-behavior: smooth;
+  scroll-padding-top: 40px;
+}
+body.prose {
+  font-family: var(--font-noto-sans), Arial, sans-serif;
+  color: var(--ink);
+  padding-top: 0;
+  --tw-prose-headings: var(--ink);
+  --tw-prose-body: var(--ink);
+  --tw-prose-bold: var(--ink);
+}
+body.prose a {
+  color: var(--teal);
+}
+main > h2 {
+  margin-top: 100px;
+  margin-bottom: 24px;
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  letter-spacing: -0.035em;
+}
+main > h3 {
+  letter-spacing: -0.025em;
+}
+main > p,
+figcaption {
+  color: var(--subtle);
+}
+main > figure {
+  margin-block: 36px 64px;
+}
+main > figure > div {
+  padding: clamp(12px, 3vw, 28px);
+  background: white;
+  border: 1px solid var(--edge);
+  border-radius: 24px;
+  box-shadow: 0 12px 44px #18242106;
+}
+main > figure img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+/* All figure captions: size, line spacing, and space above. */
+figcaption {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-top: 18px;
+}
+.paper-hero {
+  isolation: isolate;
+  overflow: hidden;
+  /* Space above "PhysiCalWorld" (100px) and below the header (42px).
+     Phone value is in the @media (max-width: 600px) block further down; the
+     page also adds pt-16 on top (src/pages/index.astro). */
+  padding: 40px 0 42px;
+  margin-bottom: 0;
+}
+.paper-hero::before,
+.paper-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(48px);
+}
+.paper-hero::before {
+  width: 600px;
+  height: 340px;
+  top: -80px;
+  left: calc(50% - 400px);
+  background: radial-gradient(ellipse, #b8e3cd80, #e8f3ed00 70%);
+  animation: ambient-drift 16s ease-in-out infinite alternate;
+}
+.paper-hero::after {
+  width: 390px;
+  height: 280px;
+  top: 40px;
+  left: 52%;
+  background: radial-gradient(ellipse, #e8d5b54d, #fafaf700 70%);
+  animation: ambient-drift 19s ease-in-out infinite alternate-reverse;
+}
+/* Header title. Gap = space between "PhysiCalWorld" and the subtitle line
+   (mobile value is in the @media block further down). */
+.hero-title {
+  display: grid;
+  gap: 22px;
+  /* Override the prose h1 margins, which otherwise add a big gap above the authors. */
+  margin: 0;
+}
+.hero-name {
+  /* "PhysiCalWorld" title size: clamp(phone min, grows with width, desktop max). */
+  font-size: clamp(3rem, 5.8vw, 6rem);
+  font-weight: 650;
+  letter-spacing: -0.065em;
+  line-height: 1.1;
+  animation: paper-enter 0.8s both;
+}
+.hero-subtitle {
+  display: block;
+  /* No width cap so the subtitle can stay on one line. */
+  max-width: none;
+  margin: auto;
+  /* Subtitle size: clamp(phone min, grows with width, desktop max). */
+  font-size: clamp(1.2rem, 2.5vw, 1.95rem);
+  line-height: 1.4;
+  font-weight: 450;
+  letter-spacing: -0.025em;
+  animation: paper-enter 0.8s 0.1s both;
+}
+/* Force the subtitle onto one line, except on phones where it would overflow. */
+@media (min-width: 640px) {
+  .hero-subtitle {
+    white-space: nowrap;
+  }
+}
+.hero-authors {
+  color: var(--subtle);
+  /* Extra space between the subtitle and the author names. */
+  margin-top: 10px;
+  animation: paper-enter 0.8s 0.18s both;
+}
+/* Author name links: no underline (the page default is a dashed underline). */
+.hero-authors a {
+  text-decoration: none;
+}
+/* Author name size (also applies to the * / † superscripts). */
+.hero-authors .text-xl {
+  font-size: 1.09rem;
+}
+/* Shared affiliation line below the authors (`affiliation` prop on <Header>). */
+.hero-affiliation {
+  color: var(--subtle);
+  font-size: 0.95rem;
+  margin-top: -8px;
+  animation: paper-enter 0.8s 0.2s both;
+}
+/* Affiliation logo (`affiliationLogo` prop on <Header>); height sets its size. */
+.hero-affiliation-logo {
+  height: 32px;
+  width: auto;
+  /* top | left/right | bottom; negative top pulls it closer to the authors. */
+  margin: 0px 0 0;
+  animation: paper-enter 0.8s 0.2s both;
+}
+/* Badge from the `conference` prop on <Header>; hidden when the prop is omitted. */
+.hero-status {
+  color: var(--teal);
+  font-size: 0.825rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid #087f6d26;
+  border-radius: 100px;
+  padding: 5px 13px;
+  background: #ffffff80;
+  animation: paper-enter 0.8s 0.24s both;
+}
+/* Teaser figure (the first figure, right after the header).
+   Width: add e.g. `max-width: 48rem; margin-inline: auto;` (defaults to the text column).
+   Caption only for this figure: style `.paper-hero + figure figcaption`.
+   All figure captions: the `figcaption` rule near the top of this file. */
+.paper-hero + figure {
+  max-width: 40rem;        /* figure + caption width */
+  margin-inline: auto;     /* keep it centered */
+  margin-top: 1px;
+  margin-bottom: 25px;
+  animation: paper-enter 1.9s 1.28s both;
+}
+/* Teaser caption: justified (other captions stay centered). */
+.paper-hero + figure figcaption {
+  text-align: justify;
+}
+.paper-hero + figure .max-w-xl {
+  max-width: 42rem;
+  width: 100%;
+}
+.abstract-panel {
+  background: var(--mint);
+  padding-block: 52px;
+  border-block: 1px solid #087f6d0c;
+}
+.abstract-panel h2 {
+  font-size: 0.925rem;
+  color: var(--teal);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.abstract-panel p {
+  font-size: 1rem;
+  line-height: 1.95;
+  color: #364b42;
+}
+[data-video-gallery] > [data-tabs],
+[data-video-gallery] {
+  scroll-margin-top: 40px;
+}
+[data-video-gallery] [data-tabs-content] > div {
+  background: white;
+  border-color: var(--edge);
+  border-radius: 22px;
+  box-shadow: 0 12px 44px #18242106;
+}
+[data-tabs-trigger],
+main .chart-choices button {
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+[data-tabs-trigger][data-state="active"],
+main .chart-choices button[aria-pressed="true"] {
+  background: var(--mint);
+  color: var(--teal);
+  border-color: #087f6d38;
+}
+[data-tabs-trigger]:hover,
+main .chart-choices button:hover {
+  background: #e8f3ed90;
+}
+[data-tabs-trigger]:active,
+main .chart-choices button:active {
+  transform: scale(0.97);
+}
+[data-tabs-content]:not([hidden]) {
+  animation: panel-enter 0.3s ease-out;
+}
+[data-context-clip]:not([hidden]) {
+  animation: panel-enter 0.35s ease-out;
+}
+[data-video-gallery] .text-sm {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+[data-video-gallery] input {
+  color: var(--teal);
+}
+body .page-button.active > div {
+  background: var(--teal);
+}
+main .analysis-card {
+  --chart-shade: #f0f5f1;
+  --chart-block: #dceae2;
+  --chart-dot: #708478;
+  border-color: var(--edge);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 12px 44px #18242106;
+}
+main .chart-choices button {
+  border-radius: 100px;
+}
+.analysis-card svg circle {
+  transition:
+    r 0.2s,
+    fill 0.2s;
+}
+.heatmap button {
+  transition: box-shadow 0.15s;
+}
+.heatmap .selected-cell {
+  outline-color: var(--ink);
+  box-shadow: inset 0 0 0 2px #ffffff90;
+}
+main .speed-track {
+  height: 11px;
+  border-radius: 100px;
+}
+main .speed-track > div {
+  border-radius: 100px;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: left;
+}
+.is-revealed .speed-track > div {
+  animation: grow-bar 0.7s both;
+}
+.ood-chart {
+  animation: panel-enter 0.3s ease-out;
+}
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 50;
+}
+.chapter-nav {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 14px;
+  width: 140px;
+  z-index: 10;
+}
+body.prose .chapter-nav a {
+  border-left: 2px solid var(--edge);
+  padding-left: 12px;
+  color: var(--subtle);
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.5;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+body.prose .chapter-nav a[aria-current] {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+/* Page-load fade-in + slide-up used by the header and teaser figure.
+   Usage: `animation: paper-enter <duration> <delay> both;`
+   translateY(16px) below = how far elements slide up; remove it for a pure fade. */
+@keyframes paper-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes panel-enter {
+  from {
+    opacity: 0.3;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes ambient-drift {
+  to {
+    transform: translate(45px, 20px) scale(1.12);
+  }
+}
+@keyframes grow-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (max-width: 1199px) {
+  .chapter-nav {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  /* Phone: space above "PhysiCalWorld". */
+  .paper-hero {
+    padding-top: 65px;
+  }
+  .hero-title {
+    gap: 18px;
+  }
+  main > h2 {
+    margin-top: 64px;
+  }
+  main .analysis-card {
+    padding: 16px;
+  }
+  .abstract-panel {
+    padding-block: 36px;
+  }
+  .paper-hero::before,
+  .paper-hero::after {
+    animation: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="light"] {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    /* Accessibility override must win over component-specific motion. */
+    /* eslint-disable-next-line css/no-important */
+    animation: none !important;
+    /* eslint-disable-next-line css/no-important */
+    transition: none !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+}

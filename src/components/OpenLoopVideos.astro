@@ -1,0 +1,9 @@
+---
+import TileVideos from "./TileVideos";
+interface Props {
+  environment: string;
+}
+const { environment } = Astro.props;
+---
+
+<TileVideos environment={environment} stage="openloop" client:visible />

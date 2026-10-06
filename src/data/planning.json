@@ -1,0 +1,114 @@
+[
+  {
+    "id": "pusht",
+    "label": "PushT",
+    "videos": [
+      "videos/planning/pusht/pusht-planning-001.mp4",
+      "videos/planning/pusht/pusht-planning-002.mp4",
+      "videos/planning/pusht/pusht-planning-003.mp4",
+      "videos/planning/pusht/pusht-planning-004.mp4",
+      "videos/planning/pusht/pusht-planning-005.mp4",
+      "videos/planning/pusht/pusht-planning-006.mp4"
+    ],
+    "contexts": [
+      "videos/planning/pusht/pusht-planning-001-context.png",
+      "videos/planning/pusht/pusht-planning-002-context.png",
+      "videos/planning/pusht/pusht-planning-003-context.png",
+      "videos/planning/pusht/pusht-planning-004-context.png",
+      "videos/planning/pusht/pusht-planning-005-context.png",
+      "videos/planning/pusht/pusht-planning-006-context.png"
+    ],
+    "rgbVideos": [
+      "videos/planning/pusht/pusht-planning-001-rgb.mp4",
+      "videos/planning/pusht/pusht-planning-002-rgb.mp4",
+      "videos/planning/pusht/pusht-planning-003-rgb.mp4",
+      "videos/planning/pusht/pusht-planning-004-rgb.mp4",
+      "videos/planning/pusht/pusht-planning-005-rgb.mp4",
+      "videos/planning/pusht/pusht-planning-006-rgb.mp4"
+    ]
+  },
+  {
+    "id": "reacher",
+    "label": "Reacher",
+    "videos": [
+      "videos/planning/reacher/reacher-planning-001.mp4",
+      "videos/planning/reacher/reacher-planning-002.mp4",
+      "videos/planning/reacher/reacher-planning-003.mp4",
+      "videos/planning/reacher/reacher-planning-004.mp4",
+      "videos/planning/reacher/reacher-planning-005.mp4",
+      "videos/planning/reacher/reacher-planning-006.mp4"
+    ],
+    "contexts": [
+      "videos/planning/reacher/reacher-planning-001-context.png",
+      "videos/planning/reacher/reacher-planning-002-context.png",
+      "videos/planning/reacher/reacher-planning-003-context.png",
+      "videos/planning/reacher/reacher-planning-004-context.png",
+      "videos/planning/reacher/reacher-planning-005-context.png",
+      "videos/planning/reacher/reacher-planning-006-context.png"
+    ],
+    "rgbVideos": [
+      "videos/planning/reacher/reacher-planning-001-rgb.mp4",
+      "videos/planning/reacher/reacher-planning-002-rgb.mp4",
+      "videos/planning/reacher/reacher-planning-003-rgb.mp4",
+      "videos/planning/reacher/reacher-planning-004-rgb.mp4",
+      "videos/planning/reacher/reacher-planning-005-rgb.mp4",
+      "videos/planning/reacher/reacher-planning-006-rgb.mp4"
+    ]
+  },
+  {
+    "id": "beerpong",
+    "label": "Beerpong",
+    "videos": [
+      "videos/planning/beerpong/beerpong-planning-001.mp4",
+      "videos/planning/beerpong/beerpong-planning-002.mp4",
+      "videos/planning/beerpong/beerpong-planning-003.mp4",
+      "videos/planning/beerpong/beerpong-planning-004.mp4",
+      "videos/planning/beerpong/beerpong-planning-005.mp4",
+      "videos/planning/beerpong/beerpong-planning-006.mp4"
+    ],
+    "contexts": [
+      "videos/planning/beerpong/beerpong-planning-001-context.png",
+      "videos/planning/beerpong/beerpong-planning-002-context.png",
+      "videos/planning/beerpong/beerpong-planning-003-context.png",
+      "videos/planning/beerpong/beerpong-planning-004-context.png",
+      "videos/planning/beerpong/beerpong-planning-005-context.png",
+      "videos/planning/beerpong/beerpong-planning-006-context.png"
+    ],
+    "rgbVideos": [
+      "videos/planning/beerpong/beerpong-planning-001-rgb.mp4",
+      "videos/planning/beerpong/beerpong-planning-002-rgb.mp4",
+      "videos/planning/beerpong/beerpong-planning-003-rgb.mp4",
+      "videos/planning/beerpong/beerpong-planning-004-rgb.mp4",
+      "videos/planning/beerpong/beerpong-planning-005-rgb.mp4",
+      "videos/planning/beerpong/beerpong-planning-006-rgb.mp4"
+    ]
+  },
+  {
+    "id": "fetch_slide",
+    "label": "FetchSlide",
+    "videos": [
+      "videos/planning/fetchslide/fetchslide-planning-001.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-002.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-003.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-004.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-005.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-006.mp4"
+    ],
+    "contexts": [
+      "videos/planning/fetchslide/fetchslide-planning-001-context.png",
+      "videos/planning/fetchslide/fetchslide-planning-002-context.png",
+      "videos/planning/fetchslide/fetchslide-planning-003-context.png",
+      "videos/planning/fetchslide/fetchslide-planning-004-context.png",
+      "videos/planning/fetchslide/fetchslide-planning-005-context.png",
+      "videos/planning/fetchslide/fetchslide-planning-006-context.png"
+    ],
+    "rgbVideos": [
+      "videos/planning/fetchslide/fetchslide-planning-001-rgb.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-002-rgb.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-003-rgb.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-004-rgb.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-005-rgb.mp4",
+      "videos/planning/fetchslide/fetchslide-planning-006-rgb.mp4"
+    ]
+  }
+]

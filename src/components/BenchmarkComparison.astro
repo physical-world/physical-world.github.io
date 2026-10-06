@@ -1,0 +1,46 @@
+---
+import "./analysis-charts.css";
+
+interface Props {
+  environment: string;
+  label: string;
+}
+
+const { environment, label } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<div class="not-prose pt-4">
+  <video
+    data-benchmark-comparison
+    src={`${base}videos/benchmark/${environment}/comparison.mp4`}
+    autoplay
+    controls
+    muted
+    playsinline
+    loop
+    preload="metadata"
+    aria-label={`${label} physics comparison`}
+    class="h-auto w-full rounded-lg"></video>
+  <p class="chart-note"><slot name="caption" /></p>
+</div>
+
+<script>
+  document
+    .querySelectorAll<HTMLVideoElement>("[data-benchmark-comparison]")
+    .forEach((video) => {
+      const panel = video.closest<HTMLElement>("[data-tabs-content]");
+      const updatePlayback = () => {
+        video.autoplay = !panel?.hidden;
+        if (video.autoplay) void video.play().catch(() => {});
+        else video.pause();
+      };
+      updatePlayback();
+      if (panel) {
+        new MutationObserver(updatePlayback).observe(panel, {
+          attributes: true,
+          attributeFilter: ["hidden"],
+        });
+      }
+    });
+</script>

@@ -1,0 +1,395 @@
+.tile-gallery {
+  --tile-surface: #f5f5f5;
+  --tile-gap: 5.666667px;
+  container-type: inline-size;
+  padding: 20px;
+  margin: 24px 0;
+  background: var(--tile-surface);
+  border: 1px solid #dbe2ea;
+  border-radius: 16px;
+  font-size: 16px;
+  color: #334155;
+}
+/* Widen only the video galleries, leaving room for the fixed chapter nav. */
+@media (min-width: 1200px) {
+  .tile-gallery {
+    margin-inline: calc(
+      max(12rem, (100cqw - 80rem) / 2) - var(--actual-inline-margin)
+    );
+  }
+}
+.is-planning {
+  --tile-gap: 6.222222px;
+}
+.tile-toolbar,
+.tile-switches,
+.tile-case-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.tile-toolbar {
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.tile-switches label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.tile-gallery button,
+.tile-gallery select {
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: transparent;
+  padding: 5px 10px;
+  cursor: pointer;
+  font: inherit;
+}
+.tile-gallery button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.tile-gallery :focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+.tile-cases {
+  justify-content: flex-end;
+}
+.tile-cases > label {
+  margin-right: auto;
+}
+.tile-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 20px;
+  align-items: start;
+}
+.tile-comparison {
+  min-width: 0;
+}
+.tile-method-list {
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 0 16px;
+  border: 0;
+  border-left: 1px solid #d2d2d2;
+}
+.tile-method-list legend {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.tile-method-list label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+.tile-method-list input {
+  flex-shrink: 0;
+  margin-top: 4px;
+  accent-color: #087f6d;
+}
+.tile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--tile-gap);
+  align-items: center;
+}
+.tile-layout[data-gt] {
+  grid-template-columns:
+    minmax(
+      0,
+      calc(
+        var(--method-columns) * 100% / (var(--method-columns) + 1) -
+          var(--tile-gap)
+      )
+    )
+    minmax(0, 1fr);
+}
+.tile-layout[data-planning] {
+  grid-template-columns: repeat(
+    calc(var(--method-columns) + 2),
+    minmax(0, 1fr)
+  );
+  align-items: start;
+}
+.tile-layout[data-planning] > .tile-columns {
+  grid-column: span var(--method-columns);
+}
+.tile-columns {
+  display: grid;
+  grid-template-columns: repeat(var(--method-columns), minmax(0, 1fr));
+  gap: 20px var(--tile-gap);
+  min-width: 0;
+}
+.tile-column,
+.tile-reference {
+  min-width: 0;
+  width: 100%;
+  max-width: 224px;
+  margin: 0;
+  justify-self: center;
+}
+.tile-gallery h5 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.15;
+  height: 76px;
+  margin: 0 0 7.333333px;
+  align-content: end;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.tile-gallery video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  border-radius: 6px;
+  background: #e2e8f0;
+}
+.is-openloop video {
+  outline: 5px solid #d2d2d2;
+  outline-offset: -5px;
+}
+.is-openloop video[data-method="vanilla"],
+.is-openloop video[data-method="context"] {
+  outline-color: #7bea2e;
+}
+.is-openloop video[data-method="lewm"],
+.is-openloop video[data-method="lewm_context"] {
+  outline-color: #ff6fae;
+}
+.is-planning video {
+  outline: 4.148148px solid #d2d2d2;
+  outline-offset: -2.074074px;
+}
+.is-planning video[data-method$="_exec"],
+.is-planning video[data-method="goal"] {
+  outline-color: #ffa861;
+}
+.is-planning video[data-method$="_exec"] {
+  margin-top: 14.518519px;
+}
+.tile-goal {
+  align-self: end;
+}
+.tile-row-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 8px;
+  color: #595959;
+}
+.tile-playback {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 16px;
+}
+.tile-playback input {
+  min-width: 50px;
+  flex: 1;
+  accent-color: #087f6d;
+}
+.tile-playback span {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tile-status,
+.tile-caption {
+  font-size: 16px;
+  color: #64748b;
+  margin: 12px 0 0;
+  line-height: 1.7;
+}
+.tile-context {
+  margin: 16px 0 0;
+}
+.tile-context img {
+  max-width: 100%;
+  max-height: 260px;
+  margin: auto;
+  display: block;
+  border-radius: 6px;
+}
+.tile-context figcaption {
+  text-align: center;
+  margin-top: 5px;
+}
+@container (max-width:650px) {
+  .tile-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tile-method-list {
+    border-left: 0;
+    border-top: 1px solid #d2d2d2;
+    padding: 12px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 12px;
+  }
+  .tile-method-list label {
+    margin: 0;
+  }
+  .tile-gallery h5 {
+    height: 96px;
+  }
+  .is-openloop .tile-columns {
+    grid-template-columns: repeat(
+      min(2, var(--method-columns)),
+      minmax(0, 1fr)
+    );
+  }
+  .tile-layout[data-gt] {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+}
+@container (max-width:400px) {
+  .tile-layout[data-planning] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tile-layout[data-planning] .tile-columns {
+    grid-column: 1/-1;
+    grid-row: 2;
+  }
+  .tile-start {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .tile-goal {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .tile-reference h5 {
+    height: auto;
+  }
+}
+.dark .tile-gallery {
+  --tile-surface: #1e293b;
+  color: #e2e8f0;
+  border-color: #475569;
+}
+
+/* The method block contains the prediction and execution rows; references
+   follow it as the third video row for three or more Planning methods. */
+.tile-layout[data-references-below] {
+  --reference-gap: clamp(40px, 4vw, 64px);
+  grid-template-columns: repeat(var(--method-columns), minmax(0, 1fr));
+  row-gap: 14.518519px;
+}
+.tile-layout[data-references-below] > .tile-columns {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+.tile-reference-pair {
+  --reference-width: min(
+    224px,
+    (100% - var(--reference-gap)) / 2,
+    (100% - (var(--method-columns) - 1) * var(--tile-gap)) /
+      var(--method-columns)
+  );
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, var(--reference-width)));
+  column-gap: var(--reference-gap);
+  justify-content: center;
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+.tile-reference-pair > .tile-reference {
+  grid-row: 1;
+  align-self: stretch;
+}
+.tile-reference-pair > .tile-start {
+  grid-column: 1;
+}
+.tile-reference-pair > .tile-goal {
+  grid-column: 2;
+}
+.tile-reference-media {
+  position: relative;
+}
+.tile-reference-arrow {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + var(--reference-gap) / 2);
+  width: min(32px, calc(var(--reference-gap) - 16px));
+  height: auto;
+  display: block;
+  color: #64748b;
+  transform: translate(-50%, -50%);
+}
+/* Like Open-loop's reference column, keep Start → Goal on the right when
+   only one or two methods are shown. */
+.tile-layout[data-references-beside] {
+  grid-template-columns: repeat(
+    calc(var(--method-columns) + 1),
+    minmax(0, 1fr)
+  );
+  align-items: center;
+}
+.tile-layout[data-references-beside] > .tile-columns {
+  grid-column: span var(--method-columns);
+  grid-row: 1;
+}
+.tile-layout[data-references-beside] > .tile-reference-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 224px;
+  justify-self: center;
+  grid-column: -2;
+  grid-row: 1;
+}
+.tile-layout[data-references-beside] .tile-reference h5 {
+  height: auto;
+}
+.tile-reference-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  flex-shrink: 0;
+}
+.tile-reference-connector .tile-reference-arrow {
+  position: static;
+  width: 28px;
+  transform: rotate(90deg);
+}
+.dark .tile-caption,
+.dark .tile-status,
+.dark .tile-row-legend {
+  color: #a6b5c8;
+}
+
+/* Keep the existing heading space and explicit breaks with the chart font. */
+.tile-column,
+.tile-reference {
+  container-type: inline-size;
+}
+.tile-gallery {
+  --title-ratio: 0.1145833333;
+  --title-slot-ratio: 0.1145833333;
+}
+.tile-gallery h5 {
+  font-family: var(--font-noto-sans), Arial, sans-serif;
+  font-size: calc(100cqw * var(--title-ratio));
+  font-weight: 700;
+  line-height: 1.078;
+  height: calc(100cqw * var(--title-slot-ratio) * 2.156);
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+.is-planning h5 {
+  line-height: 1.05;
+  height: calc(100cqw * var(--title-slot-ratio) * 2.1);
+}

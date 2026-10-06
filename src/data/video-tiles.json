@@ -1,0 +1,1718 @@
+[
+  {
+    "stage": "openloop",
+    "environment": "pusht",
+    "group": "all",
+    "order": 1,
+    "context": "videos/openloop/pusht/pusht-openloop-001-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "pusht",
+    "group": "all",
+    "order": 2,
+    "context": "videos/openloop/pusht/pusht-openloop-002-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "pusht",
+    "group": "all",
+    "order": 3,
+    "context": "videos/openloop/pusht/pusht-openloop-003-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "reacher",
+    "group": "all",
+    "order": 1,
+    "context": "videos/openloop/reacher/reacher-openloop-001-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "reacher",
+    "group": "all",
+    "order": 2,
+    "context": "videos/openloop/reacher/reacher-openloop-002-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "reacher",
+    "group": "all",
+    "order": 3,
+    "context": "videos/openloop/reacher/reacher-openloop-003-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "beerpong",
+    "group": "all",
+    "order": 1,
+    "context": "videos/openloop/beerpong/beerpong-openloop-001-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "beerpong",
+    "group": "all",
+    "order": 2,
+    "context": "videos/openloop/beerpong/beerpong-openloop-002-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "beerpong",
+    "group": "all",
+    "order": 3,
+    "context": "videos/openloop/beerpong/beerpong-openloop-003-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "fetchslide",
+    "group": "all",
+    "order": 1,
+    "context": "videos/openloop/fetchslide/fetchslide-openloop-001-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "fetchslide",
+    "group": "all",
+    "order": 2,
+    "context": "videos/openloop/fetchslide/fetchslide-openloop-002-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "openloop",
+    "environment": "fetchslide",
+    "group": "all",
+    "order": 3,
+    "context": "videos/openloop/fetchslide/fetchslide-openloop-003-context.png",
+    "files": {
+      "ts": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/ts.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/ts.mp4"
+      },
+      "vanilla": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/vanilla.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/vanilla.mp4"
+      },
+      "long_history": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/long_history.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/long_history.mp4"
+      },
+      "prefix_context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/prefix_context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/prefix_context.mp4"
+      },
+      "oracle": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/oracle.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/oracle.mp4"
+      },
+      "context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/context.mp4"
+      },
+      "lewm": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/lewm.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/lewm.mp4"
+      },
+      "lewm_context": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/lewm_context.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/lewm_context.mp4"
+      },
+      "gt": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/gt.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/gt.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "pusht",
+    "group": "dino",
+    "order": 1,
+    "context": "videos/planning/pusht/pusht-planning-001-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "pusht",
+    "group": "dino",
+    "order": 2,
+    "context": "videos/planning/pusht/pusht-planning-002-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "pusht",
+    "group": "dino",
+    "order": 3,
+    "context": "videos/planning/pusht/pusht-planning-003-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "pusht",
+    "group": "le",
+    "order": 1,
+    "context": "videos/planning/pusht/pusht-planning-004-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "pusht",
+    "group": "le",
+    "order": 2,
+    "context": "videos/planning/pusht/pusht-planning-005-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "pusht",
+    "group": "le",
+    "order": 3,
+    "context": "videos/planning/pusht/pusht-planning-006-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "reacher",
+    "group": "dino",
+    "order": 1,
+    "context": "videos/planning/reacher/reacher-planning-001-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "reacher",
+    "group": "dino",
+    "order": 2,
+    "context": "videos/planning/reacher/reacher-planning-002-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "reacher",
+    "group": "dino",
+    "order": 3,
+    "context": "videos/planning/reacher/reacher-planning-003-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "reacher",
+    "group": "le",
+    "order": 1,
+    "context": "videos/planning/reacher/reacher-planning-004-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "reacher",
+    "group": "le",
+    "order": 2,
+    "context": "videos/planning/reacher/reacher-planning-005-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "reacher",
+    "group": "le",
+    "order": 3,
+    "context": "videos/planning/reacher/reacher-planning-006-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "beerpong",
+    "group": "dino",
+    "order": 1,
+    "context": "videos/planning/beerpong/beerpong-planning-001-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "beerpong",
+    "group": "dino",
+    "order": 2,
+    "context": "videos/planning/beerpong/beerpong-planning-002-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "beerpong",
+    "group": "dino",
+    "order": 3,
+    "context": "videos/planning/beerpong/beerpong-planning-003-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "beerpong",
+    "group": "le",
+    "order": 1,
+    "context": "videos/planning/beerpong/beerpong-planning-004-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "beerpong",
+    "group": "le",
+    "order": 2,
+    "context": "videos/planning/beerpong/beerpong-planning-005-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "beerpong",
+    "group": "le",
+    "order": 3,
+    "context": "videos/planning/beerpong/beerpong-planning-006-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "fetchslide",
+    "group": "dino",
+    "order": 1,
+    "context": "videos/planning/fetchslide/fetchslide-planning-001-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "fetchslide",
+    "group": "dino",
+    "order": 2,
+    "context": "videos/planning/fetchslide/fetchslide-planning-002-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "fetchslide",
+    "group": "dino",
+    "order": 3,
+    "context": "videos/planning/fetchslide/fetchslide-planning-003-context.png",
+    "files": {
+      "ts_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/ts_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/ts_wm.mp4"
+      },
+      "ts_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/ts_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/ts_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/goal.mp4"
+      },
+      "vanilla_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/vanilla_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/vanilla_wm.mp4"
+      },
+      "vanilla_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/vanilla_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/vanilla_exec.mp4"
+      },
+      "long_history_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/long_history_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/long_history_wm.mp4"
+      },
+      "long_history_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/long_history_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/long_history_exec.mp4"
+      },
+      "prefix_context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/prefix_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/prefix_context_wm.mp4"
+      },
+      "prefix_context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/prefix_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/prefix_context_exec.mp4"
+      },
+      "oracle_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/oracle_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/oracle_wm.mp4"
+      },
+      "oracle_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/oracle_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/oracle_exec.mp4"
+      },
+      "context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/context_wm.mp4"
+      },
+      "context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "fetchslide",
+    "group": "le",
+    "order": 1,
+    "context": "videos/planning/fetchslide/fetchslide-planning-004-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "fetchslide",
+    "group": "le",
+    "order": 2,
+    "context": "videos/planning/fetchslide/fetchslide-planning-005-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/lewm_context_exec.mp4"
+      }
+    }
+  },
+  {
+    "stage": "planning",
+    "environment": "fetchslide",
+    "group": "le",
+    "order": 3,
+    "context": "videos/planning/fetchslide/fetchslide-planning-006-context.png",
+    "files": {
+      "lewm_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/lewm_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/lewm_wm.mp4"
+      },
+      "lewm_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/lewm_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/lewm_exec.mp4"
+      },
+      "start": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/start.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/start.mp4"
+      },
+      "goal": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/goal.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/goal.mp4"
+      },
+      "lewm_context_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/lewm_context_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/lewm_context_wm.mp4"
+      },
+      "lewm_context_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/lewm_context_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/lewm_context_exec.mp4"
+      }
+    }
+  }
+]
