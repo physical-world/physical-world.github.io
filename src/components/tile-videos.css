@@ -18,6 +18,13 @@
     );
   }
 }
+@media (min-width: 1341px) {
+  .tile-gallery {
+    margin-inline: calc(
+      max(288px, (100cqw - 836px) / 2) - var(--actual-inline-margin, 0px)
+    );
+  }
+}
 .is-planning {
   --tile-gap: 6.222222px;
 }

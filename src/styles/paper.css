@@ -197,18 +197,21 @@ figcaption {
    Width: add e.g. `max-width: 48rem; margin-inline: auto;` (defaults to the text column).
    Caption only for this figure: style `.paper-hero + figure figcaption`.
    All figure captions: the `figcaption` rule near the top of this file. */
-.paper-hero + figure {
-  max-width: 40rem;        /* figure + caption width */
-  margin-inline: auto;     /* keep it centered */
+.paper-hero + figure,
+.paper-hero + .mobile-toc + figure {
+  max-width: 40rem; /* figure + caption width */
+  margin-inline: auto; /* keep it centered */
   margin-top: 1px;
   margin-bottom: 25px;
   animation: paper-enter 1.9s 1.28s both;
 }
 /* Teaser caption: justified (other captions stay centered). */
-.paper-hero + figure figcaption {
+.paper-hero + figure figcaption,
+.paper-hero + .mobile-toc + figure figcaption {
   text-align: justify;
 }
-.paper-hero + figure .max-w-xl {
+.paper-hero + figure .max-w-xl,
+.paper-hero + .mobile-toc + figure .max-w-xl {
   max-width: 42rem;
   width: 100%;
 }
@@ -328,28 +331,94 @@ main .speed-track > div {
 }
 .chapter-nav {
   position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  display: grid;
-  gap: 14px;
-  width: 140px;
+  top: 81px;
+  left: max(16px, calc(50% - 650px));
+  width: 200px;
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  font-size: 13.2px;
+  line-height: 1.6;
+  font-family:
+    var(--font-inter),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 400;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
   z-index: 10;
 }
+.chapter-nav-title {
+  color: #939393;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  margin-bottom: 11px;
+  border-bottom: 1px solid #e6e6e6;
+}
+body.prose .chapter-nav ol {
+  --tw-prose-counters: #656565;
+  margin: 0;
+  padding-left: 17px;
+  color: #656565;
+}
+body.prose .chapter-nav li {
+  margin: 0 0 10px;
+  padding: 0;
+}
+body.prose .chapter-nav ul {
+  list-style: none;
+  margin: 4px 0;
+  padding-left: 9px;
+  font-size: 13.2px;
+}
+body.prose .chapter-nav ul li {
+  margin: 0;
+}
 body.prose .chapter-nav a {
-  border-left: 2px solid var(--edge);
-  padding-left: 12px;
-  color: var(--subtle);
+  display: block;
+  padding: 4px 7px;
+  border-radius: 4px;
+  color: #656565;
   text-decoration: none;
-  font-size: 12px;
-  line-height: 1.5;
-  transition:
-    color 0.2s,
-    border-color 0.2s;
+  font-size: inherit;
+  line-height: inherit;
+}
+body.prose .chapter-nav a:hover,
+body.prose .chapter-nav a[aria-current] {
+  color: #285a79;
+  background: #edf3f7;
 }
 body.prose .chapter-nav a[aria-current] {
-  color: var(--teal);
-  border-color: var(--teal);
+  font-weight: 600;
+}
+.chapter-nav a:focus-visible,
+.mobile-toc a:focus-visible,
+.mobile-toc summary:focus-visible {
+  outline: 2px solid #285a79;
+  outline-offset: 5px;
+}
+.mobile-toc {
+  display: none;
+}
+@media (min-width: 1341px) {
+  :root {
+    --actual-inline-margin: max(
+      288px,
+      (100cqw - var(--maximum-text-width)) / 2
+    );
+  }
+  /* Keep hero text and wide media out of the navigation rail. */
+  .paper-hero > div.relative {
+    max-width: min(836px, calc(100% - 576px));
+  }
+  .hero-subtitle {
+    white-space: normal;
+  }
 }
 .reveal-on-scroll {
   opacity: 0;
@@ -398,12 +467,54 @@ body.prose .chapter-nav a[aria-current] {
     transform: scaleX(1);
   }
 }
-@media (max-width: 1199px) {
+@media (max-width: 1340px) {
   .chapter-nav {
     display: none;
   }
+  .mobile-toc:not([hidden]) {
+    display: block;
+    width: min(812px, calc(100vw - 48px));
+    margin-inline: calc((100% - min(812px, calc(100vw - 48px))) / 2);
+    margin-block: 27px 0;
+    border-block: 1px solid #e6e6e6;
+    color: #656565;
+    font-size: 13.2px;
+    line-height: 1.75;
+    font-family:
+      var(--font-inter),
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+  .paper-hero {
+    padding-bottom: 12px;
+  }
+  .mobile-toc summary {
+    padding-block: 9px;
+    cursor: pointer;
+  }
+  .mobile-toc nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    padding: 0 0 13px;
+  }
+  body.prose .mobile-toc a {
+    color: inherit;
+    text-decoration: none;
+  }
+  body.prose .mobile-toc a:hover {
+    color: #285a79;
+  }
 }
 @media (max-width: 600px) {
+  .mobile-toc:not([hidden]) {
+    width: calc(100vw - 40px);
+    margin-inline: -4px;
+  }
   /* Phone: space above "PhysiCalWorld". */
   .paper-hero {
     padding-top: 65px;

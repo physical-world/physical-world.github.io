@@ -62,6 +62,12 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: ["400", "600", "700"],
+    },
+    {
+      provider: fontProviders.google(),
       name: "Noto Sans",
       cssVariable: "--font-noto-sans",
       weights: ["100 900"],

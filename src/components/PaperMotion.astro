@@ -1,30 +1,73 @@
 <div class="reading-progress" aria-hidden="true"></div>
-<nav class="chapter-nav" aria-label="Paper sections"></nav>
+<nav class="chapter-nav" aria-label="Paper sections">
+  <div class="chapter-nav-title">Contents</div>
+  <ol></ol>
+</nav>
 
 <script>
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   const headings = [
-    ...document.querySelectorAll<HTMLHeadingElement>("main h2[id]"),
+    ...document.querySelectorAll<HTMLHeadingElement>(
+      "main h2[id], main h3[id]",
+    ),
   ];
   const nav = document.querySelector<HTMLElement>(".chapter-nav")!;
-  headings.forEach((heading) => {
+  const list = nav.querySelector("ol")!;
+  const compact = document.querySelector<HTMLDetailsElement>(".mobile-toc")!;
+  const compactNav = compact.querySelector("nav")!;
+  let section: HTMLLIElement | undefined;
+  const makeLink = (heading: HTMLHeadingElement) => {
     const link = document.createElement("a");
     link.href = `#${heading.id}`;
-    link.textContent = heading.textContent;
-    nav.append(link);
+    // Preserve inline styling, including BrandName spans, without duplicating IDs.
+    heading.childNodes.forEach((node) => link.append(node.cloneNode(true)));
+    link.querySelectorAll("[id]").forEach((node) => node.removeAttribute("id"));
+    return link;
+  };
+  headings.forEach((heading) => {
+    const item = document.createElement("li");
+    item.append(makeLink(heading));
+    if (heading.tagName === "H2") {
+      section = item;
+      list.append(item);
+      compactNav.append(makeLink(heading));
+    } else if (section) {
+      let children = section.querySelector("ul");
+      if (!children) {
+        children = document.createElement("ul");
+        section.append(children);
+      }
+      children.append(item);
+    }
+  });
+  compact.hidden = false;
+  compactNav.addEventListener("click", (event) => {
+    if ((event.target as Element).closest("a")) compact.open = false;
   });
   const links = [...nav.querySelectorAll("a")];
+  const compactLinks = [...compactNav.querySelectorAll("a")];
   const progress = document.querySelector<HTMLElement>(".reading-progress")!;
   let scheduled = false;
   const update = () => {
     const range = document.documentElement.scrollHeight - innerHeight;
-    progress.style.transform = `scaleX(${range > 0 ? Math.min(1, scrollY / range) : 0})`;
-    let active = -1;
+    const fraction = range > 0 ? Math.max(0, Math.min(1, scrollY / range)) : 0;
+    progress.style.transform = `scaleX(${fraction})`;
+    let active = 0;
+    let activeSection = 0;
     headings.forEach((h, i) => {
-      if (h.getBoundingClientRect().top < innerHeight * 0.4) active = i;
+      if (h.getBoundingClientRect().top <= 130) active = i;
     });
+    if (range > 0 && fraction >= 0.995) active = headings.length - 1;
+    for (let i = 0; i <= active; i++) {
+      if (headings[i]?.tagName === "H2") activeSection = i;
+    }
     links.forEach((a, i) => {
       if (i === active) a.setAttribute("aria-current", "location");
+      else a.removeAttribute("aria-current");
+    });
+    compactLinks.forEach((a) => {
+      if (a.hash === `#${headings[activeSection]?.id}`)
+        a.setAttribute("aria-current", "location");
       else a.removeAttribute("aria-current");
     });
     scheduled = false;
@@ -40,6 +83,7 @@
     { passive: true },
   );
   addEventListener("resize", update);
+  addEventListener("load", update);
   update();
 
   const targets = document.querySelectorAll<HTMLElement>(
