@@ -1,12 +1,17 @@
 ---
-
+interface Props {
+  /** Justify the caption (for long, multi-sentence captions); default is centered. */
+  justify?: boolean;
+}
+const { justify = false } = Astro.props;
 ---
 
 <figure>
   <div class="flex w-full justify-center **:my-0">
     <slot name="figure" />
   </div>
-  <figcaption class="text-center">
+  <!-- Caption alignment: `<Figure justify>` = justified, `<Figure>` = centered. -->
+  <figcaption class={justify ? "text-justify" : "text-center"}>
     <slot name="caption" />
   </figcaption>
 </figure>

@@ -78,11 +78,11 @@ main > figure img {
   max-width: 100%;
   height: auto;
 }
-/* All figure captions: size, line spacing, and space above. */
+/* All figure captions (teaser caption overrides further down). */
 figcaption {
   font-size: 1rem;
   line-height: 1.7;
-  margin-top: 18px;
+  margin-top: 18px; /* gap below the figure */
 }
 .paper-hero {
   isolation: isolate;
@@ -193,6 +193,34 @@ figcaption {
   background: #ffffff80;
   animation: paper-enter 0.8s 0.24s both;
 }
+/* PDF / arXiv / Code button colors (size/padding: Header.astro). */
+.hero-btn {
+  --btn-bg: var(--mint); /* fill */
+  --btn-border: #cfe3d8; /* 1px outline */
+  --btn-text: #0b5f52; /* label + icon */
+  --btn-hover-bg: #dceee4; /* hover fill (buttons with a url) */
+  --btn-hover-border: var(--teal); /* outline on hover */
+
+  /* Alternatives (bg / border / text / hover-bg / hover-border):
+     A mint (current)  var(--mint) #cfe3d8 #0b5f52 #dceee4 var(--teal)
+     B sage            #dceae2 #c3d8cc #0b5f52 #cfe3d8 #0b5f52
+     C teal tint       #087f6d14 #087f6d40 var(--teal) #087f6d24 var(--teal)
+     D green-gray      #f1f3f0 var(--edge) var(--ink) #e6ebe7 #b9c4bd
+     E outline         #ffffffb3 var(--edge) var(--ink) var(--mint) var(--subtle) */
+
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--btn-text);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+a.hero-btn:hover {
+  background: var(--btn-hover-bg);
+  border-color: var(--btn-hover-border);
+  transform: translateY(-1px); /* hover lift */
+}
 /* Teaser figure (the first figure, right after the header).
    Width: add e.g. `max-width: 48rem; margin-inline: auto;` (defaults to the text column).
    Caption only for this figure: style `.paper-hero + figure figcaption`.
@@ -201,14 +229,17 @@ figcaption {
 .paper-hero + .mobile-toc + figure {
   max-width: 40rem; /* figure + caption width */
   margin-inline: auto; /* keep it centered */
-  margin-top: 1px;
-  margin-bottom: 25px;
+  margin-top: 1px; /* gap below the header */
+  margin-bottom: 25px; /* gap above the Abstract */
   animation: paper-enter 1.9s 1.28s both;
 }
-/* Teaser caption: justified (other captions stay centered). */
+/* Teaser caption only (overrides the general `figcaption` rule). */
 .paper-hero + figure figcaption,
 .paper-hero + .mobile-toc + figure figcaption {
   text-align: justify;
+  margin-top: 9px; /* gap between the animation box and the caption; raise to push the caption down */
+  margin-inline: 0; /* left/right indent of the caption; e.g. 1.5rem = narrower text, 0 = full box width */
+  margin-bottom: 2px; /* gap below the caption (before the Abstract); raise for more space */
 }
 .paper-hero + figure .max-w-xl,
 .paper-hero + .mobile-toc + figure .max-w-xl {
@@ -230,6 +261,7 @@ figcaption {
   font-size: 1rem;
   line-height: 1.95;
   color: #364b42;
+  text-align: justify;
 }
 [data-video-gallery] > [data-tabs],
 [data-video-gallery] {
@@ -329,10 +361,12 @@ main .speed-track > div {
   transform-origin: left;
   z-index: 50;
 }
+/* Floating contents list (screens > 1340px).
+   Gap to content = 650 - 200 (width) - 400 = 50px; raise 650 to widen it. */
 .chapter-nav {
   position: fixed;
   top: 81px;
-  left: max(16px, calc(50% - 650px));
+  left: max(16px, calc(50% - 700px)); /* 650px = gap control */
   width: 200px;
   max-height: calc(100dvh - 110px);
   overflow-y: auto;
@@ -406,6 +440,8 @@ body.prose .chapter-nav a[aria-current] {
   display: none;
 }
 @media (min-width: 1341px) {
+  /* 288px = min content margin while the contents list shows (gap on medium
+     screens); raise with 650px in .chapter-nav. 576px below = 2 × 288px. */
   :root {
     --actual-inline-margin: max(
       288px,

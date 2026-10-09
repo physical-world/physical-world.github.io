@@ -309,20 +309,34 @@ export default function TileVideos({
       </div>
       <div className="tile-toolbar tile-cases">
         {planning && (
-          <label>
-            Model group{" "}
-            <select
-              value={group}
-              onChange={(e) => {
-                seek(0);
-                setIndex(0);
-                setGroup(e.target.value);
-              }}
+          <div className="tile-group">
+            <span className="tile-group-label">World model backbone</span>
+            <div
+              className="tile-group-switch"
+              role="radiogroup"
+              aria-label="World model backbone"
             >
-              <option value="dino">DINO-WM / TS-WM</option>
-              <option value="le">LeWM</option>
-            </select>
-          </label>
+              {[
+                { value: "dino", label: "DINO-WM" },
+                { value: "le", label: "LeWM" },
+              ].map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  role="radio"
+                  aria-checked={group === option.value}
+                  onClick={() => {
+                    if (group === option.value) return;
+                    seek(0);
+                    setIndex(0);
+                    setGroup(option.value);
+                  }}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </div>
         )}
         <div className="tile-case-buttons">
           <button

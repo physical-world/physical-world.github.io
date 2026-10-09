@@ -22,7 +22,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     preload="metadata"
     aria-label={`${label} physics comparison`}
     class="h-auto w-full rounded-lg"></video>
-  <p class="chart-note"><slot name="caption" /></p>
+  <p class="chart-note text-justify"><slot name="caption" /></p>
 </div>
 
 <script>

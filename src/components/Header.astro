@@ -29,13 +29,23 @@ interface Props {
   affiliation?: string;
   /** Logo shown instead of the affiliation text (path under public/); the text becomes its alt. */
   affiliationLogo?: string;
+  /** Link opened when the affiliation logo is clicked. */
+  affiliationUrl?: string;
   conference?: string;
   notes?: Note[];
   links?: Link[];
 }
 
-const { title, authors, affiliation, affiliationLogo, conference, notes, links } =
-  Astro.props;
+const {
+  title,
+  authors,
+  affiliation,
+  affiliationLogo,
+  affiliationUrl,
+  conference,
+  notes,
+  links,
+} = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
 const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
@@ -126,11 +136,21 @@ const hasBackground = Astro.slots.has("background");
     </div>
     {
       affiliationLogo ? (
-        <img
-          class="hero-affiliation-logo"
-          src={prefix + affiliationLogo}
-          alt={affiliation}
-        />
+        affiliationUrl ? (
+          <a class="not-prose flex" href={affiliationUrl}>
+            <img
+              class="hero-affiliation-logo"
+              src={prefix + affiliationLogo}
+              alt={affiliation}
+            />
+          </a>
+        ) : (
+          <img
+            class="hero-affiliation-logo"
+            src={prefix + affiliationLogo}
+            alt={affiliation}
+          />
+        )
       ) : (
         affiliation && <div class="hero-affiliation">{affiliation}</div>
       )
@@ -138,8 +158,7 @@ const hasBackground = Astro.slots.has("background");
     {conference && <div class="hero-status">{conference}</div>}
     {
       notes && (
-        // Notes legend (*Equal contribution, †Equal advising): text-sm = size;
-        // add e.g. -mt-2 to pull it closer to the row above.
+        // Notes legend. Margin: add -mt-2 / mb-2 etc. (4px per step) to the div.
         <div class="text-center text-sm">
           {
             // prettier-ignore
@@ -160,11 +179,12 @@ const hasBackground = Astro.slots.has("background");
             // arxiv buttons
             // Button size: text-* = label/icon size, px-* / py-* = padding,
             // gap-* = space between icon and label.
+            // Colors: `.hero-btn` in src/styles/paper.css.
             const classes = [
               "flex flex-row items-center gap-2 rounded-full px-5 py-2 text-sm hover:no-underline",
               hasBackground
                 ? "bg-white text-zinc-800 shadow-[0_0_8px_rgba(0,0,0,0.6)] text-shadow-none hover:bg-zinc-200"
-                : "bg-zinc-800 text-white hover:bg-black dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-zinc-50",
+                : "hero-btn",
             ];
             return link.url ? (
               <a href={link.url} class:list={classes}>

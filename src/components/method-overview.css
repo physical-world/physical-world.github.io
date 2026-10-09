@@ -1,0 +1,568 @@
+/* Method overview figure (MethodOverview.astro).
+   Wide figures: a faithful copy of the original slide; every element is placed
+   with slide coordinates (24201 x 7201 units) and text scales with the width.
+   Narrow figures (< 700px): the same elements reflow into a vertical grid. */
+.method-overview {
+  --mo-blue: #dceaf7;
+  --mo-peach: #fbe3d6;
+  --mo-pink: rgb(255 215 214 / 0.42);
+  --mo-rose: rgb(255 215 214 / 0.9);
+  --mo-green: #ebffdc;
+  --mo-gray: #f2f2f2;
+  --mo-frame: #d9d9d9;
+  --mo-arrow: #a6a6a6;
+  /* 1em = the slide's 338px body text. Raise above 1 to enlarge all text. */
+  --mo-text-scale: 1;
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  color: #000;
+  line-height: 1.25;
+}
+/* Drop the default white figure card, like the original diagram. */
+main > figure > div:has(.method-overview) {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.mo-canvas {
+  position: relative;
+  aspect-ratio: 24201 / 7201;
+  font-size: calc(1.398cqi * var(--mo-text-scale));
+}
+.method-overview img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+}
+
+/* ---------- Placement from slide coordinates ---------- */
+.method-overview .mo-at {
+  position: absolute;
+  left: calc(var(--x) / 24201 * 100%);
+  top: calc(var(--y) / 7201 * 100%);
+  width: calc(var(--w) / 24201 * 100%);
+  height: calc(var(--h) / 7201 * 100%);
+  margin: 0;
+}
+.method-overview .mo-in {
+  position: absolute;
+  left: calc((var(--x) - var(--cx)) / var(--cw) * 100%);
+  top: calc((var(--y) - var(--cy)) / var(--ch) * 100%);
+  width: calc(var(--w) / var(--cw) * 100%);
+  height: calc(var(--h) / var(--ch) * 100%);
+}
+.mo-group {
+  display: contents;
+}
+.method-overview .mo-m {
+  display: none;
+}
+
+/* ---------- Building blocks ---------- */
+.mo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8em;
+}
+.mo-blue {
+  background: var(--mo-blue);
+}
+.mo-peach {
+  background: var(--mo-peach);
+}
+.mo-pink {
+  background: var(--mo-pink);
+}
+.mo-rose {
+  background: var(--mo-rose);
+}
+.mo-green {
+  background: var(--mo-green);
+}
+.mo-gray {
+  background: var(--mo-gray);
+}
+.mo-act {
+  background: rgb(251 227 214 / 0.9);
+}
+.mo-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}
+.mo-small-text {
+  font-size: 0.917em; /* 310px text in the slide */
+}
+.mo-caption {
+  color: #000;
+}
+.mo-caption b {
+  font-weight: 700;
+}
+.mo-frame {
+  background: white;
+  border: 0.14em solid var(--mo-frame);
+  border-radius: 0.55em;
+}
+.mo-frame img {
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0.45em;
+}
+.mo-frame-sm {
+  border-width: 0.1em;
+  border-radius: 0.35em;
+}
+.mo-corner {
+  position: absolute;
+  right: 0.4em;
+  bottom: 0.15em;
+  line-height: 1;
+}
+.mo-on-frame {
+  z-index: 1;
+}
+.mo-text .katex,
+.mo-corner .katex {
+  font-size: 1.1em;
+}
+.mo-math-lg .katex {
+  font-size: 1.9em;
+}
+.mo-math-md .katex {
+  font-size: 1.3em;
+}
+.mo-model-name {
+  font-size: 1.418em; /* 480px text in the slide */
+  font-weight: 700;
+}
+.mo-question {
+  font-size: 1.4em;
+  line-height: 1;
+}
+.mo-divider {
+  display: flex;
+  justify-content: center;
+}
+.mo-divider::before {
+  content: "";
+  border-left: 0.18em dashed var(--mo-arrow);
+}
+
+/* Arrows: dashed shaft that flows toward a solid head.
+   Directions: r, l, d, u, ud (vertical double), lr (horizontal double). */
+.mo-arrow {
+  position: relative;
+  z-index: 1;
+  --t: 0.29em; /* shaft thickness */
+  --hl: 0.86em; /* head length */
+  --dash: 0.16em;
+  --period: 0.3em;
+  display: block;
+}
+.mo-arrow::before,
+.mo-arrow::after,
+.mo-arrow i {
+  content: "";
+  position: absolute;
+}
+.mo-arrow::after,
+.mo-arrow i {
+  background: var(--mo-arrow);
+}
+.mo-arrow::before {
+  animation: mo-flow-x 0.35s linear infinite;
+}
+.mo-arrow.r::before,
+.mo-arrow.l::before,
+.mo-arrow.lr::before {
+  top: 50%;
+  height: var(--t);
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+      90deg,
+      var(--mo-arrow) 0 var(--dash),
+      transparent var(--dash) var(--period)
+    )
+    0 0 / var(--period) 100%;
+}
+.mo-arrow.d::before,
+.mo-arrow.u::before,
+.mo-arrow.ud::before {
+  left: 50%;
+  width: var(--t);
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+      180deg,
+      var(--mo-arrow) 0 var(--dash),
+      transparent var(--dash) var(--period)
+    )
+    0 0 / 100% var(--period);
+  animation-name: mo-flow-y;
+}
+.mo-arrow.l::before,
+.mo-arrow.u::before {
+  animation-direction: reverse;
+}
+.mo-arrow.ud::before,
+.mo-arrow.lr::before {
+  animation: none;
+}
+.mo-arrow.r::before {
+  left: 0;
+  right: calc(var(--hl) - 1px);
+}
+.mo-arrow.l::before {
+  right: 0;
+  left: calc(var(--hl) - 1px);
+}
+.mo-arrow.lr::before {
+  left: var(--hl);
+  right: var(--hl);
+}
+.mo-arrow.d::before {
+  top: 0;
+  bottom: calc(var(--hl) - 1px);
+}
+.mo-arrow.u::before {
+  bottom: 0;
+  top: calc(var(--hl) - 1px);
+}
+.mo-arrow.ud::before {
+  top: var(--hl);
+  bottom: var(--hl);
+}
+.mo-arrow.r::after,
+.mo-arrow.lr::after {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: var(--hl);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.mo-arrow.l::after,
+.mo-arrow.lr i {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--hl);
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+.mo-arrow.d::after,
+.mo-arrow.ud::after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--hl);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.mo-arrow.u::after,
+.mo-arrow.ud i {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--hl);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.mo-arrow.ud {
+  --hl: 0.6em;
+  --t: 0.2em;
+}
+@keyframes mo-flow-x {
+  to {
+    background-position-x: var(--period);
+  }
+}
+@keyframes mo-flow-y {
+  to {
+    background-position-y: var(--period);
+  }
+}
+
+/* ---------- Entrance animation (enabled by the component script) ---------- */
+.mo-animate .mo-reveal {
+  opacity: 0;
+}
+.mo-animate.mo-in-view .mo-reveal {
+  animation: mo-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms) both;
+}
+@keyframes mo-rise {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.mo-replay {
+  display: block;
+  margin: 10px 0 0 auto;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #64756f;
+  font-size: 12px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.mo-replay:hover {
+  background: #e9f0ed;
+  color: #245847;
+}
+.method-overview:not(.mo-animate) .mo-replay {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mo-arrow::before {
+    animation: none !important;
+  }
+}
+
+/* ---------- Narrow figures: vertical flow ---------- */
+@container (max-width: 700px) {
+  .method-overview .mo-canvas {
+    aspect-ratio: auto;
+    font-size: 13px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr) 22px minmax(
+        0,
+        1fr
+      );
+    gap: 6px 4px;
+    grid-template-areas:
+      "as  ma1 am  ma2 aa"
+      ".   .   ml  .   ."
+      "ad  ad  ad  ad  ad"
+      "ac  ac  ac  ac  ac"
+      "dv  dv  dv  dv  dv"
+      "e1  e1  e1  e1  e1"
+      ".   .   md1 .   ."
+      "e2  e2  e2  e2  e2"
+      ".   .   md2 .   ."
+      "e3  e3  e3  e3  e3"
+      ".   .   md3 .   ."
+      "g   g   g   g   g"
+      "md4 .   .   .   ."
+      "z   .   ob  .   act"
+      "mu1 .   mu2 .   mu3"
+      "mo  mo  mo  mo  mo"
+      "md5 .   .   .   ."
+      "pr  mm  mm  mm  gt"
+      "bc  bc  bc  bc  bc";
+  }
+  .method-overview .mo-at,
+  .method-overview .mo-in {
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: auto;
+  }
+  .method-overview .mo-d {
+    display: none;
+  }
+  .method-overview .mo-m {
+    display: block;
+  }
+  .method-overview .mo-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+  }
+  .method-overview .mo-card {
+    flex-direction: column;
+    gap: 0.4em;
+    padding: 0.6em;
+    border-radius: 12px;
+  }
+  .method-overview .mo-card .mo-frame {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+  .method-overview .mo-arrow.mo-m {
+    place-self: center;
+    --hl: 7px;
+    --t: 3px;
+    --dash: 4px;
+    --period: 7px;
+  }
+  .method-overview .mo-arrow.r.mo-m,
+  .method-overview .mo-arrow.l.mo-m,
+  .method-overview .mo-arrow.lr.mo-m {
+    width: 22px;
+    height: 11px;
+  }
+  .method-overview .mo-arrow.d.mo-m {
+    width: 11px;
+    height: 22px;
+  }
+  .method-overview .mo-as {
+    grid-area: as;
+  }
+  .method-overview .mo-am {
+    grid-area: am;
+    aspect-ratio: 1;
+    align-self: center;
+  }
+  .method-overview .mo-aa {
+    grid-area: aa;
+  }
+  .method-overview .mo-ad {
+    grid-area: ad;
+  }
+  .method-overview .mo-acap {
+    grid-area: ac;
+  }
+  .method-overview .mo-dv {
+    grid-area: dv;
+    margin-block: 10px;
+  }
+  .method-overview .mo-e1 {
+    grid-area: e1;
+  }
+  .method-overview .mo-e2 {
+    grid-area: e2;
+    flex-direction: row;
+  }
+  .method-overview .mo-e3 {
+    grid-area: e3;
+  }
+  .method-overview .mo-g {
+    grid-area: g;
+    min-height: 3em;
+  }
+  .method-overview .mo-z {
+    grid-area: z;
+  }
+  .method-overview .mo-ob {
+    grid-area: ob;
+  }
+  .method-overview .mo-act {
+    grid-area: act;
+  }
+  .method-overview .mo-mo {
+    grid-area: mo;
+    min-height: 4em;
+  }
+  .method-overview .mo-pr {
+    grid-area: pr;
+    flex-direction: column-reverse;
+  }
+  .method-overview .mo-mm {
+    grid-area: mm;
+  }
+  .method-overview .mo-gt {
+    grid-area: gt;
+  }
+  .method-overview .mo-bcap {
+    grid-area: bc;
+  }
+  .method-overview .mo-ma1 {
+    grid-area: ma1;
+  }
+  .method-overview .mo-ma2 {
+    grid-area: ma2;
+  }
+  .method-overview .mo-ml {
+    grid-area: ml;
+  }
+  .method-overview .mo-md1 {
+    grid-area: md1;
+  }
+  .method-overview .mo-md2 {
+    grid-area: md2;
+  }
+  .method-overview .mo-md3 {
+    grid-area: md3;
+  }
+  .method-overview .mo-md4 {
+    grid-area: md4;
+  }
+  .method-overview .mo-mu1 {
+    grid-area: mu1;
+  }
+  .method-overview .mo-mu2 {
+    grid-area: mu2;
+  }
+  .method-overview .mo-mu3 {
+    grid-area: mu3;
+  }
+  .method-overview .mo-md5 {
+    grid-area: md5;
+  }
+  .method-overview .mo-divider::before {
+    flex: 1;
+    border-left: 0;
+    border-top: 2px dashed var(--mo-arrow);
+  }
+  .method-overview .mo-caption {
+    margin-top: 2px;
+    white-space: normal;
+  }
+  .method-overview .mo-icon {
+    width: 2.4em;
+  }
+  .method-overview .mo-dots {
+    width: 3.2em;
+    margin-block: -0.6em;
+  }
+  .method-overview .mo-aa > img {
+    width: 70%;
+  }
+  .method-overview .mo-earth {
+    position: absolute !important;
+    left: 0.4em;
+    top: 0.4em;
+    width: 1.5em;
+  }
+  .method-overview .mo-e2 .mo-frame-sm {
+    width: 3.2em;
+  }
+  .method-overview .mo-futures .mo-frame {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .method-overview .mo-stack {
+    position: relative;
+    width: 9em;
+    aspect-ratio: 1.25;
+  }
+  .method-overview .mo-stack .mo-frame {
+    position: absolute;
+    width: 72%;
+  }
+  .method-overview .mo-stack .mo-frame:nth-child(1) {
+    left: 0;
+    bottom: 0;
+  }
+  .method-overview .mo-stack .mo-frame:nth-child(2) {
+    left: 14%;
+    bottom: 10%;
+  }
+  .method-overview .mo-stack .mo-frame:nth-child(3) {
+    left: 28%;
+    top: 0;
+  }
+  .method-overview .mo-match {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #000;
+  }
+  .method-overview .mo-act .mo-icon {
+    width: 1.8em;
+  }
+}

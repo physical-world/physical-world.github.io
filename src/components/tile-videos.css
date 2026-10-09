@@ -400,3 +400,42 @@
   line-height: 1.05;
   height: calc(100cqw * var(--title-slot-ratio) * 2.1);
 }
+/* Planning backbone switch (DINO-WM vs LeWM): pill toggle matching the view tabs. */
+.tile-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px; /* space between the label and the pill */
+  flex-basis: 100%; /* own full-width row in the toolbar */
+  justify-content: center; /* center label + pill; use flex-start to left-align */
+}
+.tile-group-label {
+  font-weight: 600;
+  color: var(--subtle, #66736d);
+}
+.tile-group-switch {
+  display: inline-flex;
+  gap: 4px; /* space between the two options */
+  padding: 3px; /* inner padding of the pill track */
+  border: 1px solid var(--edge, #dee5df);
+  border-radius: 999px;
+  background: white;
+}
+.tile-gallery .tile-group-switch button {
+  border: 0;
+  border-radius: 999px;
+  padding: 5px 14px; /* option size: vertical, horizontal */
+  color: var(--subtle, #66736d);
+  font-weight: 600;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.tile-gallery .tile-group-switch button:hover {
+  background: var(--mint, #e8f3ed);
+  color: var(--teal, #087f6d);
+}
+.tile-gallery .tile-group-switch button[aria-checked="true"] {
+  background: var(--teal, #087f6d); /* selected option fill */
+  color: white;
+}

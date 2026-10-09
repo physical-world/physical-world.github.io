@@ -1,0 +1,146 @@
+---
+import { Icon } from "astro-icon/components";
+import TileVideos from "./TileVideos";
+
+interface Props {
+  environment: string;
+}
+
+const { environment } = Astro.props;
+const views = [
+  { stage: "openloop", label: "Open-Loop Rollout Videos", icon: "ri:film-line" },
+  { stage: "planning", label: "Visual Planning Videos", icon: "ri:route-line" },
+] as const;
+---
+
+<div class="result-videos" data-result-videos>
+  <div class="result-switch-wrap not-prose">
+    <div class="result-switch" role="tablist" aria-label="Choose video type">
+      {
+        views.map((view, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`result-${environment}-${view.stage}-tab`}
+            aria-controls={`result-${environment}-${view.stage}`}
+            aria-selected={i === 0 ? "true" : "false"}
+            tabindex={i === 0 ? 0 : -1}
+            data-result-tab={view.stage}
+          >
+            <Icon name={view.icon} aria-hidden="true" />
+            {view.label}
+          </button>
+        ))
+      }
+    </div>
+    <span class="result-switch-hint">Click to switch views</span>
+  </div>
+  {
+    views.map((view, i) => (
+      <div
+        role="tabpanel"
+        id={`result-${environment}-${view.stage}`}
+        aria-labelledby={`result-${environment}-${view.stage}-tab`}
+        data-result-panel={view.stage}
+        hidden={i !== 0}
+      >
+        <TileVideos environment={environment} stage={view.stage} client:visible />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .result-switch-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 20px 0 4px;
+  }
+  .result-switch {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--edge);
+    border-radius: 999px;
+    background: white;
+    box-shadow: 0 4px 16px #18242110;
+  }
+  .result-switch button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--subtle);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      transform 0.2s;
+  }
+  .result-switch button svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+  .result-switch button:hover {
+    background: var(--mint);
+    color: var(--teal);
+  }
+  .result-switch button[aria-selected="true"] {
+    background: var(--teal);
+    color: white;
+  }
+  .result-switch button:active {
+    transform: scale(0.97);
+  }
+  .result-switch button:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+  .result-switch-hint {
+    font-size: 0.8rem;
+    color: var(--subtle);
+  }
+  [data-result-panel]:not([hidden]) {
+    animation: panel-enter 0.3s ease-out;
+  }
+</style>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-result-videos]")
+    .forEach((root) => {
+      const tabs = Array.from(
+        root.querySelectorAll<HTMLButtonElement>("[data-result-tab]"),
+      );
+      const panels = root.querySelectorAll<HTMLElement>("[data-result-panel]");
+      const select = (index: number) => {
+        const stage = tabs[index].dataset.resultTab;
+        tabs.forEach((tab, i) => {
+          tab.setAttribute("aria-selected", String(i === index));
+          tab.tabIndex = i === index ? 0 : -1;
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.resultPanel !== stage;
+        });
+      };
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(i));
+        tab.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+          e.preventDefault();
+          const next = (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+          select(next);
+          tabs[next].focus();
+        });
+      });
+    });
+</script>

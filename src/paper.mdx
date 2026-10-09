@@ -8,8 +8,7 @@ thumbnail: teaser.png
 
 import { Descriptor, Generalization, InferenceSpeed } from "./components/AnalysisCharts";
 
-import PlanningVideos from "./components/PlanningVideos.astro";
-import OpenLoopVideos from "./components/OpenLoopVideos.astro";
+import ResultVideos from "./components/ResultVideos.astro";
 import BenchmarkComparison from "./components/BenchmarkComparison.astro";
 import Header from "./components/Header.astro";
 import BrandName from "./components/BrandName";
@@ -19,6 +18,7 @@ import Picture from "./components/Picture.astro";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/starwind/tabs";
 
 import AnimatedPhysics from "./components/AnimatedPhysics";
+import MethodOverview from "./components/MethodOverview.astro";
 import envDemo from "./assets/images/env-demo.png";
 
 {/* Page header. Author fields: url (link), notes (superscript marks, explained
@@ -44,6 +44,7 @@ import envDemo from "./assets/images/env-demo.png";
   ]}
   affiliation="University of Michigan"
   affiliationLogo="U-M_Logo-Horizontal-Hex.png"
+  affiliationUrl="https://cse.engin.umich.edu/"
   notes={[
     { symbol: "*", text: "Equal contribution" },
     { symbol: "†", text: "Equal advising" },
@@ -66,17 +67,20 @@ import envDemo from "./assets/images/env-demo.png";
 
 ## Abstract
 
-Existing world models typically perceive a scene through current visual frame or a narrow history window. However, these observations may not reveal the physics properties that govern transition dynamics, such as an object's mass distribution, joint damping, or surface friction. Without calibrating these physics factors for world models, predictions tend to regress toward an empirical prior and induce severe drift in novel test scenes. To this end, we propose <BrandName />, which calibrates action-conditioned world models to the instance-specific dynamics via in-context prompting, without fine-tuning or analytical physics modeling. Our method encodes an exploratory interaction clip collected within the test scene into a compact physics descriptor token, which grounds subsequent predictions in the scene's actual physical behavior. <BrandName /> is trained end-to-end with the latent prediction loss alone, without physics labels. At inference time, the descriptor token is extracted once and can be reused across rollouts with negligible compute overhead. We evaluate <BrandName /> across four environments covering diverse physics variations and show that it substantially improves rollout prediction accuracy and visual planning success rate. The learned descriptors also form a physically structured latent space and generalize beyond the physics ranges seen during training.
+Existing world models typically perceive a scene through current visual frame or a narrow history window. However, these observations may not reveal the physics properties that govern transition dynamics, such as an object's mass distribution, joint damping, or surface friction. Without calibrating these physics factors for world models, predictions tend to regress toward an empirical prior and induce severe drift in novel test scenes. <br/>
+To this end, we propose <BrandName />, which calibrates action-conditioned world models to the instance-specific dynamics via in-context prompting, without fine-tuning or analytical physics modeling. Our method encodes an exploratory interaction clip collected within the test scene into a compact physics descriptor token, which grounds subsequent predictions in the scene's actual physical behavior. <BrandName /> is trained end-to-end with the latent prediction loss alone, without physics labels. At inference time, the descriptor token is extracted once and can be reused across rollouts with negligible compute overhead. <br/>
+We evaluate <BrandName /> across four environments covering diverse physics variations and show that it substantially improves rollout prediction accuracy and visual planning success rate. The learned descriptors also form a physically structured latent space and generalize beyond the physics ranges seen during training.
 
 </HighlightedSection>
 
 ## Method Overview
 
-  <Figure>
+  <Figure justify>
     <div slot="figure" class="w-full">
-      <AnimatedPhysics kind="method" client:load />
+      <MethodOverview />
     </div>
-    <Fragment slot="caption"><strong>Method Overview.</strong> Encode exploratory observations and actions into a reusable physics descriptor that conditions future predictions.</Fragment>
+    {/* Caption: LaTeX macros (\method, \textbf{}, \zp) don't work in MDX. Use <BrandName />, <strong>, and $...$ math instead. */}
+    <Fragment slot="caption"> <BrandName /> calibrates action-conditioned world models to the actual dynamics of a test scene via prompting with in-context interaction. In <strong>(a)</strong>, current visual observation alone cannot identify the physical dynamics of the test scene $\mathcal{T}$, forcing the world model to guess among multiple potential future states. In <strong>(b)</strong>, starting from the top left, exploratory actions $a_{1:T_c}^c$ are first executed in the test scene $\mathcal{T}$, yielding observations $o_{1:T_c}^c$. The context encoder $g_\phi$ then extracts physics information from this obs-action sequence and compresses it into a physics descriptor token $\mathbf{z}_{\text{phy}}$. Conditioned on $\mathbf{z}_{\text{phy}}$, the world model is able to generate future prediction $\hat{o}_{t+1}$ consistent with the test scene's dynamics.</Fragment>
   </Figure>
 
 
@@ -92,6 +96,8 @@ Existing world models typically perceive a scene through current visual frame or
   </Figure> */}
 
 <Tabs defaultValue="pusht">
+  <p class="mt-0 mb-3 text-justify text-[0.9em] leading-relaxed opacity-80">We evaluate on four simulation environments with diverse physics variations, including mass 📦, mass distribution 🏗️, joint damping ⚙️, surface friction 🏷️, and air drag 💨. 
+  <strong>Identical actions can lead to very different future states.</strong></p>
   <TabsList>
     <TabsTrigger value="pusht">Push-T</TabsTrigger>
     <TabsTrigger value="reacher">Reacher</TabsTrigger>
@@ -100,7 +106,7 @@ Existing world models typically perceive a scene through current visual frame or
   </TabsList>
   <TabsContent value="pusht">
     <BenchmarkComparison environment="pusht" label="Push-T">
-      <Fragment slot="caption"><strong>Push-T under Varying Center of Mass.</strong> We vary the center of mass of the T-shaped block without changing its visual appearance. Under identical pushing actions, different mass distributions lead to distinct rotational and translational motions.</Fragment>
+      <Fragment slot="caption"><strong>Push-T under Varying Center of Mass.</strong> We vary the center of mass (CoM) of the T-shaped block, marked by the purple diamond in each video. The diamond is for visualization only and is hidden from the model; see “Start Obs” for the actual model input. Under identical pushing actions, different mass distributions lead to distinct rotational and translational motions.</Fragment>
     </BenchmarkComparison>
   </TabsContent>
   <TabsContent value="reacher">
@@ -124,13 +130,7 @@ Existing world models typically perceive a scene through current visual frame or
 
 ### Push-T
 
-#### Open-Loop Rollout Videos
-
-<OpenLoopVideos environment="pusht" />
-
-#### Visual Planning Videos
-
-<PlanningVideos environment="pusht" />
+<ResultVideos environment="pusht" />
 
 ### Push-T Cosine Similarity
 
@@ -146,36 +146,17 @@ A reusable physics descriptor keeps inference close to the base world model.
 
 ### Reacher
 
-#### Open-Loop Rollout Videos
-
-<OpenLoopVideos environment="reacher" />
-
-#### Visual Planning Videos
-
-<PlanningVideos environment="reacher" />
+<ResultVideos environment="reacher" />
 
 ### BeerPong
 
-#### Open-Loop Rollout Videos
-
-<OpenLoopVideos environment="beerpong" />
-
-#### Visual Planning Videos
-
-<PlanningVideos environment="beerpong" />
+<ResultVideos environment="beerpong" />
 
 ### FetchSlide
 
-#### Open-Loop Rollout Videos
-
-<OpenLoopVideos environment="fetchslide" />
-
-#### Visual Planning Videos
-
-<PlanningVideos environment="fetchslide" />
+<ResultVideos environment="fetchslide" />
 
 ## Extrapolation
-
-Calibrated predictions generalize beyond the shoulder damping seen during training.
+We investigate whether <BrandName />  can extrapolate to environments where physics parameters lie outside the training distribution.
 
 <Generalization client:load />

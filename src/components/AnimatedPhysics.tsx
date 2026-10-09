@@ -5,6 +5,9 @@ type Kind = "teaser" | "method";
 import teaserSvg from "../assets/diagrams/teaser.svg?raw";
 import methodSvg from "../assets/diagrams/method.svg?raw";
 import methodSvgUrl from "../assets/diagrams/method.svg?url";
+// Replay button under the animation; hidden for now, set true to show it.
+const SHOW_REPLAY = false;
+
 const artwork = {
   teaser: { svg: teaserSvg, viewBox: "0 0 9600 3695" },
   method: { svg: methodSvg, viewBox: "0 0 24201 7201" },
@@ -84,18 +87,20 @@ export default function AnimatedPhysics({ kind }: { kind: Kind }) {
           </noscript>
         </div>
       </div>
-      <div className="physics-controls">
-        <button
-          type="button"
-          onClick={() => {
-            setStarted(true);
-            setReplay((n) => n + 1);
-          }}
-          aria-label={`Replay ${kind} animation`}
-        >
-          ↻ Replay
-        </button>
-      </div>
+      {SHOW_REPLAY && (
+        <div className="physics-controls">
+          <button
+            type="button"
+            onClick={() => {
+              setStarted(true);
+              setReplay((n) => n + 1);
+            }}
+            aria-label={`Replay ${kind} animation`}
+          >
+            ↻ Replay
+          </button>
+        </div>
+      )}
     </div>
   );
 }

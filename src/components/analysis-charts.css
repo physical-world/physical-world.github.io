@@ -126,6 +126,11 @@
   outline: 3px solid #e79827;
   outline-offset: 3px;
 }
+/* Width of the Cosine Similarity, Inference Speed and Extrapolation blocks (shared; lower max-width = narrower). */
+.descriptor-card {
+  max-width: 720px;
+  margin-inline: auto;
+}
 .descriptor-layout {
   display: grid;
   grid-template-columns: 1fr 1.25fr;
@@ -187,6 +192,13 @@
   align-items: center;
   gap: 6px;
 }
+/* Keep each legend label as one inline, unbreakable run of text, e.g. "+ PhysiCal (Ours)".
+   `.chart-legend span` above makes every nested span a flex box, which would split "+" from the name. */
+.chart-legend .legend-label,
+.chart-legend .legend-label span {
+  display: inline;
+  white-space: nowrap;
+}
 .chart-legend i {
   display: inline-block;
   width: 10px;
@@ -207,6 +219,11 @@
 }
 .ood-readout span {
   font-size: 13px;
+}
+/* The method name (e.g. "PhysiCal (Ours)") is a span nested in the label; keep it inline
+   (not block) so "+ PhysiCal (Ours)" stays on one line instead of "+" and the name splitting. */
+.ood-readout span span {
+  display: inline;
 }
 .ood-readout strong {
   font-size: 21px;

@@ -51,8 +51,9 @@ export function Descriptor() {
   const [pair, setPair] = useState([0, 1]);
   const points = data.descriptor.points;
   const value = data.descriptor.matrix[pair[0]][pair[1]];
+  // descriptor-card class = shared block width (max-width: 720px), set in analysis-charts.css:130
   return (
-    <div className="analysis-card not-prose">
+    <div className="analysis-card descriptor-card not-prose">
       <div className="descriptor-layout">
         <svg
           viewBox="0 0 310 325"
@@ -239,19 +240,27 @@ export function Generalization() {
     predictionMetrics[metric];
   const x = (v: number) => 62 + (v / 0.03) * 610;
   const y = (v: number) => 300 - ((v - min) / (max - min)) * 240;
+  // descriptor-card class = shared block width (max-width: 720px), set in analysis-charts.css:130
   return (
-    <div className="analysis-card not-prose">
+    <div className="analysis-card descriptor-card not-prose">
+      {/* Intro text inside the card, above the metric tabs. margin: 0 0 16px = no top gap, 16px below; edit the last number for spacing. */}
       <Choices
         label="Prediction metric"
         options={predictionMetrics.map((m) => m.label)}
         value={metric}
         onChange={setMetric}
       />
+      <p className="chart-note text-justify" style={{ margin: "0 0 12px" }}>
+        In Reacher, we sweep the first joint’s (should joint) damping coefficient beyond its
+        training range while holding the second joint’s damping fixed.
+      </p>
       <div className="chart-legend">
         {data.methods.map((m) => (
           <span key={m.id}>
             <i style={{ background: colors[m.id] }} />
-            <BrandName text={m.label} />
+            <span className="legend-label">
+              <BrandName text={m.label} />
+            </span>
           </span>
         ))}
       </div>
@@ -457,8 +466,9 @@ export function Generalization() {
       </div>
       <p className="chart-note">
         Mean ± SEM across 75 episodes per bin (15 damping values × 5 episodes).
-        IC3 open-loop rollout. IoU is mIoU across background and both arm links,
-        averaged over episodes. Joint 2 damping is fixed.
+        {/* IC3 */}
+        Open-Loop rollout. 
+        IoU is computed over the foreground mask of the robotic arm, averaged over episodes. Joint 2's damping is fixed.
       </p>
     </div>
   );
@@ -497,8 +507,9 @@ export function InferenceSpeed() {
   const [mode, setMode] = useState(0);
   const { max, ticks } = speedScales[mode];
   const unit = mode === 3 ? "s" : "ms";
+  // descriptor-card class = shared block width (max-width: 720px), set in analysis-charts.css:130
   return (
-    <div className="analysis-card not-prose">
+    <div className="analysis-card descriptor-card not-prose">
       <Choices
         label="Inference workload"
         options={["Rollout · 5 steps", "10 steps", "20 steps", "Planning"]}

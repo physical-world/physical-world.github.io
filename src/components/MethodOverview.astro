@@ -1,0 +1,403 @@
+---
+/**
+ * Method overview figure, rebuilt in HTML/CSS from the original PPT diagram.
+ *
+ * Edit text directly in the markup below; math labels live in `math`.
+ * Positions use the original slide coordinates (24201 x 7201 units): `box()`
+ * places an element on the canvas, and children of a card use the same
+ * absolute slide coordinates. Below ~700px the figure reflows into a
+ * vertical layout (see method-overview.css). Images: public/figures/method/.
+ */
+import katex from "katex";
+import "./method-overview.css";
+
+// Replay button under the figure; hidden for now, set true to show it.
+const SHOW_REPLAY = false;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+const fig = (name: string) => `${base}figures/method/${name}`;
+const tex = (expr: string) =>
+  katex.renderToString(expr, { throwOnError: false });
+// Child of a card: absolute slide coordinates, resolved against the card.
+const at = (x: number, y: number, w: number, h: number) =>
+  `--x:${x};--y:${y};--w:${w};--h:${h};`;
+// Element on the canvas (cards also pass their box down to children).
+const box = (x: number, y: number, w: number, h: number, delay?: number) =>
+  at(x, y, w, h) +
+  `--cx:${x};--cy:${y};--cw:${w};--ch:${h};` +
+  (delay === undefined ? "" : `--d:${delay}ms;`);
+
+const math = {
+  scene: tex("\\mathcal{T}"),
+  exploreActions: tex("a^{c}_{1:T_c}"),
+  contextObs: tex("o^{c}_{1:T_c}"),
+  encoder: tex("g_{\\phi}"),
+  descriptor: tex("\\mathbf{z}_{\\text{phy}}"),
+  currentObs: tex("o_t"),
+  action: tex("a_t"),
+  prediction: tex("\\hat{o}_{t+1}"),
+  groundTruth: tex("o_{t+1}"),
+};
+---
+
+<div class="method-overview" data-method-overview>
+  <div
+    class="mo-canvas"
+    role="img"
+    aria-label="(a) An uncalibrated world model imagines many possible futures under the same actions. (b) PhysiCalWorld encodes exploratory actions and in-context observations into a physics descriptor that conditions the world model's predictions."
+  >
+    <!-- ================= (a) Uncalibrated world model ================= -->
+    <div
+      class="mo-at mo-card mo-pink mo-as mo-reveal"
+      style={box(303, 63, 2002, 2346, 0)}
+    >
+      <div class="mo-in mo-frame" style={at(432, 158, 1746, 1746)}>
+        <img src={fig("test-scene.png")} alt="" />
+        <span class="mo-corner" set:html={math.scene} />
+      </div>
+      <span class="mo-in mo-text" style={at(303, 1940, 2002, 450)}
+        >Test Scene</span
+      >
+    </div>
+    <span
+      class="mo-at mo-arrow r mo-d mo-reveal"
+      style={box(2228, 1162, 550, 293, 0)}></span>
+    <div
+      class="mo-at mo-card mo-blue mo-am mo-reveal"
+      style={box(2717, 421, 1751, 1633, 0)}
+    >
+      <span class="mo-text">World<br />Model</span>
+    </div>
+    <span
+      class="mo-at mo-arrow l mo-d mo-reveal"
+      style={box(4375, 1162, 550, 293, 0)}></span>
+    <div
+      class="mo-at mo-card mo-peach mo-aa mo-reveal"
+      style={box(4887, 80, 2002, 2312, 0)}
+    >
+      <img
+        class="mo-in"
+        src={fig("icon-actions.svg")}
+        alt=""
+        style={at(5103, 270, 1600, 1600)}
+      />
+      <span class="mo-in mo-text" style={at(4943, 1788, 1919, 769)}
+        >Actions</span
+      >
+    </div>
+    <span
+      class="mo-at mo-arrow d mo-d mo-reveal"
+      style={box(3425, 2139, 265, 771, 0)}></span>
+
+    <div
+      class="mo-at mo-card mo-gray mo-ad mo-reveal"
+      style={box(247, 2773, 6609, 3696, 0)}
+    >
+      <div class="mo-group mo-title">
+        <span class="mo-in mo-text" style={at(1596, 2809, 3850, 769)}
+          >Physical Dynamics</span
+        >
+        <span
+          class="mo-in mo-text mo-question"
+          style={at(4837, 2848, 1087, 898)}>❓</span
+        >
+      </div>
+      <div class="mo-group mo-futures">
+        <div class="mo-in mo-frame" style={at(618, 3527, 1746, 1746)}>
+          <img src={fig("a-future-1.png")} alt="" />
+        </div>
+        <div class="mo-in mo-frame" style={at(2497, 3527, 1746, 1746)}>
+          <img src={fig("a-future-2.png")} alt="" />
+        </div>
+        <span
+          class="mo-in mo-text mo-small-text"
+          style={at(4243, 4037, 443, 727)}>...</span
+        >
+        <div class="mo-in mo-frame" style={at(4686, 3527, 1746, 1746)}>
+          <img src={fig("a-future-3.png")} alt="" />
+        </div>
+      </div>
+      <span
+        class="mo-in mo-text mo-small-text"
+        style={at(519, 5216, 6057, 1197)}
+      >
+        Various Possible Future States<br />Under the Same Actions
+      </span>
+    </div>
+    <p
+      class="mo-at mo-text mo-caption mo-acap mo-reveal"
+      style={box(247, 6760, 6720, 450, 0)}
+    >
+      (a) Uncalibrated World Model Imagining
+    </p>
+
+    <span
+      class="mo-at mo-divider mo-dv mo-reveal"
+      style={box(7091, 89, 100, 6365, 0)}></span>
+
+    <!-- ================= (b) PhysiCalWorld ================= -->
+    <div
+      class="mo-at mo-card mo-peach mo-e1 mo-reveal"
+      style={box(7475, 63, 4214, 1792, 180)}
+    >
+      <span class="mo-in mo-text" style={at(7475, 160, 4214, 450)}
+        >Exploratory Actions</span
+      >
+      <div class="mo-group">
+        <img
+          class="mo-in mo-icon"
+          src={fig("icon-robot.svg")}
+          alt=""
+          style={at(7913, 667, 900, 900)}
+        />
+        <span
+          class="mo-in mo-text"
+          style={at(8684, 687, 1777, 826)}
+          set:html={math.exploreActions}
+        />
+        <img
+          class="mo-in mo-icon mo-dots"
+          src={fig("icon-explore-actions.svg")}
+          alt=""
+          style={at(9662, 161, 2156, 2156)}
+        />
+      </div>
+    </div>
+    <span
+      class="mo-at mo-arrow d mo-d mo-reveal"
+      style={box(9382, 1581, 277, 641, 360)}></span>
+    <div
+      class="mo-at mo-card mo-pink mo-e2 mo-reveal"
+      style={box(7475, 2023, 4214, 1353, 360)}
+    >
+      <img
+        class="mo-in mo-earth"
+        src={fig("icon-earth.svg")}
+        alt=""
+        style={at(7597, 2066, 450, 450)}
+      />
+      <span class="mo-in mo-text" style={at(7482, 2313, 3339, 769)}>
+        Test Scene&nbsp;<span set:html={math.scene} />
+      </span>
+      <div
+        class="mo-in mo-frame mo-frame-sm"
+        style={at(10400, 2127, 1128, 1128)}
+      >
+        <img src={fig("test-scene.png")} alt="" />
+      </div>
+    </div>
+    <span
+      class="mo-at mo-arrow d mo-d mo-reveal"
+      style={box(9370, 3206, 277, 641, 540)}></span>
+    <div
+      class="mo-at mo-card mo-green mo-e3 mo-reveal"
+      style={box(7508, 3534, 4214, 2977, 540)}
+    >
+      <div class="mo-group">
+        <img
+          class="mo-in mo-icon"
+          src={fig("icon-telescope.svg")}
+          alt=""
+          style={at(7873, 4388, 900, 900)}
+        />
+        <div class="mo-group mo-stack">
+          <div class="mo-in mo-frame" style={at(9104, 4194, 1546, 1546)}>
+            <img src={fig("b-context-1.png")} alt="" />
+          </div>
+          <div class="mo-in mo-frame" style={at(9410, 3970, 1546, 1546)}>
+            <img src={fig("b-context-2.png")} alt="" />
+          </div>
+          <div class="mo-in mo-frame" style={at(9716, 3746, 1547, 1546)}>
+            <img src={fig("b-context-3.png")} alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="mo-group">
+        <span class="mo-in mo-text" style={at(7130, 5700, 4142, 769)}
+          >In-Context Obs</span
+        >
+        <span
+          class="mo-in mo-text"
+          style={at(10387, 5671, 1340, 826)}
+          set:html={math.contextObs}
+        />
+      </div>
+    </div>
+
+    <span
+      class="mo-at mo-arrow r mo-d mo-reveal"
+      style={box(11409, 804, 650, 293, 720)}></span>
+    <span
+      class="mo-at mo-arrow r mo-d mo-reveal"
+      style={box(11409, 4879, 650, 293, 720)}></span>
+    <div
+      class="mo-at mo-card mo-blue mo-g mo-reveal"
+      style={box(12123, 120, 1232, 6381, 720)}
+    >
+      <span class="mo-text mo-math-lg" set:html={math.encoder} />
+    </div>
+
+    <span
+      class="mo-at mo-arrow r mo-d mo-reveal"
+      style={box(13465, 4879, 650, 293, 900)}></span>
+    <div
+      class="mo-at mo-card mo-rose mo-z mo-reveal"
+      style={box(14227, 3873, 1002, 2502, 900)}
+    >
+      <span class="mo-text mo-math-md" set:html={math.descriptor} />
+    </div>
+
+    <div
+      class="mo-at mo-card mo-green mo-ob mo-reveal"
+      style={box(15637, 3458, 2735, 3160, 1080)}
+    >
+      <div class="mo-in mo-frame" style={at(15863, 3633, 2246, 2246)}>
+        <img src={fig("b-current.png")} alt="" />
+        <span class="mo-corner" set:html={math.currentObs} />
+      </div>
+      <span class="mo-in mo-text" style={at(15411, 5837, 3247, 769)}
+        >Current Obs</span
+      >
+    </div>
+
+    <div
+      class="mo-at mo-card mo-peach mo-act mo-reveal"
+      style={box(18869, 3458, 1611, 3160, 1260)}
+    >
+      <div class="mo-group">
+        <img
+          class="mo-in mo-icon"
+          src={fig("icon-robot-arm.svg")}
+          alt=""
+          style={at(18995, 4433, 700, 700)}
+        />
+        <img
+          class="mo-in mo-icon"
+          src={fig("icon-action-dots.svg")}
+          alt=""
+          style={at(19517, 4209, 1100, 1100)}
+        />
+      </div>
+      <span
+        class="mo-in mo-text"
+        style={at(18906, 5134, 1609, 769)}
+        set:html={math.action}
+      />
+      <span class="mo-in mo-text" style={at(18719, 5837, 1934, 769)}
+        >Action</span
+      >
+    </div>
+
+    <div
+      class="mo-at mo-card mo-blue mo-mo mo-reveal"
+      style={box(13845, 122, 6859, 2751, 1440)}
+    >
+      <span class="mo-text mo-model-name">
+        <span class="brand-name">PhysiCalWorld</span>&nbsp;Model
+      </span>
+    </div>
+    <span
+      class="mo-at mo-arrow u mo-d mo-reveal"
+      style={box(14573, 2954, 293, 897, 1440)}></span>
+    <span
+      class="mo-at mo-arrow u mo-d mo-reveal"
+      style={box(16834, 2891, 293, 600, 1440)}></span>
+    <span
+      class="mo-at mo-arrow u mo-d mo-reveal"
+      style={box(19503, 2965, 293, 836, 1440)}></span>
+
+    <span
+      class="mo-at mo-arrow r mo-d mo-reveal"
+      style={box(20759, 1321, 570, 293, 1620)}></span>
+    <div
+      class="mo-at mo-card mo-green mo-pr mo-reveal"
+      style={box(21303, 91, 2703, 2452, 1620)}
+    >
+      <div class="mo-in mo-frame" style={at(21548, 170, 2246, 2247)}>
+        <img src={fig("b-prediction.png")} alt="" />
+        <span class="mo-corner" set:html={math.prediction} />
+      </div>
+      <span
+        class="mo-in mo-text mo-small-text mo-on-frame"
+        style={at(21332, 200, 2672, 600)}>Prediction</span
+      >
+    </div>
+    <div
+      class="mo-at mo-match mo-mm mo-reveal"
+      style={box(21587, 2382, 2844, 1197, 1620)}
+    >
+      <span class="mo-in mo-arrow ud mo-d" style={at(21870, 2589, 199, 801)}
+        ><i></i></span
+      >
+      <span class="mo-arrow lr mo-m"><i></i></span>
+      <span
+        class="mo-in mo-text mo-small-text"
+        style={at(22300, 2382, 1418, 1197)}
+      >
+        Matched<br />Dynamics
+      </span>
+    </div>
+    <div
+      class="mo-at mo-card mo-pink mo-gt mo-reveal"
+      style={box(21267, 3458, 2702, 3160, 1620)}
+    >
+      <div class="mo-in mo-frame" style={at(21506, 3631, 2246, 2246)}>
+        <img src={fig("b-ground-truth.png")} alt="" />
+        <span class="mo-corner" set:html={math.groundTruth} />
+      </div>
+      <span class="mo-in mo-text" style={at(21190, 5837, 3020, 769)}
+        >Ground-Truth</span
+      >
+    </div>
+
+    <p
+      class="mo-at mo-text mo-caption mo-bcap mo-reveal"
+      style={box(11130, 6800, 10701, 450, 0)}
+    >
+      <span
+        >(b) <b>Physi</b>cs <b>Cal</b>ibration for <b>World</b> Models (Ours)</span
+      >
+    </p>
+
+    <!-- Arrows used only in the narrow (vertical) layout. -->
+    <span class="mo-arrow r mo-m mo-ma1 mo-reveal" style="--d:0ms"></span>
+    <span class="mo-arrow l mo-m mo-ma2 mo-reveal" style="--d:0ms"></span>
+    <span class="mo-arrow d mo-m mo-ml mo-reveal" style="--d:0ms"></span>
+    <span class="mo-arrow d mo-m mo-md1 mo-reveal" style="--d:360ms"></span>
+    <span class="mo-arrow d mo-m mo-md2 mo-reveal" style="--d:540ms"></span>
+    <span class="mo-arrow d mo-m mo-md3 mo-reveal" style="--d:720ms"></span>
+    <span class="mo-arrow d mo-m mo-md4 mo-reveal" style="--d:900ms"></span>
+    <span class="mo-arrow d mo-m mo-mu1 mo-reveal" style="--d:1440ms"></span>
+    <span class="mo-arrow d mo-m mo-mu2 mo-reveal" style="--d:1440ms"></span>
+    <span class="mo-arrow d mo-m mo-mu3 mo-reveal" style="--d:1440ms"></span>
+    <span class="mo-arrow d mo-m mo-md5 mo-reveal" style="--d:1620ms"></span>
+  </div>
+
+  {SHOW_REPLAY && <button type="button" class="mo-replay" data-mo-replay>↻ Replay</button>}
+</div>
+
+<script>
+  // Staged entrance when the figure scrolls into view. Without JS (or with
+  // reduced motion) everything is simply shown.
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  for (const root of document.querySelectorAll<HTMLElement>(
+    "[data-method-overview]",
+  )) {
+    if (reduce) continue;
+    root.classList.add("mo-animate");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        root.classList.add("mo-in-view");
+        observer.disconnect();
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(root);
+    root.querySelector("[data-mo-replay]")?.addEventListener("click", () => {
+      root.classList.remove("mo-in-view");
+      void root.offsetWidth; // restart CSS animations
+      root.classList.add("mo-in-view");
+    });
+  }
+</script>

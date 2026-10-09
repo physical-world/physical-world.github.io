@@ -36,3 +36,4 @@ pnpm-debug.log*
 /src/data/planning-selection.json
 AGENTS.md
 plan.md
+CLAUDE.local.md
