@@ -267,13 +267,21 @@ a.hero-btn:hover {
    Width: add e.g. `max-width: 48rem; margin-inline: auto;` (defaults to the text column).
    Caption only for this figure: style `.paper-hero + figure figcaption`.
    All figure captions: the `figcaption` rule near the top of this file. */
+:root {
+  --teaser-width: 40rem; /* teaser figure + caption width; the TL;DR below uses it too */
+}
 .paper-hero + figure,
 .paper-hero + .mobile-toc + figure {
-  max-width: 40rem; /* figure + caption width */
+  max-width: var(--teaser-width); /* figure + caption width (set in :root above) */
   margin-inline: auto; /* keep it centered */
   margin-top: 1px; /* gap below the header */
   margin-bottom: 25px; /* gap above the Abstract */
   animation: paper-enter 1.9s 1.28s both;
+}
+/* TL;DR line under the teaser: always the same width as the teaser. */
+.tldr {
+  max-width: var(--teaser-width); /* same as the teaser; edit --teaser-width above */
+  margin-inline: auto; /* centered under the teaser */
 }
 /* Teaser caption only (overrides the general `figcaption` rule). */
 .paper-hero + figure figcaption,

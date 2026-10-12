@@ -11,6 +11,9 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 
 <div class="not-prose pt-4">
+  {/* Video size: w-full = fills the text column; max-w-full = no cap (100%).
+      To shrink, replace max-w-full with e.g. max-w-[600px] or max-w-[80%];
+      mx-auto keeps it centered. h-auto keeps the aspect ratio. */}
   <video
     data-benchmark-comparison
     src={`${base}videos/benchmark/${environment}/comparison.mp4`}
@@ -20,7 +23,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     playsinline
     preload="metadata"
     aria-label={`${label} physics comparison`}
-    class="h-auto w-full rounded-lg"></video>
+    class="mx-auto h-auto w-full max-w-full rounded-lg"></video>
   <p class="chart-note text-justify"><slot name="caption" /></p>
 </div>
 

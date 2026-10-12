@@ -46,6 +46,14 @@
   gap: 8px;
   cursor: pointer;
 }
+/* Color chip in "Show GT mask (■)"; its color is set per environment by maskColors in TileVideos.tsx. */
+.tile-mask-swatch {
+  display: inline-block;
+  width: 14px; /* chip size */
+  height: 14px;
+  border-radius: 3px;
+  margin: 0 -6px; /* pulls the parentheses in tight; the label's 8px flex gap would otherwise space them out */
+}
 .tile-gallery button,
 .tile-gallery select {
   border: 1px solid #cbd5e1;
@@ -64,36 +72,46 @@
   outline-offset: 3px;
 }
 .tile-cases {
-  justify-content: flex-end;
+  justify-content: center; /* "Example 1 / N" position: center; flex-end = right, flex-start = left */
 }
 .tile-cases > label {
   margin-right: auto;
 }
 .tile-workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 190px;
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr); /* methods list on top, videos below */
+  gap: 20px; /* space between the methods list and the videos */
   align-items: start;
+}
+.tile-case-buttons {
+  justify-self: center; /* "Example 1 / N" below the videos: center; start = left, end = right */
 }
 .tile-comparison {
   min-width: 0;
 }
+/* Methods checklist: centered above the videos, in two rows
+   (--list-columns = half the methods, set in TileVideos.tsx). */
 .tile-method-list {
   min-width: 0;
   margin: 0;
-  padding: 0 0 0 16px;
+  padding: 0 0 12px; /* space above the divider line */
   border: 0;
-  border-left: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2; /* divider between list and videos */
+  display: grid;
+  grid-template-columns: repeat(var(--list-columns), auto);
+  justify-content: center; /* center the list; use start to left-align */
+  gap: 8px 24px; /* row gap, column gap */
 }
 .tile-method-list legend {
+  font-size: 18px; /* "Methods" heading size; body text is 16px */
   font-weight: 600;
-  margin-bottom: 12px;
+  margin: 0 auto 8px; /* auto = centered "Methods" heading */
 }
 .tile-method-list label {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  margin-bottom: 12px;
+  margin: 0;
   line-height: 1.35;
   cursor: pointer;
 }
@@ -107,6 +125,15 @@
   grid-template-columns: minmax(0, 1fr);
   gap: var(--tile-gap);
   align-items: center;
+  /* Fixed tile size: width of --tracks tiles out of a --slots-wide row
+     (both set in TileVideos.tsx; --slots is at least minSlots = 4). */
+  --tile-shrink: 10px; /* how much narrower each video is than its slot; raise for smaller videos, 0 = full slot */
+  width: calc(
+    ((100% - (var(--slots) - 1) * var(--tile-gap)) / var(--slots) -
+      var(--tile-shrink)) *
+      var(--tracks) + (var(--tracks) - 1) * var(--tile-gap)
+  );
+  margin-inline: auto; /* center the videos in the comparison area */
 }
 .tile-layout[data-gt] {
   grid-template-columns:
@@ -233,19 +260,15 @@
   margin-top: 5px;
 }
 @container (max-width:650px) {
+  .tile-layout {
+    width: auto; /* narrow screens: tiles fill the width again */
+  }
   .tile-workspace {
     grid-template-columns: minmax(0, 1fr);
   }
   .tile-method-list {
-    border-left: 0;
-    border-top: 1px solid #d2d2d2;
-    padding: 12px 0 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* narrow screens: 2 per row */
     gap: 8px 12px;
-  }
-  .tile-method-list label {
-    margin: 0;
   }
   .tile-gallery h5 {
     height: 96px;
@@ -396,6 +419,11 @@
   overflow-wrap: normal;
   white-space: nowrap;
 }
+.tile-column h5 {
+  /* method names above the videos: 2px smaller than the auto-fitted size
+     (Ground Truth / Start / Goal keep the full size); change -2px to adjust */
+  font-size: calc(100cqw * var(--title-ratio) - 2px);
+}
 .is-planning h5 {
   line-height: 1.05;
   height: calc(100cqw * var(--title-slot-ratio) * 2.1);
@@ -438,4 +466,103 @@
 .tile-gallery .tile-group-switch button[aria-checked="true"] {
   background: var(--brand, #0b7bc1); /* selected option fill */
   color: white;
+}
+
+/* Planning: Start → Goal row on top, then one row per method. Adding a
+   method adds a row; the video size stays fixed. */
+.tile-plan {
+  /* video size: open-loop's 4-column tile size, minus --plan-shrink */
+  --plan-shrink: 20px; /* raise for smaller planning videos, 0 = same as open-loop */
+  --plan-label: 150px; /* width of the method-name column (mirrored on the right to keep the videos centered) */
+  --plan-tile: min(
+    224px,
+    (100% - 3 * var(--tile-gap)) / 4 - var(--tile-shrink, 10px) -
+      var(--plan-shrink)
+  );
+  display: grid;
+  /* columns: method name | WM rollout | arrow gap | Exec traj | empty spacer
+     (spacer = name width, so the two videos sit in the exact center) */
+  grid-template-columns:
+    var(--plan-label) var(--plan-tile) 36px var(--plan-tile)
+    var(--plan-label);
+  justify-content: center; /* center the block; start = left-align */
+  align-items: center;
+  gap: 7px 8px; /* vertical gap between rows, column gap */
+}
+/* Smaller videos as method rows are added (normal: 20px above). */
+.tile-plan[data-rows="4"] {
+  --plan-shrink: 50px; /* 4 method rows */
+}
+.tile-plan[data-rows="5"],
+.tile-plan[data-rows="6"] {
+  --plan-shrink: 80px; /* 5+ method rows: even smaller */
+}
+.tile-plan video {
+  width: 100%;
+  outline-offset: -4.148148px; /* draw the colored border inside the video so it doesn't eat the row gap */
+  margin: 0 !important; /* drop the old stacked-layout spacing */
+}
+.tile-plan-ref {
+  margin: 0;
+}
+.tile-plan-ref figcaption,
+.tile-plan-head {
+  font-family: var(--font-noto-sans), Arial, sans-serif;
+  font-size: 15px; /* "Start", "Goal", "WM Rollout", "Exec Traj" */
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2px; /* space between a video and its caption */
+}
+.tile-plan-head {
+  margin: 0 0 -4px; /* 0 = no extra space under the dashed line; -4px pulls the first method row closer */
+}
+/* Dashed line between the planning task (Start → Goal) and the method results. */
+.tile-plan-divider {
+  grid-column: 1 / -1; /* spans the whole row; width + justify-self below shorten and center it */
+  width: 70%; /* line length; 100% = full row, smaller = shorter */
+  justify-self: center; /* keep the line centered */
+  margin: -4px 0; /* vertical gap: row gap (7px) + this; more negative = tighter */
+  border: 0;
+  border-top: 1.5px dashed #b8c2cf; /* thickness, style, color */
+}
+.tile-plan-arrow {
+  display: flex;
+  justify-content: center;
+  color: #64748b;
+  margin-bottom: 22px; /* lines the arrow up with the video centers, not the captions */
+}
+.tile-plan-arrow .tile-reference-arrow {
+  position: static;
+  transform: none;
+  width: 28px; /* arrow length */
+}
+.tile-plan-label {
+  grid-column: 1; /* every method name starts a new row */
+  font-family: var(--font-noto-sans), Arial, sans-serif;
+  font-size: 14px; /* method names at the left of each row */
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: right; /* sits right next to its videos; use left to align to the edge */
+}
+/* Planning: tighter vertical spacing between the Methods list, the videos and
+   the Example widget (open-loop keeps the 20px .tile-workspace gap). */
+.is-planning .tile-workspace {
+  gap: 12px;
+}
+.is-planning .tile-cases {
+  margin-bottom: 6px; /* space above "Methods" (below the DINO-WM/LeWM based switch); was 16px */
+}
+.is-planning .tile-playback {
+  margin-top: 6px; /* space below "Example 1 / N" (above Pause/Replay); was 16px */
+}
+.tile-plan-task {
+  margin-bottom: 22px; /* "Planning task" lines up with the Start/Goal video centers, not their captions */
+}
+@container (max-width:650px) {
+  .tile-plan {
+    --plan-label: 110px;
+    /* narrow screens: no right spacer, videos fill the rest of the row */
+    --plan-tile: calc((100% - var(--plan-label) - 36px - 24px) / 2);
+    grid-template-columns: var(--plan-label) var(--plan-tile) 36px var(--plan-tile);
+  }
 }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://physical-world.github.io/sitemap.xml

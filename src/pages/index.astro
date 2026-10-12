@@ -7,6 +7,7 @@ import PaperMotion from "../components/PaperMotion.astro";
 import "katex/dist/katex-swap.css";
 
 import { Content, frontmatter } from "../paper.mdx";
+import teaser from "../assets/images/teaser.png";
 
 interface Frontmatter {
   title: string;
@@ -14,6 +15,10 @@ interface Frontmatter {
   favicon: string;
   thumbnail?: string;
   theme?: "device" | "light" | "dark";
+  authors?: string[];
+  affiliation?: string;
+  keywords?: string;
+  date?: string | Date;
 }
 
 const {
@@ -22,10 +27,40 @@ const {
   favicon,
   thumbnail,
   theme = "device",
+  authors = [],
+  affiliation,
+  keywords,
+  date,
 } = frontmatter as Frontmatter;
 
 const baseUrl = import.meta.env.BASE_URL;
 const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+
+// Absolute URLs for search engines and link previews (site is set in astro.config.mjs).
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const image = new URL(thumbnail ? prefix + thumbnail : teaser.src, Astro.site).href;
+const published = date
+  ? new Date(date).toISOString().slice(0, 10)
+  : undefined;
+// Structured data so Google understands the page is a research paper.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  headline: title,
+  name: title,
+  description,
+  url: canonical,
+  image,
+  keywords,
+  datePublished: published,
+  author: authors.map((name) => ({
+    "@type": "Person",
+    name,
+    ...(affiliation && {
+      affiliation: { "@type": "Organization", name: affiliation },
+    }),
+  })),
+};
 ---
 
 <!doctype html>
@@ -34,15 +69,38 @@ const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
   <head>
     <meta charset="UTF-8" />
     {description && <meta name="description" content={description} />}
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+    {keywords && <meta name="keywords" content={keywords} />}
+    {authors.length > 0 && <meta name="author" content={authors.join(", ")} />}
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href={prefix + "sitemap.xml"} />
 
     <link rel="icon" type="image/svg+xml" href={prefix + favicon} />
 
+    {/* Link previews (Facebook, LinkedIn, Slack, X/Twitter) */}
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
     <meta property="og:type" content="website" />
-    {thumbnail && <meta property="og:image" content={prefix + thumbnail} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="PhysiCalWorld" />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={image} />
+
+    {/* Google Scholar (Highwire Press tags) */}
+    <meta name="citation_title" content={title} />
+    {authors.map((name) => <meta name="citation_author" content={name} />)}
+    {published && (
+      <meta name="citation_publication_date" content={published.replaceAll("-", "/")} />
+    )}
+    <meta name="citation_abstract_html_url" content={canonical} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <Font
       cssVariable="--font-noto-sans"

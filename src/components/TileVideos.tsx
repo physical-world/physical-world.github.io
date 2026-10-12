@@ -1,5 +1,6 @@
 import {
   type CSSProperties,
+  Fragment,
   useEffect,
   useRef,
   useState,
@@ -10,17 +11,26 @@ import { LOOP_HOLD_SECONDS } from "../lib/loop-hold";
 import allCases from "../data/video-tiles.json";
 import "./tile-videos.css";
 
-const methods = [
-  { id: "ts", label: "TS-WM" },
+const methodList = [
+  // Order used for both the Methods list and the video tiles.
+  // "\n" in a label = line break in the Methods list only (e.g. "DINO-WM\n+ Long History").
   { id: "vanilla", label: "DINO-WM" },
-  { id: "long_history", label: "DINO-WM + Long History" },
-  { id: "prefix_context", label: "DINO-WM + Context Prefix" },
-  { id: "oracle", label: "DINO-WM + Privileged Physics" },
-  { id: "context", label: "DINO-WM + PhysiCal (Ours)" },
+  { id: "context", label: "DINO-WM\n+ PhysiCal (Ours)" },
+  { id: "long_history", label: "DINO-WM\n+ Long History" },
+  { id: "prefix_context", label: "DINO-WM\n+ Context Prefix" },
   { id: "lewm", label: "LeWM" },
-  { id: "lewm_context", label: "LeWM + PhysiCal (Ours)" },
+  { id: "lewm_context", label: "LeWM\n+ PhysiCal (Ours)" },
+  { id: "oracle", label: "DINO-WM\n+ Privileged Physics" },
+  { id: "ts", label: "TS-WM" },
 ];
-const defaults = ["context", "vanilla"];
+// `label` is the one-line name (video headings); `listLabel` keeps the "\n" breaks.
+const methods = methodList.map((m) => ({
+  ...m,
+  label: m.label.replace(/\s*\n\s*/g, " "),
+  listLabel: m.label,
+}));
+// Default view (also restored by the Reset view button): DINO-WM, DINO-WM + PhysiCal, plus Ground Truth.
+const defaults = ["vanilla", "context"];
 let preference = defaults;
 const listeners = new Set<() => void>();
 function subscribe(listener: () => void) {
@@ -47,6 +57,14 @@ const labels: Record<string, string> = {
   reacher: "Reacher",
   beerpong: "BeerPong",
   fetchslide: "FetchSlide",
+};
+// GT mask color per environment (sampled from the mask videos); used by the
+// color chip in "Show GT mask (■)".
+const maskColors: Record<string, string> = {
+  pusht: "rgb(203 100 107)", // coral red
+  reacher: "rgb(250 132 92)", // orange
+  beerpong: "rgb(122 170 82)", // light green
+  fetchslide: "rgb(122 170 82)", // light green
 };
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
@@ -94,6 +112,14 @@ export default function TileVideos({
     planning || columns.length < 4
       ? columns.length
       : Math.ceil(columns.length / 2);
+  // Tiles are sized as if a row held at least 4 tiles (methods + GT or
+  // Start/Goal), so toggling methods doesn't resize them; rows that need
+  // more tiles (e.g. 4 methods + GT) shrink to that column count instead.
+  const minSlots = 4; // raise for smaller tiles, lower for bigger ones
+  const tracks = planning
+    ? columns.length + (referencesBeside ? 1 : 0)
+    : columnCount + (hasGT ? 1 : 0);
+  const slots = Math.max(minSlots, tracks);
   const rootRef = useRef<HTMLElement>(null);
   const clockRef = useRef(0);
   const [time, setTime] = useState(0);
@@ -133,7 +159,9 @@ export default function TileVideos({
       const root = rootRef.current;
       if (!root || cancelled) return;
       measure.font = `700 100px ${getComputedStyle(root).fontFamily}`;
-      const widest = Math.max(...lines.map((line) => measure.measureText(line).width));
+      const widest = Math.max(
+        ...lines.map((line) => measure.measureText(line).width),
+      );
       root.style.setProperty("--title-slot-ratio", String(originalRatio));
       root.style.setProperty(
         "--title-ratio",
@@ -233,6 +261,14 @@ export default function TileVideos({
       ...next,
     ]);
   }
+  function resetView() {
+    choose(defaults);
+    setShowGT(true);
+    setMask(true);
+    setContext(false);
+    seek(0); // rewind the videos to 0 s
+    setPlaying(false); // and pause them; press Play to start
+  }
   function referenceArrow() {
     return (
       <svg
@@ -257,7 +293,8 @@ export default function TileVideos({
     if (!clip) return null;
     const src =
       base +
-      ((mask && (!reference || key === "goal") ? clip.mask : clip.rgb) ?? clip.rgb);
+      ((mask && (!reference || key === "goal") ? clip.mask : clip.rgb) ??
+        clip.rgb);
     return (
       <video
         key={src}
@@ -300,7 +337,13 @@ export default function TileVideos({
               checked={mask}
               onChange={(e) => setMask(e.target.checked)}
             />{" "}
-            Show mask
+            Show GT mask (
+            <span
+              className="tile-mask-swatch"
+              style={{ background: maskColors[environment] }}
+              aria-hidden="true"
+            />
+            )
           </label>
           <label>
             <input
@@ -310,20 +353,22 @@ export default function TileVideos({
             />{" "}
             Show context
           </label>
+          <button type="button" onClick={resetView}>
+            Reset view
+          </button>
         </div>
       </div>
-      <div className="tile-toolbar tile-cases">
-        {planning && (
+      {planning && (
+        <div className="tile-toolbar tile-cases">
           <div className="tile-group">
-            <span className="tile-group-label">World model backbone</span>
             <div
               className="tile-group-switch"
               role="radiogroup"
               aria-label="World model backbone"
             >
               {[
-                { value: "dino", label: "DINO-WM" },
-                { value: "le", label: "LeWM" },
+                { value: "dino", label: "DINO-WM based" },
+                { value: "le", label: "LeWM based" },
               ].map((option) => (
                 <button
                   key={option.value}
@@ -342,7 +387,162 @@ export default function TileVideos({
               ))}
             </div>
           </div>
-        )}
+        </div>
+      )}
+      <div className="tile-workspace">
+        <fieldset
+          className="tile-method-list"
+          style={
+            {
+              // up to 3 methods: one line; more: two rows
+              "--list-columns":
+                available.length <= 3
+                  ? available.length
+                  : Math.ceil(available.length / 2),
+            } as CSSProperties
+          }
+        >
+          <legend>Methods</legend>
+          {available.map((m) => (
+            <label key={m.id}>
+              <input
+                type="checkbox"
+                checked={visible.some((v) => v.id === m.id)}
+                disabled={visible.length === 1 && visible[0].id === m.id}
+                onChange={() => toggleMethod(m.id)}
+              />
+              <span>
+                {m.listLabel.split("\n").map((line, i) => (
+                  <span key={i}>
+                    {i > 0 && <br />}
+                    <BrandName text={line} />
+                  </span>
+                ))}
+              </span>
+            </label>
+          ))}
+        </fieldset>
+        <div className="tile-comparison">
+          {planning ? (
+            // Planning: Start → Goal on top, then one row per method
+            // (name | WM rollout | executed trajectory).
+            <div
+              className="tile-plan"
+              data-rows={columns.length}
+            >
+              <div className="tile-plan-label tile-plan-task">
+                Planning task
+              </div>
+              <figure className="tile-plan-ref">
+                {video("start", "Start observation", true)}
+                <figcaption>Start</figcaption>
+              </figure>
+              <div className="tile-plan-arrow" aria-hidden="true">
+                {referenceArrow()}
+              </div>
+              <figure className="tile-plan-ref">
+                {video("goal", "Goal observation", true)}
+                <figcaption>Goal</figcaption>
+              </figure>
+              <hr className="tile-plan-divider" />
+              <div className="tile-plan-label" />
+              <div className="tile-plan-head">WM Rollout</div>
+              <div />
+              <div className="tile-plan-head">Exec Traj</div>
+              {columns.map((m) => (
+                <Fragment key={m.id}>
+                  <div className="tile-plan-label">
+                    {m.label.includes(" + ") ? (
+                      <>
+                        {m.label.split(" + ")[0]}
+                        <br />
+                        <BrandName text={"+ " + m.label.split(" + ")[1]} />
+                      </>
+                    ) : (
+                      <BrandName text={m.label} />
+                    )}
+                  </div>
+                  {video(`${m.id}_wm`, `${m.label}: prediction`)}
+                  <div />
+                  {video(`${m.id}_exec`, `${m.label}: execution`)}
+                </Fragment>
+              ))}
+            </div>
+          ) : (
+            <div
+              className="tile-layout"
+              style={
+                {
+                  "--method-columns": columnCount,
+                  "--tracks": tracks,
+                  "--slots": slots,
+                } as CSSProperties
+              }
+              data-planning={planning || undefined}
+              data-references-below={referencesBelow || undefined}
+              data-references-beside={referencesBeside || undefined}
+              data-gt={hasGT || undefined}
+            >
+              <div
+                className="tile-columns"
+                style={{ "--method-columns": columnCount } as CSSProperties}
+              >
+                {columns.map((m) => (
+                  <div className="tile-column" key={m.id}>
+                    <h5>
+                      {m.label.includes(" + ") ? (
+                        <>
+                          {m.label.split(" + ")[0]}
+                          <br />
+                          <BrandName text={"+ " + m.label.split(" + ")[1]} />
+                        </>
+                      ) : (
+                        <BrandName text={m.label} />
+                      )}
+                    </h5>
+                    {planning ? (
+                      <>
+                        {video(`${m.id}_wm`, `${m.label}: prediction`)}
+                        {video(`${m.id}_exec`, `${m.label}: execution`)}
+                      </>
+                    ) : (
+                      video(m.id, `${m.label}: rollout`)
+                    )}
+                  </div>
+                ))}
+              </div>
+              {hasGT && (
+                <div className="tile-reference tile-gt">
+                  <h5>Ground Truth</h5>
+                  {video("gt", "Ground-truth rollout")}
+                </div>
+              )}
+              {planning && (
+                <div className="tile-reference-pair">
+                  <figure className="tile-reference tile-start">
+                    <h5>Start</h5>
+                    <div className="tile-reference-media">
+                      {video("start", "Start observation", true)}
+                      {!referencesBeside && referenceArrow()}
+                    </div>
+                  </figure>
+                  {referencesBeside && (
+                    <div
+                      className="tile-reference-connector"
+                      aria-hidden="true"
+                    >
+                      {referenceArrow()}
+                    </div>
+                  )}
+                  <figure className="tile-reference tile-goal">
+                    <h5>Goal</h5>
+                    {video("goal", "Goal observation", true)}
+                  </figure>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
         <div className="tile-case-buttons">
           <button
             type="button"
@@ -365,94 +565,17 @@ export default function TileVideos({
           </button>
         </div>
       </div>
-      <div className="tile-workspace">
-        <div className="tile-comparison">
-          <div
-            className="tile-layout"
-            style={{ "--method-columns": columnCount } as CSSProperties}
-            data-planning={planning || undefined}
-            data-references-below={referencesBelow || undefined}
-            data-references-beside={referencesBeside || undefined}
-            data-gt={hasGT || undefined}
-          >
-            <div
-              className="tile-columns"
-              style={{ "--method-columns": columnCount } as CSSProperties}
-            >
-              {columns.map((m) => (
-                <div className="tile-column" key={m.id}>
-                  <h5>
-                    {m.label.includes(" + ") ? (
-                      <>
-                        {m.label.split(" + ")[0]}
-                        <br />
-                        <BrandName text={"+ " + m.label.split(" + ")[1]} />
-                      </>
-                    ) : (
-                      <BrandName text={m.label} />
-                    )}
-                  </h5>
-                  {planning ? (
-                    <>
-                      {video(`${m.id}_wm`, `${m.label}: prediction`)}
-                      {video(`${m.id}_exec`, `${m.label}: execution`)}
-                    </>
-                  ) : (
-                    video(m.id, `${m.label}: rollout`)
-                  )}
-                </div>
-              ))}
-            </div>
-            {hasGT && (
-              <div className="tile-reference tile-gt">
-                <h5>Ground Truth</h5>
-                {video("gt", "Ground-truth rollout")}
-              </div>
-            )}
-            {planning && (
-              <div className="tile-reference-pair">
-                <figure className="tile-reference tile-start">
-                  <h5>Start</h5>
-                  <div className="tile-reference-media">
-                    {video("start", "Start observation", true)}
-                    {!referencesBeside && referenceArrow()}
-                  </div>
-                </figure>
-                {referencesBeside && (
-                  <div className="tile-reference-connector" aria-hidden="true">
-                    {referenceArrow()}
-                  </div>
-                )}
-                <figure className="tile-reference tile-goal">
-                  <h5>Goal</h5>
-                  {video("goal", "Goal observation", true)}
-                </figure>
-              </div>
-            )}
-          </div>
-        </div>
-        <fieldset className="tile-method-list">
-          <legend>Methods</legend>
-          {available.map((m) => (
-            <label key={m.id}>
-              <input
-                type="checkbox"
-                checked={visible.some((v) => v.id === m.id)}
-                disabled={visible.length === 1 && visible[0].id === m.id}
-                onChange={() => toggleMethod(m.id)}
-              />
-              <span>
-                <BrandName text={m.label} />
-              </span>
-            </label>
-          ))}
-        </fieldset>
-      </div>
       <div className="tile-playback">
         <button type="button" onClick={() => setPlaying(!playing)}>
           {playing ? "Pause" : "Play"}
         </button>
-        <button type="button" onClick={() => seek(0)}>
+        <button
+          type="button"
+          onClick={() => {
+            seek(0); // rewind to 0 s
+            setPlaying(true); // and play, even if it was paused
+          }}
+        >
           Replay
         </button>
         <input
@@ -487,7 +610,7 @@ export default function TileVideos({
       )}
       <p className="tile-caption">
         {planning
-          ? "Top: WM Rollout. Bottom: Exec Traj. Prediction and execution are shown for the same planning example. Masks mark the fixed goal object locations. DINO-WM and LeWM groups use separate example selections."
+          ? "Each row is one method: its world-model rollout (WM Rollout) and the executed trajectory (Exec Traj) for the same planning example. Masks mark the fixed goal object locations. DINO-WM-based and LeWM-based methods use separate example selections."
           : "All methods predict the same action sequence. Masks show the recorded ground-truth object locations at each prediction frame after the initial frame."}{" "}
         Toggle Show context to view the shared exploratory interaction.
       </p>
