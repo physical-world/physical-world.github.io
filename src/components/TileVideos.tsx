@@ -256,7 +256,8 @@ export default function TileVideos({
     const clip = current.files[key];
     if (!clip) return null;
     const src =
-      base + ((!reference && mask ? clip.mask : clip.rgb) ?? clip.rgb);
+      base +
+      ((mask && (!reference || key === "goal") ? clip.mask : clip.rgb) ?? clip.rgb);
     return (
       <video
         key={src}
