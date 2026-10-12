@@ -91,14 +91,14 @@
   border: 0;
   border-radius: 6px;
   padding: 6px 10px;
-  color: #64756f;
+  color: var(--subtle, #5f6b7a);
   background: transparent;
   font-size: 12px;
   line-height: 1.4;
 }
 .physics-controls button:hover {
-  background: #e9f0ed;
-  color: #245847;
+  background: var(--brand-tint, #eef6fc);
+  color: var(--brand-strong, #075f96);
 }
 .physics-controls button:focus-visible,
 .physics-scroll:focus-visible {

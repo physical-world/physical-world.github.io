@@ -6,6 +6,7 @@ import {
   useSyncExternalStore,
 } from "react";
 import BrandName from "./BrandName";
+import { LOOP_HOLD_SECONDS } from "../lib/loop-hold";
 import allCases from "../data/video-tiles.json";
 import "./tile-videos.css";
 
@@ -178,7 +179,10 @@ export default function TileVideos({
       // Freeze the shared clock while any tile buffers, then resume together.
       if (running && last)
         clockRef.current += Math.min((now - last) / 1000, 0.1) * rate;
-      if (length && clockRef.current >= length) clockRef.current = 0;
+      // Past the end, the clock keeps running while the tiles hold their last
+      // frame (LOOP_HOLD_SECONDS, scaled by playback speed), then restarts.
+      if (length && clockRef.current >= length + LOOP_HOLD_SECONDS * rate)
+        clockRef.current = 0;
       videos.forEach((video) => {
         if (video.readyState < 1) return;
         const target = Math.min(
@@ -193,7 +197,7 @@ export default function TileVideos({
         } else video.pause();
       });
       if (now - displayTime > 100) {
-        setTime(clockRef.current);
+        setTime(Math.min(clockRef.current, length));
         displayTime = now;
       }
       last = running ? now : 0;

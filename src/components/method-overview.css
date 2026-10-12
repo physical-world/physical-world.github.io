@@ -311,14 +311,14 @@ main > figure > div:has(.method-overview) {
   border: 0;
   border-radius: 6px;
   background: transparent;
-  color: #64756f;
+  color: var(--subtle, #5f6b7a);
   font-size: 12px;
   line-height: 1.4;
   cursor: pointer;
 }
 .mo-replay:hover {
-  background: #e9f0ed;
-  color: #245847;
+  background: var(--brand-tint, #eef6fc);
+  color: var(--brand-strong, #075f96);
 }
 .method-overview:not(.mo-animate) .mo-replay {
   display: none;

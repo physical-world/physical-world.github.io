@@ -18,7 +18,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
     controls
     muted
     playsinline
-    loop
     preload="metadata"
     aria-label={`${label} physics comparison`}
     class="h-auto w-full rounded-lg"></video>
@@ -26,6 +25,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 </div>
 
 <script>
+  import { loopWithHold } from "../lib/loop-hold";
+
   document
     .querySelectorAll<HTMLVideoElement>("[data-benchmark-comparison]")
     .forEach((video) => {
@@ -35,6 +36,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
         if (video.autoplay) void video.play().catch(() => {});
         else video.pause();
       };
+      // Loops with a pause on the last frame (length: src/lib/loop-hold.ts).
+      loopWithHold(video, () => !panel?.hidden);
       updatePlayback();
       if (panel) {
         new MutationObserver(updatePlayback).observe(panel, {

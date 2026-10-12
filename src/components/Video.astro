@@ -19,8 +19,18 @@ const {
   class="aspect-video h-auto w-full rounded-lg"
   src={src}
   controls={controls}
-  loop={loop}
+  loop={false}
+  data-loop-hold={loop || undefined}
   playsinline={playsinline}
   muted={muted}
   autoplay={autoplay}
   {...videoProps}></video>
+
+<script>
+  import { loopWithHold } from "../lib/loop-hold";
+
+  // `loop` videos pause on the last frame before replaying (src/lib/loop-hold.ts).
+  document
+    .querySelectorAll<HTMLVideoElement>("video[data-loop-hold]")
+    .forEach((video) => loopWithHold(video));
+</script>

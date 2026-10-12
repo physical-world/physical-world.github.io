@@ -67,7 +67,7 @@ const views = [
     border: 1px solid var(--edge);
     border-radius: 999px;
     background: white;
-    box-shadow: 0 4px 16px #18242110;
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--ink) 6%, transparent);
   }
   .result-switch button {
     display: inline-flex;
@@ -91,18 +91,18 @@ const views = [
     height: 1.1em;
   }
   .result-switch button:hover {
-    background: var(--mint);
-    color: var(--teal);
+    background: var(--brand-tint);
+    color: var(--brand);
   }
   .result-switch button[aria-selected="true"] {
-    background: var(--teal);
+    background: var(--brand);
     color: white;
   }
   .result-switch button:active {
     transform: scale(0.97);
   }
   .result-switch button:focus-visible {
-    outline: 2px solid var(--teal);
+    outline: 2px solid var(--brand);
     outline-offset: 2px;
   }
   .result-switch-hint {

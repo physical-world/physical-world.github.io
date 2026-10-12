@@ -32,10 +32,10 @@
   justify-content: space-between;
   margin-bottom: 12px;
   font-size: 14px;
-  color: #66736d;
+  color: var(--subtle, #5f6b7a);
 }
 .damping-label strong {
-  color: #087f6d;
+  color: var(--brand, #0b7bc1);
   font-variant-numeric: tabular-nums;
 }
 .damping-control input {
@@ -51,8 +51,8 @@
   background: linear-gradient(
     to right,
     transparent 8px,
-    #dee5df 8px,
-    #dee5df calc(100% - 8px),
+    var(--edge, #dde7f0) 8px,
+    var(--edge, #dde7f0) calc(100% - 8px),
     transparent calc(100% - 8px)
   );
   border-radius: 4px;
@@ -62,8 +62,8 @@
   background: linear-gradient(
     to right,
     transparent 8px,
-    #dee5df 8px,
-    #dee5df calc(100% - 8px),
+    var(--edge, #dde7f0) 8px,
+    var(--edge, #dde7f0) calc(100% - 8px),
     transparent calc(100% - 8px)
   );
   border-radius: 4px;
@@ -75,19 +75,19 @@
   margin-top: -6px;
   border: 3px solid white;
   border-radius: 50%;
-  background: #087f6d;
-  box-shadow: 0 0 0 1px #087f6d;
+  background: var(--brand, #0b7bc1);
+  box-shadow: 0 0 0 1px var(--brand, #0b7bc1);
 }
 .damping-control input::-moz-range-thumb {
   width: 10px;
   height: 10px;
   border: 3px solid white;
   border-radius: 50%;
-  background: #087f6d;
-  box-shadow: 0 0 0 1px #087f6d;
+  background: var(--brand, #0b7bc1);
+  box-shadow: 0 0 0 1px var(--brand, #0b7bc1);
 }
 .damping-control input:focus-visible {
-  outline: 2px solid #087f6d;
+  outline: 2px solid var(--brand, #0b7bc1);
   outline-offset: 5px;
   border-radius: 4px;
 }
@@ -96,7 +96,7 @@
   height: 18px;
   margin-top: 3px;
   font-size: 12px;
-  color: #66736d;
+  color: var(--subtle, #5f6b7a);
   font-variant-numeric: tabular-nums;
 }
 .damping-ticks span {
@@ -104,7 +104,7 @@
   transform: translateX(-50%);
 }
 .damping-ticks span[data-active="true"] {
-  color: #087f6d;
+  color: var(--brand, #0b7bc1);
   font-weight: 700;
 }
 .chart-choices button {
@@ -347,7 +347,7 @@
 }
 
 .heat-label[data-selected="true"] {
-  background: #e8f3ed;
+  background: var(--brand-tint, #eef6fc);
   border-radius: 4px;
   text-decoration: underline;
   text-underline-offset: 3px;

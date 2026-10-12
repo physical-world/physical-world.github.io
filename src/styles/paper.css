@@ -1,20 +1,60 @@
 /* Presentation layer: the paper's content and data colors stay independent. */
+/* Site palette. Every page color is set here; the rest of the site reads these
+   variables. Active: Sky blue. To switch to Maize & Blue, add
+   data-palette="maize-blue" to the <html> tag in src/pages/index.astro. */
 :root {
-  --paper: #fafaf7;
-  --ink: #182421;
-  --subtle: #66736d;
-  --teal: #087f6d;
-  --mint: #e8f3ed;
-  --edge: #dee5df;
+  --paper: #fbfcfe; /* page background */
+  --ink: #17202e; /* main text */
+  --subtle: #5f6b7a; /* secondary text, captions */
+  --brand: #0b7bc1; /* accent: links, tabs, toggles, sliders */
+  --brand-strong: #075f96; /* darker accent for text on tinted fills (buttons) */
+  --brand-tint: #eef6fc; /* pale fill: Abstract panel, hovers, buttons */
+  --brand-hover: #e2f0fa; /* button hover fill (a bit darker than --brand-tint) */
+  --brand-soft: #d3e8f7; /* outline on tinted fills (buttons) */
+  --edge: #dde7f0; /* card / figure borders */
+  --abstract-text: #364352; /* Abstract paragraph text */
+  --glow-1: #bfe3f880; /* big hero glow behind the title (last 2 digits = opacity) */
+  --glow-2: #d9d3fb4d; /* small hero glow, right side */
+  --palette-chart-shade: #f0f6fb; /* analysis chart backgrounds */
+  --palette-chart-block: #d9e8f4;
+  --palette-chart-dot: #6a7f94;
+  /* Gradient on the paper name: sky -> periwinkle -> violet. */
   --brand-gradient: linear-gradient(
     110deg,
-    #087f6d 0%,
-    #2563eb 52%,
-    #7c3aed 100%
+    #0284c7 0%,
+    #4f7df3 52%,
+    #8b5cf6 100%
+  );
+}
+/* Maize & Blue (light take on UMich colors): blue accents, maize as the glow
+   and gradient end. Pure maize #ffcb05 is too pale for text, so
+   text uses blue and maize only appears as color fills. */
+:root[data-palette="maize-blue"] {
+  --paper: #fdfcf8;
+  --ink: #14213a;
+  --subtle: #5d6779;
+  --brand: #1d4f91;
+  --brand-strong: #00274c; /* official UMich blue */
+  --brand-tint: #f1f5fa;
+  --brand-hover: #e5edf7;
+  --brand-soft: #d4e0ef;
+  --edge: #e2e6ed;
+  --abstract-text: #34405a;
+  --glow-1: #c9daf080;
+  --glow-2: #ffe27a66; /* maize glow */
+  --palette-chart-shade: #f2f5f9;
+  --palette-chart-block: #dbe4f0;
+  --palette-chart-dot: #66748a;
+  /* Gradient on the paper name: UMich blue -> mid blue -> deep maize. */
+  --brand-gradient: linear-gradient(
+    110deg,
+    #00274c 0%,
+    #2f65a7 55%,
+    #e0a800 100%
   );
 }
 .brand-name {
-  color: var(--teal);
+  color: var(--brand);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -48,16 +88,20 @@ body.prose {
   --tw-prose-bold: var(--ink);
 }
 body.prose a {
-  color: var(--teal);
+  color: var(--brand);
 }
+/* Section titles (Method Overview, Benchmark Environments, ...). */
 main > h2 {
   margin-top: 100px;
   margin-bottom: 24px;
   font-size: clamp(1.65rem, 3vw, 2.15rem);
   letter-spacing: -0.035em;
+  text-align: center; /* use left to left-align */
 }
+/* Subsection titles (Push-T, Reacher, BeerPong, ...). */
 main > h3 {
   letter-spacing: -0.025em;
+  text-align: center; /* use left to left-align */
 }
 main > p,
 figcaption {
@@ -71,7 +115,7 @@ main > figure > div {
   background: white;
   border: 1px solid var(--edge);
   border-radius: 24px;
-  box-shadow: 0 12px 44px #18242106;
+  box-shadow: 0 12px 44px color-mix(in srgb, var(--ink) 2.5%, transparent);
 }
 main > figure img {
   width: auto;
@@ -107,7 +151,7 @@ figcaption {
   height: 340px;
   top: -80px;
   left: calc(50% - 400px);
-  background: radial-gradient(ellipse, #b8e3cd80, #e8f3ed00 70%);
+  background: radial-gradient(ellipse, var(--glow-1), transparent 70%);
   animation: ambient-drift 16s ease-in-out infinite alternate;
 }
 .paper-hero::after {
@@ -115,7 +159,7 @@ figcaption {
   height: 280px;
   top: 40px;
   left: 52%;
-  background: radial-gradient(ellipse, #e8d5b54d, #fafaf700 70%);
+  background: radial-gradient(ellipse, var(--glow-2), transparent 70%);
   animation: ambient-drift 19s ease-in-out infinite alternate-reverse;
 }
 /* Header title. Gap = space between "PhysiCalWorld" and the subtitle line
@@ -183,11 +227,11 @@ figcaption {
 }
 /* Badge from the `conference` prop on <Header>; hidden when the prop is omitted. */
 .hero-status {
-  color: var(--teal);
+  color: var(--brand);
   font-size: 0.825rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border: 1px solid #087f6d26;
+  border: 1px solid color-mix(in srgb, var(--brand) 15%, transparent);
   border-radius: 100px;
   padding: 5px 13px;
   background: #ffffff80;
@@ -195,18 +239,16 @@ figcaption {
 }
 /* PDF / arXiv / Code button colors (size/padding: Header.astro). */
 .hero-btn {
-  --btn-bg: var(--mint); /* fill */
-  --btn-border: #cfe3d8; /* 1px outline */
-  --btn-text: #0b5f52; /* label + icon */
-  --btn-hover-bg: #dceee4; /* hover fill (buttons with a url) */
-  --btn-hover-border: var(--teal); /* outline on hover */
+  --btn-bg: var(--brand-tint); /* fill */
+  --btn-border: var(--brand-soft); /* 1px outline */
+  --btn-text: var(--brand-strong); /* label + icon */
+  --btn-hover-bg: var(--brand-hover); /* hover fill (buttons with a url) */
+  --btn-hover-border: var(--brand); /* outline on hover */
 
   /* Alternatives (bg / border / text / hover-bg / hover-border):
-     A mint (current)  var(--mint) #cfe3d8 #0b5f52 #dceee4 var(--teal)
-     B sage            #dceae2 #c3d8cc #0b5f52 #cfe3d8 #0b5f52
-     C teal tint       #087f6d14 #087f6d40 var(--teal) #087f6d24 var(--teal)
-     D green-gray      #f1f3f0 var(--edge) var(--ink) #e6ebe7 #b9c4bd
-     E outline         #ffffffb3 var(--edge) var(--ink) var(--mint) var(--subtle) */
+     A tint (current)  var(--brand-tint) var(--brand-soft) var(--brand-strong) var(--brand-hover) var(--brand)
+     B solid           var(--brand) var(--brand) white var(--brand-strong) var(--brand-strong)
+     C outline         #ffffffb3 var(--edge) var(--ink) var(--brand-tint) var(--subtle) */
 
   background: var(--btn-bg);
   border: 1px solid var(--btn-border);
@@ -247,20 +289,21 @@ a.hero-btn:hover {
   width: 100%;
 }
 .abstract-panel {
-  background: var(--mint);
+  background: var(--brand-tint);
   padding-block: 52px;
-  border-block: 1px solid #087f6d0c;
+  border-block: 1px solid color-mix(in srgb, var(--brand) 5%, transparent);
 }
 .abstract-panel h2 {
-  font-size: 0.925rem;
-  color: var(--teal);
-  letter-spacing: 0.14em;
+  font-size: 1.35rem; /* "ABSTRACT" title size; raise for bigger (was 0.925rem) */
+  text-align: center; /* use left to left-align */
+  color: var(--brand);
+  letter-spacing: 0.14em; /* spacing between letters */
   text-transform: uppercase;
 }
 .abstract-panel p {
   font-size: 1rem;
   line-height: 1.95;
-  color: #364b42;
+  color: var(--abstract-text);
   text-align: justify;
 }
 [data-video-gallery] > [data-tabs],
@@ -271,7 +314,7 @@ a.hero-btn:hover {
   background: white;
   border-color: var(--edge);
   border-radius: 22px;
-  box-shadow: 0 12px 44px #18242106;
+  box-shadow: 0 12px 44px color-mix(in srgb, var(--ink) 2.5%, transparent);
 }
 [data-tabs-trigger],
 main .chart-choices button {
@@ -283,13 +326,13 @@ main .chart-choices button {
 }
 [data-tabs-trigger][data-state="active"],
 main .chart-choices button[aria-pressed="true"] {
-  background: var(--mint);
-  color: var(--teal);
-  border-color: #087f6d38;
+  background: var(--brand-tint);
+  color: var(--brand);
+  border-color: color-mix(in srgb, var(--brand) 22%, transparent);
 }
 [data-tabs-trigger]:hover,
 main .chart-choices button:hover {
-  background: #e8f3ed90;
+  background: color-mix(in srgb, var(--brand-tint) 56%, transparent);
 }
 [data-tabs-trigger]:active,
 main .chart-choices button:active {
@@ -306,19 +349,19 @@ main .chart-choices button:active {
   line-height: 1.5;
 }
 [data-video-gallery] input {
-  color: var(--teal);
+  color: var(--brand);
 }
 body .page-button.active > div {
-  background: var(--teal);
+  background: var(--brand);
 }
 main .analysis-card {
-  --chart-shade: #f0f5f1;
-  --chart-block: #dceae2;
-  --chart-dot: #708478;
+  --chart-shade: var(--palette-chart-shade);
+  --chart-block: var(--palette-chart-block);
+  --chart-dot: var(--palette-chart-dot);
   border-color: var(--edge);
   border-radius: 22px;
   padding: 28px;
-  box-shadow: 0 12px 44px #18242106;
+  box-shadow: 0 12px 44px color-mix(in srgb, var(--ink) 2.5%, transparent);
 }
 main .chart-choices button {
   border-radius: 100px;
@@ -349,17 +392,6 @@ main .speed-track > div {
 }
 .ood-chart {
   animation: panel-enter 0.3s ease-out;
-}
-.reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--teal);
-  transform: scaleX(0);
-  transform-origin: left;
-  z-index: 50;
 }
 /* Floating contents list (screens > 1340px).
    Gap to content = 650 - 200 (width) - 400 = 50px; raise 650 to widen it. */

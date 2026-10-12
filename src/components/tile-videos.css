@@ -100,7 +100,7 @@
 .tile-method-list input {
   flex-shrink: 0;
   margin-top: 4px;
-  accent-color: #087f6d;
+  accent-color: var(--brand, #0b7bc1);
 }
 .tile-layout {
   display: grid;
@@ -205,7 +205,7 @@
 .tile-playback input {
   min-width: 50px;
   flex: 1;
-  accent-color: #087f6d;
+  accent-color: var(--brand, #0b7bc1);
 }
 .tile-playback span {
   font-variant-numeric: tabular-nums;
@@ -411,13 +411,13 @@
 }
 .tile-group-label {
   font-weight: 600;
-  color: var(--subtle, #66736d);
+  color: var(--subtle, #5f6b7a);
 }
 .tile-group-switch {
   display: inline-flex;
   gap: 4px; /* space between the two options */
   padding: 3px; /* inner padding of the pill track */
-  border: 1px solid var(--edge, #dee5df);
+  border: 1px solid var(--edge, #dde7f0);
   border-radius: 999px;
   background: white;
 }
@@ -425,17 +425,17 @@
   border: 0;
   border-radius: 999px;
   padding: 5px 14px; /* option size: vertical, horizontal */
-  color: var(--subtle, #66736d);
+  color: var(--subtle, #5f6b7a);
   font-weight: 600;
   transition:
     background-color 0.2s,
     color 0.2s;
 }
 .tile-gallery .tile-group-switch button:hover {
-  background: var(--mint, #e8f3ed);
-  color: var(--teal, #087f6d);
+  background: var(--brand-tint, #eef6fc);
+  color: var(--brand, #0b7bc1);
 }
 .tile-gallery .tile-group-switch button[aria-checked="true"] {
-  background: var(--teal, #087f6d); /* selected option fill */
+  background: var(--brand, #0b7bc1); /* selected option fill */
   color: white;
 }
