@@ -115,7 +115,12 @@ export default function TileVideos({
   const columns = visible;
   const referencesBelow = planning && columns.length >= 3;
   const referencesBeside = planning && columns.length <= 2;
-  const columnCount = planning ? columns.length : Math.min(3, columns.length);
+  const squareRollout = !planning && columns.length === 9;
+  const columnCount = squareRollout
+    ? 3
+    : planning || columns.length < 4
+      ? columns.length
+      : Math.ceil(columns.length / 2);
   // Keep Openloop tiles at the size of a four-slot row when methods are toggled.
   const minSlots = 4; // raise for smaller tiles, lower for bigger ones
   const tracks = planning
@@ -474,6 +479,7 @@ export default function TileVideos({
               data-references-below={referencesBelow || undefined}
               data-references-beside={referencesBeside || undefined}
               data-gt={hasGT || undefined}
+              data-square-rollout={squareRollout || undefined}
             >
               <div
                 className="tile-columns"
