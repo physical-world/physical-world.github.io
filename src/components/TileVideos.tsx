@@ -18,9 +18,10 @@ const methodList = [
   { id: "context", label: "DINO-WM\n+ PhysiCal (Ours)" },
   { id: "long_history", label: "DINO-WM\n+ Long History" },
   { id: "prefix_context", label: "DINO-WM\n+ Context Prefix" },
+  { id: "estimated_physics", label: "DINO-WM\n+ Estimated Physics" },
+  { id: "oracle", label: "DINO-WM\n+ Privileged Physics" },
   { id: "lewm", label: "LeWM" },
   { id: "lewm_context", label: "LeWM\n+ PhysiCal (Ours)" },
-  { id: "oracle", label: "DINO-WM\n+ Privileged Physics" },
   { id: "ts", label: "TS-WM" },
 ];
 // `label` is the one-line name (video headings); `listLabel` keeps the "\n" breaks.
@@ -105,16 +106,17 @@ export default function TileVideos({
     : available.filter((m) =>
         (group === "le" ? ["lewm", "lewm_context"] : defaults).includes(m.id),
       );
+  const methodsPerRow =
+    available.length <= 3 ? available.length : Math.ceil(available.length / 2);
+  const methodRows = [
+    available.slice(0, methodsPerRow),
+    available.slice(methodsPerRow),
+  ].filter((row) => row.length);
   const columns = visible;
   const referencesBelow = planning && columns.length >= 3;
   const referencesBeside = planning && columns.length <= 2;
-  const columnCount =
-    planning || columns.length < 4
-      ? columns.length
-      : Math.ceil(columns.length / 2);
-  // Tiles are sized as if a row held at least 4 tiles (methods + GT or
-  // Start/Goal), so toggling methods doesn't resize them; rows that need
-  // more tiles (e.g. 4 methods + GT) shrink to that column count instead.
+  const columnCount = planning ? columns.length : Math.min(3, columns.length);
+  // Keep Openloop tiles at the size of a four-slot row when methods are toggled.
   const minSlots = 4; // raise for smaller tiles, lower for bigger ones
   const tracks = planning
     ? columns.length + (referencesBeside ? 1 : 0)
@@ -390,46 +392,36 @@ export default function TileVideos({
         </div>
       )}
       <div className="tile-workspace">
-        <fieldset
-          className="tile-method-list"
-          style={
-            {
-              // up to 3 methods: one line; more: two rows
-              "--list-columns":
-                available.length <= 3
-                  ? available.length
-                  : Math.ceil(available.length / 2),
-            } as CSSProperties
-          }
-        >
+        <fieldset className="tile-method-list">
           <legend>Methods</legend>
-          {available.map((m) => (
-            <label key={m.id}>
-              <input
-                type="checkbox"
-                checked={visible.some((v) => v.id === m.id)}
-                disabled={visible.length === 1 && visible[0].id === m.id}
-                onChange={() => toggleMethod(m.id)}
-              />
-              <span>
-                {m.listLabel.split("\n").map((line, i) => (
-                  <span key={i}>
-                    {i > 0 && <br />}
-                    <BrandName text={line} />
+          {methodRows.map((row) => (
+            <div className="tile-method-row" key={row[0].id}>
+              {row.map((m) => (
+                <label key={m.id}>
+                  <input
+                    type="checkbox"
+                    checked={visible.some((v) => v.id === m.id)}
+                    disabled={visible.length === 1 && visible[0].id === m.id}
+                    onChange={() => toggleMethod(m.id)}
+                  />
+                  <span>
+                    {m.listLabel.split("\n").map((line, i) => (
+                      <span key={line}>
+                        {i > 0 && <br />}
+                        <BrandName text={line} />
+                      </span>
+                    ))}
                   </span>
-                ))}
-              </span>
-            </label>
+                </label>
+              ))}
+            </div>
           ))}
         </fieldset>
         <div className="tile-comparison">
           {planning ? (
             // Planning: Start → Goal on top, then one row per method
             // (name | WM rollout | executed trajectory).
-            <div
-              className="tile-plan"
-              data-rows={columns.length}
-            >
+            <div className="tile-plan" data-rows={columns.length}>
               <div className="tile-plan-label tile-plan-task">
                 Planning task
               </div>

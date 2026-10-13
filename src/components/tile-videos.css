@@ -89,8 +89,7 @@
 .tile-comparison {
   min-width: 0;
 }
-/* Methods checklist: centered above the videos, in two rows
-   (--list-columns = half the methods, set in TileVideos.tsx). */
+/* Center each checklist row independently: Openloop 5/4, DINO Planning 4/3. */
 .tile-method-list {
   min-width: 0;
   margin: 0;
@@ -98,9 +97,13 @@
   border: 0;
   border-bottom: 1px solid #d2d2d2; /* divider between list and videos */
   display: grid;
-  grid-template-columns: repeat(var(--list-columns), auto);
   justify-content: center; /* center the list; use start to left-align */
-  gap: 8px 24px; /* row gap, column gap */
+  gap: 8px;
+}
+.tile-method-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
 }
 .tile-method-list legend {
   font-size: 18px; /* "Methods" heading size; body text is 16px */
@@ -129,8 +132,10 @@
      (both set in TileVideos.tsx; --slots is at least minSlots = 4). */
   --tile-shrink: 10px; /* how much narrower each video is than its slot; raise for smaller videos, 0 = full slot */
   width: calc(
-    ((100% - (var(--slots) - 1) * var(--tile-gap)) / var(--slots) -
-      var(--tile-shrink)) *
+    (
+        (100% - (var(--slots) - 1) * var(--tile-gap)) / var(--slots) -
+          var(--tile-shrink)
+      ) *
       var(--tracks) + (var(--tracks) - 1) * var(--tile-gap)
   );
   margin-inline: auto; /* center the videos in the comparison area */
@@ -267,7 +272,11 @@
     grid-template-columns: minmax(0, 1fr);
   }
   .tile-method-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* narrow screens: 2 per row */
+    justify-content: stretch;
+  }
+  .tile-method-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px 12px;
   }
   .tile-gallery h5 {
@@ -494,7 +503,8 @@
   --plan-shrink: 50px; /* 4 method rows */
 }
 .tile-plan[data-rows="5"],
-.tile-plan[data-rows="6"] {
+.tile-plan[data-rows="6"],
+.tile-plan[data-rows="7"] {
   --plan-shrink: 80px; /* 5+ method rows: even smaller */
 }
 .tile-plan video {
@@ -563,6 +573,8 @@
     --plan-label: 110px;
     /* narrow screens: no right spacer, videos fill the rest of the row */
     --plan-tile: calc((100% - var(--plan-label) - 36px - 24px) / 2);
-    grid-template-columns: var(--plan-label) var(--plan-tile) 36px var(--plan-tile);
+    grid-template-columns: var(--plan-label) var(--plan-tile) 36px var(
+        --plan-tile
+      );
   }
 }

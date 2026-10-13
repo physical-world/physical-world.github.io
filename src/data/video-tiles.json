@@ -41,6 +41,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/pusht/001_episode670/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/001_episode670/mask/estimated_physics.mp4"
       }
     }
   },
@@ -86,6 +90,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/pusht/002_episode527/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/002_episode527/mask/estimated_physics.mp4"
       }
     }
   },
@@ -131,6 +139,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/pusht/003_episode248/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/pusht/003_episode248/mask/estimated_physics.mp4"
       }
     }
   },
@@ -176,6 +188,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/reacher/001_episode2841/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/001_episode2841/mask/estimated_physics.mp4"
       }
     }
   },
@@ -221,6 +237,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/reacher/002_episode2920/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/002_episode2920/mask/estimated_physics.mp4"
       }
     }
   },
@@ -266,6 +286,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/reacher/003_episode2927/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/reacher/003_episode2927/mask/estimated_physics.mp4"
       }
     }
   },
@@ -311,6 +335,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/beerpong/001_episode8673/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/001_episode8673/mask/estimated_physics.mp4"
       }
     }
   },
@@ -356,6 +384,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/beerpong/002_episode8474/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/002_episode8474/mask/estimated_physics.mp4"
       }
     }
   },
@@ -401,6 +433,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/beerpong/003_episode8513/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/beerpong/003_episode8513/mask/estimated_physics.mp4"
       }
     }
   },
@@ -446,6 +482,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/001_episode34240/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/001_episode34240/mask/estimated_physics.mp4"
       }
     }
   },
@@ -491,6 +531,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/002_episode34140/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/002_episode34140/mask/estimated_physics.mp4"
       }
     }
   },
@@ -536,6 +580,10 @@
       "gt": {
         "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/gt.mp4",
         "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/gt.mp4"
+      },
+      "estimated_physics": {
+        "rgb": "videos/single-tiles/openloop/fetch_slide/003_episode34107/rgb/estimated_physics.mp4",
+        "mask": "videos/single-tiles/openloop/fetch_slide/003_episode34107/mask/estimated_physics.mp4"
       }
     }
   },
@@ -601,6 +649,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -666,6 +722,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -731,6 +795,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -764,6 +836,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -797,6 +877,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -830,6 +918,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -895,6 +991,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -960,6 +1064,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1025,6 +1137,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1058,6 +1178,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1091,6 +1219,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1124,6 +1260,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1189,6 +1333,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/001_target030/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/001_target030/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1254,6 +1406,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/002_target035/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/002_target035/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1319,6 +1479,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/dino/003_target043/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/dino/003_target043/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1352,6 +1520,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/001_target056/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/001_target056/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1385,6 +1561,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/002_target050/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/002_target050/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1418,6 +1602,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/beerpong/le/003_target069/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/beerpong/le/003_target069/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1483,6 +1675,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/001_target021/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/001_target021/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1548,6 +1748,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/002_target015/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/002_target015/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1613,6 +1821,14 @@
       "context_exec": {
         "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/context_exec.mp4",
         "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/dino/003_target067/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/dino/003_target067/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1646,6 +1862,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/001_target010/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/001_target010/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1679,6 +1903,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/002_target059/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/002_target059/mask/estimated_physics_exec.mp4"
       }
     }
   },
@@ -1712,6 +1944,14 @@
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/lewm_context_exec.mp4",
         "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/lewm_context_exec.mp4"
+      },
+      "estimated_physics_wm": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/estimated_physics_wm.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/estimated_physics_wm.mp4"
+      },
+      "estimated_physics_exec": {
+        "rgb": "videos/single-tiles/planning/fetch_slide/le/003_target072/rgb/estimated_physics_exec.mp4",
+        "mask": "videos/single-tiles/planning/fetch_slide/le/003_target072/mask/estimated_physics_exec.mp4"
       }
     }
   }
