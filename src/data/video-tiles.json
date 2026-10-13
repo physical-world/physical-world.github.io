@@ -648,7 +648,9 @@
       },
       "context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/context_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/context_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/dino/001_target012/mask/context_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/pusht/dino/001_target012/rgb/estimated_physics_wm.mp4",
@@ -721,7 +723,9 @@
       },
       "context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/context_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/context_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/dino/002_target048/mask/context_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/pusht/dino/002_target048/rgb/estimated_physics_wm.mp4",
@@ -778,7 +782,9 @@
       },
       "prefix_context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/prefix_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/prefix_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/prefix_context_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "oracle_wm": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/oracle_wm.mp4",
@@ -786,7 +792,9 @@
       },
       "oracle_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/oracle_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/oracle_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/oracle_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "context_wm": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/context_wm.mp4",
@@ -794,7 +802,9 @@
       },
       "context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/context_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/context_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/context_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/estimated_physics_wm.mp4",
@@ -835,7 +845,9 @@
       },
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/lewm_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/lewm_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/le/001_target004/mask/lewm_context_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/pusht/le/001_target004/rgb/estimated_physics_wm.mp4",
@@ -876,7 +888,9 @@
       },
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/lewm_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/lewm_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/le/002_target017/mask/lewm_context_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/pusht/le/002_target017/rgb/estimated_physics_wm.mp4",
@@ -917,7 +931,9 @@
       },
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/lewm_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/lewm_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/le/003_target066/mask/lewm_context_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/pusht/le/003_target066/rgb/estimated_physics_wm.mp4",
@@ -966,7 +982,9 @@
       },
       "long_history_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/long_history_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/long_history_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/long_history_exec.mp4",
+        "successTime": 4.166666666666667,
+        "maskSuccessTime": 4.166666666666667
       },
       "prefix_context_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/prefix_context_wm.mp4",
@@ -974,7 +992,9 @@
       },
       "prefix_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/prefix_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/prefix_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/prefix_context_exec.mp4",
+        "successTime": 2.0833333333333335,
+        "maskSuccessTime": 2.0833333333333335
       },
       "oracle_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/oracle_wm.mp4",
@@ -982,7 +1002,9 @@
       },
       "oracle_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/oracle_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/oracle_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/oracle_exec.mp4",
+        "successTime": 2.0833333333333335,
+        "maskSuccessTime": 2.0833333333333335
       },
       "context_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/context_wm.mp4",
@@ -990,7 +1012,9 @@
       },
       "context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/context_exec.mp4",
+        "successTime": 2.0833333333333335,
+        "maskSuccessTime": 2.0833333333333335
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/estimated_physics_wm.mp4",
@@ -1039,7 +1063,9 @@
       },
       "long_history_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/long_history_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/long_history_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/long_history_exec.mp4",
+        "successTime": 6.25,
+        "maskSuccessTime": 6.25
       },
       "prefix_context_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/prefix_context_wm.mp4",
@@ -1047,7 +1073,9 @@
       },
       "prefix_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/prefix_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/prefix_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/prefix_context_exec.mp4",
+        "successTime": 6.25,
+        "maskSuccessTime": 6.25
       },
       "oracle_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/oracle_wm.mp4",
@@ -1055,7 +1083,9 @@
       },
       "oracle_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/oracle_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/oracle_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/oracle_exec.mp4",
+        "successTime": 4.166666666666667,
+        "maskSuccessTime": 4.166666666666667
       },
       "context_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/context_wm.mp4",
@@ -1063,7 +1093,9 @@
       },
       "context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/context_exec.mp4",
+        "successTime": 2.0833333333333335,
+        "maskSuccessTime": 2.0833333333333335
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/estimated_physics_wm.mp4",
@@ -1112,7 +1144,9 @@
       },
       "long_history_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/long_history_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/long_history_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/long_history_exec.mp4",
+        "successTime": 4.166666666666667,
+        "maskSuccessTime": 4.166666666666667
       },
       "prefix_context_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/prefix_context_wm.mp4",
@@ -1120,7 +1154,9 @@
       },
       "prefix_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/prefix_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/prefix_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/prefix_context_exec.mp4",
+        "successTime": 4.166666666666667,
+        "maskSuccessTime": 4.166666666666667
       },
       "oracle_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/oracle_wm.mp4",
@@ -1128,7 +1164,9 @@
       },
       "oracle_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/oracle_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/oracle_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/oracle_exec.mp4",
+        "successTime": 2.0833333333333335,
+        "maskSuccessTime": 2.0833333333333335
       },
       "context_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/context_wm.mp4",
@@ -1136,7 +1174,9 @@
       },
       "context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/context_exec.mp4",
+        "successTime": 2.0833333333333335,
+        "maskSuccessTime": 2.0833333333333335
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/estimated_physics_wm.mp4",
@@ -1177,7 +1217,9 @@
       },
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/lewm_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/lewm_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/le/001_target073/mask/lewm_context_exec.mp4",
+        "successTime": 2.0833333333333335,
+        "maskSuccessTime": 2.0833333333333335
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/reacher/le/001_target073/rgb/estimated_physics_wm.mp4",
@@ -1218,7 +1260,9 @@
       },
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/lewm_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/lewm_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/le/002_target031/mask/lewm_context_exec.mp4",
+        "successTime": 2.0833333333333335,
+        "maskSuccessTime": 2.0833333333333335
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/reacher/le/002_target031/rgb/estimated_physics_wm.mp4",
@@ -1259,7 +1303,9 @@
       },
       "lewm_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/lewm_context_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/lewm_context_exec.mp4"
+        "mask": "videos/single-tiles/planning/reacher/le/003_target008/mask/lewm_context_exec.mp4",
+        "successTime": 4.166666666666667,
+        "maskSuccessTime": 4.166666666666667
       },
       "estimated_physics_wm": {
         "rgb": "videos/single-tiles/planning/reacher/le/003_target008/rgb/estimated_physics_wm.mp4",

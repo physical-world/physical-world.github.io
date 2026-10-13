@@ -538,6 +538,22 @@
 .tile-plan-ref {
   margin: 0;
 }
+.tile-plan-execution {
+  position: relative;
+  min-width: 0;
+}
+.tile-success {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #2ca02c;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  -webkit-text-stroke: 4.3px white;
+  paint-order: stroke fill;
+  pointer-events: none;
+}
 .tile-plan-ref figcaption,
 .tile-plan-head {
   font-family: var(--font-noto-sans), Arial, sans-serif;

@@ -44,7 +44,13 @@ function choose(ids: string[]) {
   preference = ids;
   listeners.forEach((listener) => listener());
 }
-type Clip = { rgb?: string; mask?: string };
+// Success times use the first successful control frame and each export's fps.
+type Clip = {
+  rgb?: string;
+  mask?: string;
+  successTime?: number;
+  maskSuccessTime?: number;
+};
 type Case = {
   stage: string;
   environment: string;
@@ -317,6 +323,19 @@ export default function TileVideos({
     );
   }
 
+  function execution(method: string, label: string) {
+    const clip = current.files[`${method}_exec`];
+    const successTime = mask ? clip?.maskSuccessTime : clip?.successTime;
+    return (
+      <div className="tile-plan-execution">
+        {video(`${method}_exec`, label)}
+        {successTime !== undefined && time >= successTime && (
+          <span className="tile-success">SUCCESS</span>
+        )}
+      </div>
+    );
+  }
+
   return (
     <section
       ref={rootRef}
@@ -461,7 +480,7 @@ export default function TileVideos({
                   </div>
                   {video(`${m.id}_wm`, `${m.label}: prediction`)}
                   <div />
-                  {video(`${m.id}_exec`, `${m.label}: execution`)}
+                  {execution(m.id, `${m.label}: execution`)}
                 </Fragment>
               ))}
             </div>
