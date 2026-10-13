@@ -124,7 +124,7 @@
   accent-color: var(--brand, #0b7bc1);
 }
 .is-openloop .tile-method-list {
-  font-size: clamp(12px, 1.7cqw, 16px);
+  font-size: clamp(12px, 2.1cqw, 16px);
 }
 .is-openloop .tile-method-row {
   gap: clamp(8px, 1.5cqw, 16px);
