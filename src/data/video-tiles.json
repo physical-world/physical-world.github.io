@@ -993,8 +993,8 @@
       "prefix_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/prefix_context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/prefix_context_exec.mp4",
-        "successTime": 2.0833333333333335,
-        "maskSuccessTime": 2.0833333333333335
+        "successTime": 4.166666666666667,
+        "maskSuccessTime": 4.166666666666667
       },
       "oracle_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/oracle_wm.mp4",
@@ -1074,8 +1074,8 @@
       "prefix_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/prefix_context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/dino/002_target074/mask/prefix_context_exec.mp4",
-        "successTime": 6.25,
-        "maskSuccessTime": 6.25
+        "successTime": 4.166666666666667,
+        "maskSuccessTime": 4.166666666666667
       },
       "oracle_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/002_target074/rgb/oracle_wm.mp4",
@@ -1155,8 +1155,8 @@
       "prefix_context_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/prefix_context_exec.mp4",
         "mask": "videos/single-tiles/planning/reacher/dino/003_target024/mask/prefix_context_exec.mp4",
-        "successTime": 4.166666666666667,
-        "maskSuccessTime": 4.166666666666667
+        "successTime": 6.25,
+        "maskSuccessTime": 6.25
       },
       "oracle_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/003_target024/rgb/oracle_wm.mp4",
