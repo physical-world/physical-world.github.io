@@ -774,7 +774,9 @@
       },
       "long_history_exec": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/long_history_exec.mp4",
-        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/long_history_exec.mp4"
+        "mask": "videos/single-tiles/planning/pusht/dino/003_target003/mask/long_history_exec.mp4",
+        "successTime": 2.5,
+        "maskSuccessTime": 2.5
       },
       "prefix_context_wm": {
         "rgb": "videos/single-tiles/planning/pusht/dino/003_target003/rgb/prefix_context_wm.mp4",
@@ -982,9 +984,7 @@
       },
       "long_history_exec": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/long_history_exec.mp4",
-        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/long_history_exec.mp4",
-        "successTime": 4.166666666666667,
-        "maskSuccessTime": 4.166666666666667
+        "mask": "videos/single-tiles/planning/reacher/dino/001_target073/mask/long_history_exec.mp4"
       },
       "prefix_context_wm": {
         "rgb": "videos/single-tiles/planning/reacher/dino/001_target073/rgb/prefix_context_wm.mp4",
