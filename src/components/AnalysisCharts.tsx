@@ -36,7 +36,7 @@ function Choices({
     </div>
   );
 }
-// Paired identity colors from the paper's Figure 8 (Matplotlib tab10).
+// Paired identity colors from the paper's Figure 7 (Matplotlib tab10).
 const descriptorColors = [
   "#1f77b4",
   "#1f77b4",
@@ -224,12 +224,12 @@ const predictionMetrics = [
     decimals: 3,
   },
   {
-    key: "miou_percent",
+    key: "iou_percent",
     label: "IoU ↑",
     axis: "IoU (%) ↑",
-    min: 35,
-    max: 85,
-    ticks: [40, 50, 60, 70, 80],
+    min: 10,
+    max: 70,
+    ticks: [15, 30, 45, 60],
     decimals: 2,
   },
 ] as const;

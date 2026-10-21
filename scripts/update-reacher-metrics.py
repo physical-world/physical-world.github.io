@@ -1,4 +1,4 @@
-"""Append SSIM/LPIPS from saved IC3 episodes; --check verifies all four metrics."""
+"""Write SSIM/LPIPS/foreground IoU from saved IC3 episodes; --check verifies all four metrics."""
 
 import argparse
 import json
@@ -20,10 +20,11 @@ metrics = {
     "psnr_db": ("img_psnr_pred", 1),
     "ssim": ("img_ssim_pred", 1),
     "lpips": ("img_lpips_pred", 1),
-    "miou_percent": ("segm_miou_pred", 100),
+    "iou_percent": ("segm_iou_overall_pred", 100),
 }
 for method in data["methods"]:
     for point in method["points"]:
+        point.pop("miou_percent", None)
         b = next(b for b in data["bins"] if b["id"] == point["bin_id"])
         phase = "in_domain" if data["trainingRange"][0] <= b["lower"] and b["upper"] <= data["trainingRange"][1] else "extrapolation"
         source = args.source / phase / method["id"] / f"bin_{b['id']:02d}" / "0_result_rollout.json"
@@ -39,11 +40,11 @@ for method in data["methods"]:
             std = statistics.stdev(values)
             sem = std / math.sqrt(len(values))
             expected = dict(mean=mean, sample_std=std, sem=sem, lower=mean-sem, upper=mean+sem, n=len(values))
-            if args.check or key in ("psnr_db", "miou_percent"):
+            if args.check or key == "psnr_db":
                 for name, value in expected.items():
                     assert math.isclose(point[key][name], value, rel_tol=1e-10, abs_tol=1e-12), (source, key, name)
             else:
                 point[key] = expected
 if not args.check:
     path.write_text(json.dumps(data, indent=2) + "\n")
-print("Verified all 18 method/bin combinations against 75 source episodes each." if args.check else "Appended SSIM and LPIPS; existing PSNR and mIoU verified.")
+print("Verified all 18 method/bin combinations against 75 source episodes each." if args.check else "Wrote SSIM, LPIPS and foreground IoU; existing PSNR verified.")
