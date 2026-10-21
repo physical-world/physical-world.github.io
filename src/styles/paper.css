@@ -131,10 +131,12 @@ figcaption {
 .paper-hero {
   isolation: isolate;
   overflow: hidden;
-  /* Space above "PhysiCalWorld" (100px) and below the header (42px).
-     Phone value is in the @media (max-width: 600px) block further down; the
-     page also adds pt-16 on top (src/pages/index.astro). */
-  padding: 40px 0 42px;
+  /* padding: top right/left bottom.
+     40px = space above "PhysiCalWorld" (plus pt-16 = 64px from src/pages/index.astro).
+     --hero-pad-bottom (25px) = space below the PDF/arXiv/Code buttons (counted in the TL;DR gap).
+     Smaller screens override these further down: bottom 12px at <=1340px (via --hero-pad-bottom),
+     top 65px at <=600px. */
+  padding: 40px 0 var(--hero-pad-bottom); /* bottom value: --hero-pad-bottom in :root below */
   margin-bottom: 0;
 }
 .paper-hero::before,
@@ -269,30 +271,46 @@ a.hero-btn:hover {
    All figure captions: the `figcaption` rule near the top of this file. */
 :root {
   --teaser-width: 40rem; /* teaser figure + caption width; the TL;DR below uses it too */
+  --hero-pad-bottom: 25px; /* header bottom padding (below the PDF/arXiv/Code buttons) */
+  --tldr-gap: 32px; /* equal space above and below the TL;DR box; must be >= --hero-pad-bottom */
 }
 .paper-hero + figure,
-.paper-hero + .mobile-toc + figure {
+.paper-hero + .mobile-toc + figure,
+.paper-hero + .mobile-toc + .tldr + figure {
   max-width: var(--teaser-width); /* figure + caption width (set in :root above) */
   margin-inline: auto; /* keep it centered */
-  margin-top: 1px; /* gap below the header */
+  margin-top: 1px; /* gap below the header (counted in the TL;DR's bottom gap) */
   margin-bottom: 25px; /* gap above the Abstract */
   animation: paper-enter 1.9s 1.28s both;
 }
-/* TL;DR line under the teaser: always the same width as the teaser. */
+/* TL;DR line (now above the teaser): always the same width as the teaser. */
 .tldr {
   max-width: var(--teaser-width); /* same as the teaser; edit --teaser-width above */
-  margin-inline: auto; /* centered under the teaser */
+  margin-inline: auto; /* centered above the teaser */
+  /* Space above and below the box are both --tldr-gap (edit it in :root above).
+     Above = header bottom padding + this; below = this + the figure's 1px margin-top. */
+  margin-top: calc(var(--tldr-gap) - var(--hero-pad-bottom));
+  margin-bottom: calc(var(--tldr-gap) - 1px);
+  /* Box around the TL;DR. */
+  padding: 0.9em 1.3em; /* inner space: top/bottom left/right */
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent); /* outline; raise % for darker */
+  border-radius: 16px; /* corner roundness; 0 = square */
+  /* Soft brand-tinted fill fading to white; swap for `background: white;` for a plain box. */
+  background: linear-gradient(135deg, var(--brand-tint) 0%, white 70%);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--brand) 6%, transparent); /* soft lift; `none` to remove */
 }
 /* Teaser caption only (overrides the general `figcaption` rule). */
 .paper-hero + figure figcaption,
-.paper-hero + .mobile-toc + figure figcaption {
+.paper-hero + .mobile-toc + figure figcaption,
+.paper-hero + .mobile-toc + .tldr + figure figcaption {
   text-align: justify;
   margin-top: 9px; /* gap between the animation box and the caption; raise to push the caption down */
   margin-inline: 0; /* left/right indent of the caption; e.g. 1.5rem = narrower text, 0 = full box width */
   margin-bottom: 2px; /* gap below the caption (before the Abstract); raise for more space */
 }
 .paper-hero + figure .max-w-xl,
-.paper-hero + .mobile-toc + figure .max-w-xl {
+.paper-hero + .mobile-toc + figure .max-w-xl,
+.paper-hero + .mobile-toc + .tldr + figure .max-w-xl {
   max-width: 42rem;
   width: 100%;
 }
@@ -565,8 +583,8 @@ body.prose .chapter-nav a[aria-current] {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
-  .paper-hero {
-    padding-bottom: 12px;
+  :root {
+    --hero-pad-bottom: 12px; /* header bottom padding on screens <=1340px wide */
   }
   .mobile-toc summary {
     padding-block: 9px;

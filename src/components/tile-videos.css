@@ -97,13 +97,16 @@
   border: 0;
   border-bottom: 1px solid #d2d2d2; /* divider between list and videos */
   display: grid;
+  /* One shared column grid for all rows, so checkboxes line up vertically.
+     --method-list-columns = longest row (set in TileVideos.tsx). */
+  grid-template-columns: repeat(var(--method-list-columns, 5), auto);
   justify-content: center; /* center the list; use start to left-align */
-  gap: 8px;
+  justify-items: start; /* left-align each checkbox in its column */
+  row-gap: 8px; /* vertical space between the two rows */
+  column-gap: 24px; /* horizontal space between columns */
 }
 .tile-method-row {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
+  display: contents; /* rows don't box their items; items sit in the list's columns */
 }
 .tile-method-list legend {
   font-size: 18px; /* "Methods" heading size; body text is 16px */
@@ -126,8 +129,8 @@
 .is-openloop .tile-method-list {
   font-size: clamp(12px, 2.1cqw, 16px);
 }
-.is-openloop .tile-method-row {
-  gap: clamp(8px, 1.5cqw, 16px);
+.is-openloop .tile-method-list {
+  column-gap: clamp(8px, 1.5cqw, 16px); /* Openloop: tighter columns */
 }
 .is-openloop .tile-method-list label {
   flex-shrink: 0;
@@ -274,11 +277,6 @@
   text-align: center;
   margin-top: 5px;
 }
-@container (min-width:651px) {
-  .tile-layout[data-square-rollout] .tile-gt {
-    transform: translateX(12px);
-  }
-}
 @container (max-width:650px) {
   .tile-layout {
     width: auto; /* narrow screens: tiles fill the width again */
@@ -288,6 +286,7 @@
   }
   .tile-method-list {
     justify-content: stretch;
+    grid-template-columns: minmax(0, 1fr); /* narrow: rows stack, each wraps on its own */
   }
   .tile-method-row {
     display: grid;

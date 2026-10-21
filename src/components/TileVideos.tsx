@@ -112,21 +112,32 @@ export default function TileVideos({
     : available.filter((m) =>
         (group === "le" ? ["lewm", "lewm_context"] : defaults).includes(m.id),
       );
-  const methodsPerRow =
-    available.length <= 3 ? available.length : Math.ceil(available.length / 2);
-  const methodRows = [
-    available.slice(0, methodsPerRow),
-    available.slice(methodsPerRow),
-  ].filter((row) => row.length);
-  const columns = visible;
+  // Methods checklist rows (checklist only; video tile order follows methodList).
+  // Move an id between the arrays to change which row and position it appears in.
+  const methodRowIds = [
+    ["vanilla", "long_history", "prefix_context", "lewm", "ts"],
+    ["context", "estimated_physics", "oracle", "lewm_context"],
+  ];
+  const methodRows = methodRowIds
+    .map((ids) =>
+      ids.flatMap((id) => available.filter((m) => m.id === id)),
+    )
+    .filter((row) => row.length);
+  // Open-loop videos follow the Methods rows: selected row-1 methods on the
+  // first video row, selected row-2 methods on the second. With 3 or fewer
+  // selected they stay on one row (side by side), in Methods order.
+  const videoRows = methodRowIds
+    .map((ids) => ids.flatMap((id) => visible.filter((m) => m.id === id)))
+    .filter((row) => row.length);
+  const splitRows = !planning && visible.length > 3 && videoRows.length > 1;
+  const columns = planning ? visible : videoRows.flat();
+  // First video of the second row; it starts a new grid row.
+  const rowBreakId = splitRows ? videoRows[1][0].id : undefined;
   const referencesBelow = planning && columns.length >= 3;
   const referencesBeside = planning && columns.length <= 2;
-  const squareRollout = !planning && columns.length === 9;
-  const columnCount = squareRollout
-    ? 3
-    : planning || columns.length < 4
-      ? columns.length
-      : Math.ceil(columns.length / 2);
+  const columnCount = splitRows
+    ? Math.max(...videoRows.map((row) => row.length))
+    : columns.length;
   // Keep Openloop tiles at the size of a four-slot row when methods are toggled.
   const minSlots = 4; // raise for smaller tiles, lower for bigger ones
   const tracks = planning
@@ -140,7 +151,8 @@ export default function TileVideos({
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
   const [loadSources, setLoadSources] = useState(false);
-  const [ready, setReady] = useState(false);
+  // Hides "Loading comparison…"; starts true so it doesn't flash before the first check.
+  const [ready, setReady] = useState(true);
   const [failed, setFailed] = useState(false);
   const rate = environment === "beerpong" ? 0.75 : 1;
   const signature = `${group}:${index}:${mask}:${hasGT}:${visible.map((m) => m.id).join(",")}`;
@@ -207,9 +219,16 @@ export default function TileVideos({
     let frame = 0;
     let last = 0;
     let displayTime = 0;
+    let waitingSince = 0;
     const tick = (now: number) => {
       const loaded = videos.every((v) => v.readyState >= 2);
-      setReady(loaded);
+      // Videos briefly drop below readyState 2 on every seek (loop restart,
+      // slider, sync correction). Only show "Loading comparison…" after they
+      // have been waiting this long (ms); raise it if the message still flashes.
+      const loadingDelay = 700;
+      if (loaded) waitingSince = 0;
+      else if (!waitingSince) waitingSince = now;
+      setReady(loaded || now - waitingSince < loadingDelay);
       setFailed(videos.some((v) => Boolean(v.error)));
       const length = Math.max(
         0,
@@ -416,7 +435,16 @@ export default function TileVideos({
         </div>
       )}
       <div className="tile-workspace">
-        <fieldset className="tile-method-list">
+        <fieldset
+          className="tile-method-list"
+          style={
+            {
+              "--method-list-columns": Math.max(
+                ...methodRows.map((row) => row.length),
+              ),
+            } as CSSProperties
+          }
+        >
           <legend>Methods</legend>
           {methodRows.map((row) => (
             <div className="tile-method-row" key={row[0].id}>
@@ -498,14 +526,17 @@ export default function TileVideos({
               data-references-below={referencesBelow || undefined}
               data-references-beside={referencesBeside || undefined}
               data-gt={hasGT || undefined}
-              data-square-rollout={squareRollout || undefined}
             >
               <div
                 className="tile-columns"
                 style={{ "--method-columns": columnCount } as CSSProperties}
               >
                 {columns.map((m) => (
-                  <div className="tile-column" key={m.id}>
+                  <div
+                    className="tile-column"
+                    key={m.id}
+                    style={m.id === rowBreakId ? { gridColumnStart: 1 } : undefined}
+                  >
                     <h5>
                       {m.label.includes(" + ") ? (
                         <>
