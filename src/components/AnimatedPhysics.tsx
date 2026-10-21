@@ -15,7 +15,9 @@ const artwork = {
 
 export default function AnimatedPhysics({ kind }: { kind: Kind }) {
   const figure = artwork[kind];
-  const [started, setStarted] = useState(false);
+  // Teaser is above the fold: start in the server-rendered HTML so it animates on first paint,
+  // instead of staying invisible until this island's JS (incl. ~850KB of inlined SVG) hydrates.
+  const [started, setStarted] = useState(kind === "teaser");
   const [replay, setReplay] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -31,6 +33,7 @@ export default function AnimatedPhysics({ kind }: { kind: Kind }) {
         );
     });
     resize.observe(container);
+    if (kind === "teaser") return () => resize.disconnect(); // already started; no scroll trigger needed
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -45,7 +48,7 @@ export default function AnimatedPhysics({ kind }: { kind: Kind }) {
       resize.disconnect();
       observer.disconnect();
     };
-  }, [figure.viewBox]);
+  }, [figure.viewBox, kind]);
   return (
     <div
       ref={rootRef}

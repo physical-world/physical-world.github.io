@@ -35,6 +35,8 @@
   transform: translateY(var(--ppt-rise, 300px));
 }
 .has-entered .ppt-module {
+  /* 0.65s = fade-in length per panel (smaller = snappier). Per-panel stagger is
+     --module-delay inside the SVG (teaser: 0–1080ms in 180ms steps). */
   animation: physics-module-in 0.65s cubic-bezier(0.22, 1, 0.36, 1)
     var(--module-delay) both;
 }
