@@ -18,3 +18,7 @@ The template has been modified for this anonymous research project, including pa
 ## Implementation reference
 
 The carousel component cites Cassidy Smith's [Astro slot-children article](https://cassidysmith.dev/posts/modify-astro-slot-children) as an implementation reference.
+
+## Fonts
+
+The cosine-similarity heatmap uses a subset of DejaVu Serif Bold, taken from Matplotlib 3.5.3 to match the paper figure. Its license is in `src/assets/fonts/LICENSE-DejaVu.txt`.

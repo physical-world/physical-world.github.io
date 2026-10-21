@@ -1,3 +1,11 @@
+/* Heatmap numbers and P labels use the paper figure's font (Matplotlib 3.5.3 DejaVu Serif Bold), subset to "0-9 . - − P". */
+@font-face {
+  font-family: "DejaVu Serif Heatmap";
+  src: url("../assets/fonts/dejavu-serif-bold-heatmap.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+002D-002E, U+0030-0039, U+0050, U+2212;
+}
 .analysis-card {
   --chart-surface: #fff;
   --chart-shade: #eef1f4;
@@ -141,6 +149,8 @@
   display: grid;
   grid-template-columns: 24px repeat(8, minmax(0, 1fr));
   gap: 2px;
+  container-type: inline-size;
+  font-family: "DejaVu Serif Heatmap", "DejaVu Serif", Georgia, serif;
 }
 .heat-row {
   display: contents;
@@ -156,7 +166,10 @@
   aspect-ratio: 1;
   border: 0;
   padding: 0;
-  font-size: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  /* About 0.3 of the cell width, the paper's 12.5 pt text in a 41 pt cell. */
+  font-size: max(9px, calc(3.75cqi - 1.5px));
   cursor: pointer;
   font-variant-numeric: tabular-nums;
 }
@@ -301,9 +314,6 @@
   .descriptor-layout svg {
     max-width: 290px;
     margin: auto;
-  }
-  .heatmap button {
-    font-size: 13px;
   }
   .ood-readout {
     gap: 6px;

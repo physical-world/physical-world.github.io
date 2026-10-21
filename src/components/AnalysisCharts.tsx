@@ -165,7 +165,9 @@ export function Descriptor() {
                       v >= 0
                         ? `hsl(7 65% ${96 - v * 62}%)`
                         : `hsl(207 60% ${96 + v * 60}%)`,
-                    color: Math.abs(v) > 0.55 ? "white" : "#17212b",
+                    // Same rule as the paper figure: white text when |value| at 2 decimals exceeds 0.6.
+                    color:
+                      Math.abs(Number(v.toFixed(2))) > 0.6 ? "white" : "#17212b",
                   }}
                   aria-label={`${points[i].id} and ${points[j].id}: ${v.toFixed(4)}`}
                   aria-pressed={pair[0] === i && pair[1] === j}
