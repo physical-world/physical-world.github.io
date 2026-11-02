@@ -40,6 +40,12 @@
   justify-content: space-between;
   margin-bottom: 16px;
 }
+/* Extrapolation: its longer title keeps the switches on the title's line by
+   scaling the toolbar text with the gallery width (16px when there's room). */
+.is-extrapolation .tile-toolbar {
+  font-size: clamp(12px, calc((100cqw - 165px) / 40.4), 16px); /* ~158px of the row (gaps, checkboxes) doesn't scale */
+  white-space: nowrap;
+}
 .tile-switches label {
   display: flex;
   align-items: center;

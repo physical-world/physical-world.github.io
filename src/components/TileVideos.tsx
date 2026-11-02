@@ -133,9 +133,11 @@ export default function TileVideos({
     ["vanilla", "long_history", "prefix_context", "lewm", "ts"],
     ["context", "estimated_physics", "oracle", "lewm_context"],
   ];
-  // LeWM planning tab: one row, so LeWM and LeWM + PhysiCal sit side by side (not stacked).
+  // LeWM planning tab and extrapolation: one row, so their few methods sit side by side (not stacked).
   const listRowIds =
-    planning && group === "le" ? [methodRowIds.flat()] : methodRowIds;
+    (planning && group === "le") || extrapolation
+      ? [methodRowIds.flat()]
+      : methodRowIds;
   const methodRows = listRowIds
     .map((ids) =>
       ids.flatMap((id) => available.filter((m) => m.id === id)),
@@ -376,7 +378,7 @@ export default function TileVideos({
   return (
     <section
       ref={rootRef}
-      className={`tile-gallery ${planning ? "is-planning" : "is-openloop"}`}
+      className={`tile-gallery ${planning ? "is-planning" : "is-openloop"}${extrapolation ? " is-extrapolation" : ""}`}
       aria-label={`${labels[environment]} ${planning ? "visual planning" : extrapolation ? "extrapolation open-loop rollout" : "open-loop rollout"}`}
     >
       <div className="tile-toolbar">
@@ -636,7 +638,7 @@ export default function TileVideos({
           </button>
           {current.damping !== undefined && (
             <span className="tile-damping">
-              shoulder damping {current.damping} (training range 0.005–0.02)
+              shoulder damping {current.damping}
             </span>
           )}
         </div>

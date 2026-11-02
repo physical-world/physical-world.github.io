@@ -22,7 +22,6 @@ date: 2026-10-12
 import { Descriptor, Generalization, InferenceSpeed } from "./components/AnalysisCharts";
 
 import ResultVideos from "./components/ResultVideos.astro";
-import TileVideos from "./components/TileVideos";
 import BenchmarkComparison from "./components/BenchmarkComparison.astro";
 import Header from "./components/Header.astro";
 import BrandName from "./components/BrandName";
@@ -208,4 +207,4 @@ We investigate whether <BrandName />  can extrapolate to environments where phys
 
 The open-loop rollouts below use Reacher examples whose shoulder damping lies outside the training range.
 
-<TileVideos environment="reacher" stage="extrapolation" client:visible />
+<ResultVideos environment="reacher" extrapolation />

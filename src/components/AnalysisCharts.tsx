@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type PointerEvent as ReactPointerEvent } from "react";
 import data from "../data/analysis.json";
 import "./analysis-charts.css";
 import BrandName from "./BrandName";
@@ -331,6 +331,24 @@ export function Generalization() {
     predictionMetrics[metric];
   const x = (v: number) => 62 + (v / 0.03) * 610;
   const y = (v: number) => 300 - ((v - min) / (max - min)) * 240;
+  const nearestBin = (value: number) =>
+    data.bins.reduce(
+      (best, b, i) =>
+        Math.abs(b.center - value) < Math.abs(data.bins[best].center - value)
+          ? i
+          : best,
+      0,
+    );
+  // Hovering anywhere over the chart picks the bin closest to the pointer's
+  // damping (x position only; the height of the pointer doesn't matter).
+  const hoverBin = (event: ReactPointerEvent<SVGSVGElement>) => {
+    const ctm = event.currentTarget.getScreenCTM();
+    if (!ctm) return;
+    const vx = new DOMPoint(event.clientX, event.clientY).matrixTransform(
+      ctm.inverse(),
+    ).x;
+    setBin(nearestBin(((vx - 62) / 610) * 0.03));
+  };
   // descriptor-card class = shared block width (max-width: 720px), set in analysis-charts.css:130
   return (
     <div className="analysis-card descriptor-card not-prose">
@@ -361,6 +379,8 @@ export function Generalization() {
         className="ood-chart"
         viewBox="0 0 700 355"
         role="img"
+        onPointerMove={hoverBin}
+        onPointerDown={hoverBin}
         aria-label={`Reacher ${label} versus shoulder damping, mean plus or minus SEM. Select a damping bin below for exact values.`}
       >
         <rect
@@ -435,18 +455,7 @@ export function Generalization() {
                 strokeWidth="3"
               />
               {ps.map((p, i) => (
-                <g
-                  key={p.center}
-                  onMouseEnter={() => setBin(i)}
-                  onClick={() => setBin(i)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <circle
-                    cx={x(p.center)}
-                    cy={y(p.mean)}
-                    r="14"
-                    fill="transparent"
-                  />
+                <g key={p.center}>
                   {m.id === "oracle" ? (
                     <rect
                       x={x(p.center) - 5}
@@ -490,14 +499,7 @@ export function Generalization() {
             aria-valuetext={data.bins[bin].center.toFixed(4)}
             onChange={(event) => {
               const value = Number(event.target.value);
-              const nearest = data.bins.reduce(
-                (best, b, i) =>
-                  Math.abs(b.center - value) <
-                  Math.abs(data.bins[best].center - value)
-                    ? i
-                    : best,
-                0,
-              );
+              const nearest = nearestBin(value);
               setBin(nearest);
               event.target.value = String(data.bins[nearest].center);
             }}

@@ -4,18 +4,30 @@ import TileVideos from "./TileVideos";
 
 interface Props {
   environment: string;
+  // Extrapolation: only the open-loop view, so the switch is a single, decorative pill.
+  extrapolation?: boolean;
 }
 
-const { environment } = Astro.props;
-const views = [
-  { stage: "openloop", label: "Open-Loop Rollout Videos", icon: "ri:film-line" },
-  { stage: "planning", label: "Visual Planning Videos", icon: "ri:route-line" },
-] as const;
+const { environment, extrapolation = false } = Astro.props;
+const views = extrapolation
+  ? ([
+      { stage: "extrapolation", label: "Open-Loop Rollout Videos", icon: "ri:film-line" },
+    ] as const)
+  : ([
+      { stage: "openloop", label: "Open-Loop Rollout Videos", icon: "ri:film-line" },
+      { stage: "planning", label: "Visual Planning Videos", icon: "ri:route-line" },
+    ] as const);
+const switchable = views.length > 1;
 ---
 
 <div class="result-videos" data-result-videos>
   <div class="result-switch-wrap not-prose">
-    <div class="result-switch" role="tablist" aria-label="Choose video type">
+    <div
+      class="result-switch"
+      role="tablist"
+      aria-label="Choose video type"
+      data-static={switchable ? undefined : ""}
+    >
       {
         views.map((view, i) => (
           <button
@@ -33,7 +45,7 @@ const views = [
         ))
       }
     </div>
-    <span class="result-switch-hint">Click to switch views</span>
+    {switchable && <span class="result-switch-hint">Click to switch views</span>}
   </div>
   {
     views.map((view, i) => (
@@ -100,6 +112,10 @@ const views = [
   }
   .result-switch button:active {
     transform: scale(0.97);
+  }
+  /* Single view (extrapolation): nothing to switch to, so no hover/click feedback. */
+  .result-switch[data-static] button {
+    pointer-events: none;
   }
   .result-switch button:focus-visible {
     outline: 2px solid var(--brand);

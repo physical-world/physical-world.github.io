@@ -2031,32 +2031,6 @@
     "stage": "extrapolation",
     "environment": "reacher",
     "group": "all",
-    "order": 2,
-    "damping": 0.0237,
-    "context": "videos/extrapolation/reacher/reacher-extrapolation-002-context.png",
-    "files": {
-      "vanilla": {
-        "rgb": "videos/single-tiles/extrapolation/reacher/002_episode302/rgb/vanilla.mp4",
-        "mask": "videos/single-tiles/extrapolation/reacher/002_episode302/mask/vanilla.mp4"
-      },
-      "oracle": {
-        "rgb": "videos/single-tiles/extrapolation/reacher/002_episode302/rgb/oracle.mp4",
-        "mask": "videos/single-tiles/extrapolation/reacher/002_episode302/mask/oracle.mp4"
-      },
-      "context": {
-        "rgb": "videos/single-tiles/extrapolation/reacher/002_episode302/rgb/context.mp4",
-        "mask": "videos/single-tiles/extrapolation/reacher/002_episode302/mask/context.mp4"
-      },
-      "gt": {
-        "rgb": "videos/single-tiles/extrapolation/reacher/002_episode302/rgb/gt.mp4",
-        "mask": "videos/single-tiles/extrapolation/reacher/002_episode302/mask/gt.mp4"
-      }
-    }
-  },
-  {
-    "stage": "extrapolation",
-    "environment": "reacher",
-    "group": "all",
     "order": 3,
     "damping": 0.0284,
     "context": "videos/extrapolation/reacher/reacher-extrapolation-003-context.png",
@@ -2076,32 +2050,6 @@
       "gt": {
         "rgb": "videos/single-tiles/extrapolation/reacher/003_episode379/rgb/gt.mp4",
         "mask": "videos/single-tiles/extrapolation/reacher/003_episode379/mask/gt.mp4"
-      }
-    }
-  },
-  {
-    "stage": "extrapolation",
-    "environment": "reacher",
-    "group": "all",
-    "order": 4,
-    "damping": 0.0284,
-    "context": "videos/extrapolation/reacher/reacher-extrapolation-004-context.png",
-    "files": {
-      "vanilla": {
-        "rgb": "videos/single-tiles/extrapolation/reacher/004_episode378/rgb/vanilla.mp4",
-        "mask": "videos/single-tiles/extrapolation/reacher/004_episode378/mask/vanilla.mp4"
-      },
-      "oracle": {
-        "rgb": "videos/single-tiles/extrapolation/reacher/004_episode378/rgb/oracle.mp4",
-        "mask": "videos/single-tiles/extrapolation/reacher/004_episode378/mask/oracle.mp4"
-      },
-      "context": {
-        "rgb": "videos/single-tiles/extrapolation/reacher/004_episode378/rgb/context.mp4",
-        "mask": "videos/single-tiles/extrapolation/reacher/004_episode378/mask/context.mp4"
-      },
-      "gt": {
-        "rgb": "videos/single-tiles/extrapolation/reacher/004_episode378/rgb/gt.mp4",
-        "mask": "videos/single-tiles/extrapolation/reacher/004_episode378/mask/gt.mp4"
       }
     }
   }
