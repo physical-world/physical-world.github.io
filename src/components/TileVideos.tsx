@@ -75,7 +75,7 @@ const labels: Record<string, string> = {
 // color chip in "Show GT mask (■)".
 const maskColors: Record<string, string> = {
   pusht: "rgb(203 100 107)", // coral red
-  reacher: "rgb(168 88 102)", // muted red: mask over the blue floor, not over the yellow arm (that blend looks orange)
+  reacher: "rgb(245 105 69)", // orange-red: mask over the yellow arm, sampled from the GT mask videos
   beerpong: "rgb(122 170 82)", // light green
   fetchslide: "rgb(122 170 82)", // light green
 };
