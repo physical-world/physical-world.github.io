@@ -427,7 +427,7 @@ export function Generalization() {
             key={v}
             x1={x(v)}
             x2={x(v)}
-            y1="45"
+            y1="21"
             y2="300"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -435,46 +435,44 @@ export function Generalization() {
             opacity=".45"
           />
         ))}
-        {/* Region pills above the plot, each centered on its region; widths also fit the 18px mobile text. */}
+        {/* Header strip glued to the plot top: one cell per region, OOD hatched,
+            training range tinted, label centered in its cell. */}
         {[
-          { label: "OOD", center: trainLow / 2, width: 56, ood: true },
-          {
-            label: "Training range",
-            center: (trainLow + trainHigh) / 2,
-            width: 144,
-            ood: false,
-          },
-          { label: "OOD", center: (trainHigh + 0.03) / 2, width: 56, ood: true },
+          { label: "OOD", from: 0, to: trainLow, ood: true },
+          { label: "Training range", from: trainLow, to: trainHigh, ood: false },
+          { label: "OOD", from: trainHigh, to: 0.03, ood: true },
         ].map((r) => (
-          <g
-            key={r.center}
-            className={r.ood ? "ood-pill" : "train-pill"}
-          >
-            <rect
-              x={x(r.center) - r.width / 2}
-              y="21"
-              width={r.width}
-              height="21"
-              rx="10.5"
-            />
+          <g key={r.from} className={r.ood ? "ood-cell" : "train-cell"}>
+            <rect x={x(r.from)} y="21" width={x(r.to) - x(r.from)} height="24" />
+            {r.ood && (
+              <rect
+                x={x(r.from)}
+                y="21"
+                width={x(r.to) - x(r.from)}
+                height="24"
+                fill="url(#ood-hatch)"
+              />
+            )}
             <text
-              x={x(r.center)}
-              y="36"
+              x={x((r.from + r.to) / 2)}
+              y="33"
               textAnchor="middle"
-              fontSize="14"
+              dominantBaseline="central"
+              fontSize="13"
               fontWeight="700"
             >
               {r.label}
             </text>
           </g>
         ))}
-        {/* Y-axis title on the region pills' row, its arrow flush with the plot's left edge
+        {/* Y-axis title on the header strip's row, ending just left of the plot
             (may run a little into the card padding: the SVG has overflow="visible"). */}
         <text
           className="y-axis-title"
-          x="62"
-          y="36"
+          x="56"
+          y="33"
           textAnchor="end"
+          dominantBaseline="central"
           fontSize="14"
         >
           {axis}

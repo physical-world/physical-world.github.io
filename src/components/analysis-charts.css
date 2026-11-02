@@ -38,6 +38,8 @@
 }
 .damping-label {
   display: flex;
+  flex-wrap: wrap; /* narrow screens: badge + value drop below "Shoulder damping" */
+  gap: 4px 12px;
   justify-content: space-between;
   margin-bottom: 12px;
   font-size: 14px;
@@ -52,6 +54,7 @@
 }
 /* "OOD" / "In training range" badge next to the selected damping. */
 .range-badge {
+  white-space: nowrap;
   padding: 1px 8px;
   border-radius: 999px;
   font-size: 12px;
@@ -69,17 +72,18 @@
   border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
   color: var(--ink, #334155);
 }
-/* Extrapolation chart region pills (OOD | Training range | OOD). */
-.ood-chart .train-pill rect {
-  fill: color-mix(in srgb, var(--brand, #0b7bc1) 14%, transparent);
+/* Extrapolation chart header strip (OOD | Training range | OOD). */
+.ood-chart .train-cell rect {
+  fill: color-mix(in srgb, var(--brand, #0b7bc1) 18%, transparent);
 }
-.ood-chart .train-pill text {
+.ood-chart .train-cell text {
   fill: var(--brand, #0b7bc1);
 }
-.ood-chart .ood-pill rect {
-  fill: var(--chart-surface);
-  stroke: currentColor;
-  stroke-opacity: 0.35;
+.ood-chart .ood-cell rect:first-child {
+  fill: color-mix(in srgb, currentColor 7%, transparent);
+}
+.ood-chart .ood-cell text {
+  fill: var(--subtle, #5f6b7a);
 }
 .damping-control input {
   /* Training range on the track; --train-start/--train-end (0–1) are set in AnalysisCharts.tsx. */
@@ -434,7 +438,7 @@
   .ood-chart text {
     font-size: 18px;
   }
-  /* No room next to the left OOD pill at 18px; the metric tab already names the axis. */
+  /* No room left of the header strip at 18px; the metric tab already names the axis. */
   .ood-chart .y-axis-title {
     display: none;
   }
