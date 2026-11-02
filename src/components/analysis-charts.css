@@ -9,6 +9,7 @@
 .analysis-card {
   --chart-surface: #fff;
   --chart-shade: #eef1f4;
+  --chart-train: color-mix(in srgb, var(--brand, #0b7bc1) 9%, transparent); /* Extrapolation: training-range fill */
   --chart-block: #d8e2e9;
   --chart-dot: #5c6e7f;
   background: var(--chart-surface);
@@ -43,10 +44,47 @@
   color: var(--subtle, #5f6b7a);
 }
 .damping-label strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--brand, #0b7bc1);
   font-variant-numeric: tabular-nums;
 }
+/* "OOD" / "In training range" badge next to the selected damping. */
+.range-badge {
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--brand, #0b7bc1) 12%, transparent);
+  color: var(--brand, #0b7bc1);
+}
+.range-badge[data-ood="true"] {
+  /* hatched like the chart's OOD regions */
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, currentColor 14%, transparent) 0 2px,
+    transparent 2px 6px
+  );
+  border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  color: var(--ink, #334155);
+}
+/* Extrapolation chart region pills (OOD | Training range | OOD). */
+.ood-chart .train-pill rect {
+  fill: color-mix(in srgb, var(--brand, #0b7bc1) 14%, transparent);
+}
+.ood-chart .train-pill text {
+  fill: var(--brand, #0b7bc1);
+}
+.ood-chart .ood-pill rect {
+  fill: var(--chart-surface);
+  stroke: currentColor;
+  stroke-opacity: 0.35;
+}
 .damping-control input {
+  /* Training range on the track; --train-start/--train-end (0–1) are set in AnalysisCharts.tsx. */
+  --train-from: calc(8px + (100% - 16px) * var(--train-start, 0));
+  --train-to: calc(8px + (100% - 16px) * var(--train-end, 1));
   appearance: none;
   width: calc(100% + 16px);
   height: 24px;
@@ -56,24 +94,40 @@
 }
 .damping-control input::-webkit-slider-runnable-track {
   height: 4px;
-  background: linear-gradient(
-    to right,
-    transparent 8px,
-    var(--edge, #dde7f0) 8px,
-    var(--edge, #dde7f0) calc(100% - 8px),
-    transparent calc(100% - 8px)
-  );
+  background:
+    linear-gradient(
+      to right,
+      transparent var(--train-from),
+      color-mix(in srgb, var(--brand, #0b7bc1) 45%, transparent) var(--train-from),
+      color-mix(in srgb, var(--brand, #0b7bc1) 45%, transparent) var(--train-to),
+      transparent var(--train-to)
+    ),
+    linear-gradient(
+      to right,
+      transparent 8px,
+      var(--edge, #dde7f0) 8px,
+      var(--edge, #dde7f0) calc(100% - 8px),
+      transparent calc(100% - 8px)
+    );
   border-radius: 4px;
 }
 .damping-control input::-moz-range-track {
   height: 4px;
-  background: linear-gradient(
-    to right,
-    transparent 8px,
-    var(--edge, #dde7f0) 8px,
-    var(--edge, #dde7f0) calc(100% - 8px),
-    transparent calc(100% - 8px)
-  );
+  background:
+    linear-gradient(
+      to right,
+      transparent var(--train-from),
+      color-mix(in srgb, var(--brand, #0b7bc1) 45%, transparent) var(--train-from),
+      color-mix(in srgb, var(--brand, #0b7bc1) 45%, transparent) var(--train-to),
+      transparent var(--train-to)
+    ),
+    linear-gradient(
+      to right,
+      transparent 8px,
+      var(--edge, #dde7f0) 8px,
+      var(--edge, #dde7f0) calc(100% - 8px),
+      transparent calc(100% - 8px)
+    );
   border-radius: 4px;
 }
 .damping-control input::-webkit-slider-thumb {
@@ -110,6 +164,10 @@
 .damping-ticks span {
   position: absolute;
   transform: translateX(-50%);
+}
+.damping-ticks span[data-ood="true"] {
+  font-style: italic;
+  opacity: 0.75;
 }
 .damping-ticks span[data-active="true"] {
   color: var(--brand, #0b7bc1);
@@ -375,6 +433,10 @@
 @media (max-width: 600px) {
   .ood-chart text {
     font-size: 18px;
+  }
+  /* No room next to the left OOD pill at 18px; the metric tab already names the axis. */
+  .ood-chart .y-axis-title {
+    display: none;
   }
   .ood-readout {
     grid-template-columns: 1fr;

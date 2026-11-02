@@ -1,4 +1,8 @@
-import { useState, type PointerEvent as ReactPointerEvent } from "react";
+import {
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import data from "../data/analysis.json";
 import "./analysis-charts.css";
 import BrandName from "./BrandName";
@@ -331,6 +335,8 @@ export function Generalization() {
     predictionMetrics[metric];
   const x = (v: number) => 62 + (v / 0.03) * 610;
   const y = (v: number) => 300 - ((v - min) / (max - min)) * 240;
+  const [trainLow, trainHigh] = data.trainingRange;
+  const ood = (v: number) => v < trainLow || v > trainHigh;
   const nearestBin = (value: number) =>
     data.bins.reduce(
       (best, b, i) =>
@@ -378,25 +384,99 @@ export function Generalization() {
         key={metric}
         className="ood-chart"
         viewBox="0 0 700 355"
+        overflow="visible"
         role="img"
         onPointerMove={hoverBin}
         onPointerDown={hoverBin}
         aria-label={`Reacher ${label} versus shoulder damping, mean plus or minus SEM. Select a damping bin below for exact values.`}
       >
+        {/* Training range: light brand tint; OOD on both sides: hatched. */}
+        <defs>
+          <pattern
+            id="ood-hatch"
+            width="8"
+            height="8"
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(45)"
+          >
+            <line y2="8" stroke="currentColor" strokeWidth="2" opacity=".13" />
+          </pattern>
+        </defs>
         <rect
-          x={x(data.trainingRange[0])}
+          x={x(trainLow)}
           y="45"
-          width={x(data.trainingRange[1]) - x(data.trainingRange[0])}
+          width={x(trainHigh) - x(trainLow)}
           height="255"
-          fill="var(--chart-shade)"
+          fill="var(--chart-train)"
         />
-        <text x={x(0.0125)} y="36" textAnchor="middle" fontSize="14">
-          Training range
-        </text>
-        <text x={x(0.025)} y="36" textAnchor="middle" fontSize="14">
-          OOD
-        </text>
-        <text x="62" y="17" fontSize="15">
+        {[
+          [0, trainLow],
+          [trainHigh, 0.03],
+        ].map(([a, b]) => (
+          <rect
+            key={a}
+            x={x(a)}
+            y="45"
+            width={x(b) - x(a)}
+            height="255"
+            fill="url(#ood-hatch)"
+          />
+        ))}
+        {[trainLow, trainHigh].map((v) => (
+          <line
+            key={v}
+            x1={x(v)}
+            x2={x(v)}
+            y1="45"
+            y2="300"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeDasharray="5 4"
+            opacity=".45"
+          />
+        ))}
+        {/* Region pills above the plot, each centered on its region; widths also fit the 18px mobile text. */}
+        {[
+          { label: "OOD", center: trainLow / 2, width: 56, ood: true },
+          {
+            label: "Training range",
+            center: (trainLow + trainHigh) / 2,
+            width: 144,
+            ood: false,
+          },
+          { label: "OOD", center: (trainHigh + 0.03) / 2, width: 56, ood: true },
+        ].map((r) => (
+          <g
+            key={r.center}
+            className={r.ood ? "ood-pill" : "train-pill"}
+          >
+            <rect
+              x={x(r.center) - r.width / 2}
+              y="21"
+              width={r.width}
+              height="21"
+              rx="10.5"
+            />
+            <text
+              x={x(r.center)}
+              y="36"
+              textAnchor="middle"
+              fontSize="14"
+              fontWeight="700"
+            >
+              {r.label}
+            </text>
+          </g>
+        ))}
+        {/* Y-axis title on the region pills' row, its arrow flush with the plot's left edge
+            (may run a little into the card padding: the SVG has overflow="visible"). */}
+        <text
+          className="y-axis-title"
+          x="62"
+          y="36"
+          textAnchor="end"
+          fontSize="14"
+        >
           {axis}
         </text>
         {ticks.map((v) => (
@@ -427,9 +507,9 @@ export function Generalization() {
           x2={x(data.bins[bin].center)}
           y1="45"
           y2="300"
-          stroke="currentColor"
-          opacity=".3"
-          strokeDasharray="4 4"
+          stroke="var(--brand, #0b7bc1)"
+          strokeWidth="1.5"
+          opacity=".45"
         />
         {data.methods.map((m) => {
           const ps = m.points.map((p) => ({
@@ -484,10 +564,27 @@ export function Generalization() {
           );
         })}
       </svg>
-      <div className="damping-control">
+      <div
+        className="damping-control"
+        style={
+          {
+            "--train-start": trainLow / 0.03,
+            "--train-end": trainHigh / 0.03,
+          } as CSSProperties
+        }
+      >
         <label>
           <span className="damping-label">
-            Shoulder damping <strong>{data.bins[bin].center.toFixed(4)}</strong>
+            Shoulder damping{" "}
+            <strong>
+              <span
+                className="range-badge"
+                data-ood={ood(data.bins[bin].center)}
+              >
+                {ood(data.bins[bin].center) ? "OOD" : "In training range"}
+              </span>
+              {data.bins[bin].center.toFixed(4)}
+            </strong>
           </span>
           <input
             type="range"
@@ -538,6 +635,7 @@ export function Generalization() {
             <span
               key={b.id}
               data-active={bin === i}
+              data-ood={ood(b.center)}
               style={{ left: `${(b.center / 0.03) * 100}%` }}
             >
               {b.center.toFixed(4)}
