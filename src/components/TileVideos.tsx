@@ -69,7 +69,7 @@ const labels: Record<string, string> = {
 // color chip in "Show GT mask (■)".
 const maskColors: Record<string, string> = {
   pusht: "rgb(203 100 107)", // coral red
-  reacher: "rgb(250 132 92)", // orange
+  reacher: "rgb(168 88 102)", // muted red: mask over the blue floor, not over the yellow arm (that blend looks orange)
   beerpong: "rgb(122 170 82)", // light green
   fetchslide: "rgb(122 170 82)", // light green
 };
@@ -101,8 +101,13 @@ export default function TileVideos({
       (!planning || c.group === group),
   );
   const current = cases[index];
+  // Methods offered in the "LeWM based" planning tab; add an id here to show it there too.
+  // (The LeWM example data also has estimated_physics clips, a DINO-WM method, so they're left out.)
+  const leMethodIds = ["lewm", "lewm_context"];
   const available = methods.filter(
-    (m) => current.files[planning ? `${m.id}_wm` : m.id],
+    (m) =>
+      current.files[planning ? `${m.id}_wm` : m.id] &&
+      (!planning || group !== "le" || leMethodIds.includes(m.id)),
   );
   // LeWM planning has its own examples; show its pair on first entry without
   // changing the shared DINO-WM selection in the other galleries.
@@ -110,7 +115,7 @@ export default function TileVideos({
   const visible = chosen.length
     ? chosen
     : available.filter((m) =>
-        (group === "le" ? ["lewm", "lewm_context"] : defaults).includes(m.id),
+        (group === "le" ? leMethodIds : defaults).includes(m.id),
       );
   // Methods checklist rows (checklist only; video tile order follows methodList).
   // Move an id between the arrays to change which row and position it appears in.
@@ -118,7 +123,10 @@ export default function TileVideos({
     ["vanilla", "long_history", "prefix_context", "lewm", "ts"],
     ["context", "estimated_physics", "oracle", "lewm_context"],
   ];
-  const methodRows = methodRowIds
+  // LeWM planning tab: one row, so LeWM and LeWM + PhysiCal sit side by side (not stacked).
+  const listRowIds =
+    planning && group === "le" ? [methodRowIds.flat()] : methodRowIds;
+  const methodRows = listRowIds
     .map((ids) =>
       ids.flatMap((id) => available.filter((m) => m.id === id)),
     )
@@ -475,7 +483,7 @@ export default function TileVideos({
             // (name | WM rollout | executed trajectory).
             <div className="tile-plan" data-rows={columns.length}>
               <div className="tile-plan-label tile-plan-task">
-                Planning task
+                Planning Task
               </div>
               <figure className="tile-plan-ref">
                 {video("start", "Start observation", true)}
@@ -658,13 +666,13 @@ export default function TileVideos({
       )}
       <p className="tile-caption">
         {planning
-          ? "Each row is one method: its world-model rollout (WM Rollout) and the executed trajectory (Exec Traj) for the same planning example. Masks mark the fixed goal object locations. DINO-WM-based and LeWM-based methods use separate example selections."
-          : "All methods predict the same action sequence. Masks show the recorded ground-truth object locations at each prediction frame after the initial frame."}{" "}
-        Toggle Show context to view the shared exploratory interaction.
+          ? "The first row 'Planning Task' shows the start and goal state. Below the dashed line, each row shows one method: its world-model rollout (WM Rollout) and the executed trajectory (Exec Traj) for the same planning example. We use a translucent mask to mark the fixed goal object locations. DINO-WM-based and LeWM-based methods use separate example selections."
+          : "The start observation and action sequence fed to the world model is identical across all methods. The translucent masks show the ground-truth object locations corresponding to at each prediction frame after the initial frame."}{" "}
+        Toggle ‘Show context’ button above to view the exploratory interaction clip used for physics calibration.
       </p>
       {environment === "beerpong" && (
         <p className="tile-caption">
-          LeWM uses the TC-LeWM variant in BeerPong, as in the paper.
+          LeWM uses the TC-LeWM variant in BeerPong as in the paper as we found that the base LeWM cannot achieve meaningful results in this task. 
         </p>
       )}
     </section>

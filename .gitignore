@@ -4,6 +4,12 @@ dist/
 # generated types
 .astro/
 
+
+
+twitter_2026_1029/*
+
+
+
 # dependencies
 node_modules/
 

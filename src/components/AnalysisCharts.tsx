@@ -2,6 +2,16 @@ import { useState } from "react";
 import data from "../data/analysis.json";
 import "./analysis-charts.css";
 import BrandName from "./BrandName";
+import katex from "katex";
+
+// Inline LaTeX inside JSX, e.g. <Tex expr="z_{\mathrm{phy}}" />.
+const Tex = ({ expr }: { expr: string }) => (
+  <span
+    dangerouslySetInnerHTML={{
+      __html: katex.renderToString(expr, { throwOnError: false }),
+    }}
+  />
+);
 
 const colors: Record<string, string> = {
   vanilla: "#aad2c8",
@@ -47,10 +57,62 @@ const descriptorColors = [
   "#d62728",
   "#d62728",
 ];
+// Color of the link line, badge and readout value: warm red = close (high similarity),
+// gray = neutral, blue = far (negative). Same hues as the heatmap (7 = red, 207 = blue).
+// Middle % = saturation (raise for punchier color), last % = lightness (lower = darker).
+const simColor = (v: number) =>
+  v >= 0
+    ? `hsl(7 ${30 + v * 45}% ${58 - v * 18}%)`
+    : `hsl(207 ${30 - v * 40}% ${58 + v * 14}%)`;
+// Word shown next to the value; edit the 0.5 / 0 thresholds to change what counts as close/far.
+const simLabel = (v: number) => (v >= 0.5 ? "close" : v < 0 ? "far" : "moderate");
+
+// Maps T-local coordinates (-1..1) to SVG pixels; 102 px per unit, origin at (160, 160).
+const toSvg = (c: number[]) => [160 + c[0] * 102, 160 + c[1] * 102];
+
+// Geometry for the line between the two selected points and its value badge.
+function linkGeometry(a: number[], b: number[]) {
+  const [x1, y1] = a,
+    [x2, y2] = b;
+  const dx = x2 - x1,
+    dy = y2 - y1;
+  const d = Math.hypot(dx, dy) || 1;
+  // Unit normal, flipped to point upward so every link bows the same way.
+  let nx = -dy / d,
+    ny = dx / d;
+  if (ny > 0 || (ny === 0 && nx > 0)) [nx, ny] = [-nx, -ny];
+  const bow = Math.min(d * 0.18, 26); // curve depth in px; 0 = straight line
+  const cx = (x1 + x2) / 2 + nx * bow,
+    cy = (y1 + y2) / 2 + ny * bow;
+  const path = `M${x1} ${y1} Q${cx} ${cy} ${x2} ${y2}`;
+  // Very close pairs (< 50 px apart): badge goes beside the pair so it doesn't cover the point labels.
+  if (d < 50) return { path, ...badgeBeside((x1 + x2) / 2, Math.max(y1, y2)) };
+  // Otherwise the badge sits on the curve's midpoint, nudged off it for short links.
+  const lift = d < 70 ? 18 : 0;
+  const mx = 0.25 * x1 + 0.5 * cx + 0.25 * x2 + nx * lift,
+    my = 0.25 * y1 + 0.5 * cy + 0.25 * y2 + ny * lift;
+  return { path, mx, my };
+}
+// Badge spot next to a point (or a tight pair): 26 px below it, or 44 px to its left
+// when below would leave the box. Point labels sit up-right, so these spots stay clear.
+function badgeBeside(x: number, yLow: number) {
+  return yLow + 26 <= 266 ? { mx: x, my: yLow + 26 } : { mx: x - 44, my: yLow - 16 };
+}
+const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+
 export function Descriptor() {
   const [pair, setPair] = useState([0, 1]);
   const points = data.descriptor.points;
   const value = data.descriptor.matrix[pair[0]][pair[1]];
+  const linkColor = simColor(value);
+  const pa = toSvg(points[pair[0]].coordinates),
+    pb = toSvg(points[pair[1]].coordinates);
+  const samePoint = pair[0] === pair[1];
+  const link = samePoint ? null : linkGeometry(pa, pb);
+  // Badge position: on the link, or beside the point for a diagonal cell; kept inside the box.
+  const spot = link ?? badgeBeside(pa[0], pa[1]);
+  const badgeX = clamp(spot.mx, 66, 254);
+  const badgeY = clamp(spot.my, 54, 266);
   // descriptor-card class = shared block width (max-width: 720px), set in analysis-charts.css:130
   return (
     <div className="analysis-card descriptor-card not-prose">
@@ -91,9 +153,17 @@ export function Descriptor() {
           <text x="160" y="317" textAnchor="middle" fontSize="14">
             Normalized T-local coordinates
           </text>
+          {/* Link between the selected pair, drawn under the points. key = replay the draw-in animation on each new pair. */}
+          {link && (
+            <g key={`link-${pair[0]}-${pair[1]}`} className="pair-link" aria-hidden="true">
+              {/* Soft glow behind the line; raise strokeWidth / opacity for a stronger halo. */}
+              <path d={link.path} fill="none" stroke={linkColor} strokeWidth="9" strokeOpacity="0.16" strokeLinecap="round" pathLength={1} />
+              {/* Main line; thicker for stronger (positive or negative) similarity. */}
+              <path d={link.path} fill="none" stroke={linkColor} strokeWidth={1.6 + Math.abs(value) * 1.6} strokeLinecap="round" pathLength={1} />
+            </g>
+          )}
           {points.map((p, i) => {
-            const x = 160 + p.coordinates[0] * 102,
-              y = 160 + p.coordinates[1] * 102;
+            const [x, y] = toSvg(p.coordinates);
             const active = pair.includes(i);
             return (
               <g key={p.id}>
@@ -127,6 +197,18 @@ export function Descriptor() {
               </g>
             );
           })}
+          {/* Value badge, drawn above the points. Width 48 x height 22 px; edit both rect sizes and x/y offsets together. */}
+          <g
+            key={`badge-${pair[0]}-${pair[1]}`}
+            className="pair-badge"
+            transform={`translate(${badgeX} ${badgeY})`}
+            aria-hidden="true"
+          >
+            <rect x="-24" y="-11" width="48" height="22" rx="11" fill={linkColor} stroke="white" strokeWidth="1.5" />
+            <text x="0" y="4.5" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="white" style={{ fontVariantNumeric: "tabular-nums" }}>
+              {value.toFixed(2)}
+            </text>
+          </g>
         </svg>
         <div
           className="heatmap"
@@ -187,12 +269,19 @@ export function Descriptor() {
           {points[pair[0]].id} ↔ {points[pair[1]].id}
         </strong>
         <span>
-          Cosine similarity <strong>{value.toFixed(4)}</strong>
+          Cosine similarity{" "}
+          <strong style={{ color: linkColor }}>{value.toFixed(4)}</strong>
+          {/* close / moderate / far tag; thresholds set in simLabel above. */}
+          <span className="sim-tag" style={{ background: linkColor }}>
+            {samePoint ? "same CoM" : simLabel(value)}
+          </span>
         </span>
       </div>
       <p className="chart-note">
-        Each cell averages similarities between interaction clips. Diagonal
-        cells compare distinct clips at the same CoM.
+      We compute descriptor token <Tex expr="\text{z}_{\mathrm{phy}}" /> of 8 unseen centers of mass (P1-P8) and visualize their pairwise cosine similarity. Trained without any physics labels, our method can still learn a structured, physics-correlated latent space, e.g., adjacent centers of mass yield high similarity while remote pairs yield negative values.
+      For each center of mass, we sample 10 interaction clips and hence obtained 10 <Tex expr="\text{z}_{\mathrm{phy}}" />. 
+      The value in each cell is the averaged pair-wise similarity.
+      Diagonal cells compare distinct clips at the same CoM.
       </p>
     </div>
   );
@@ -254,7 +343,8 @@ export function Generalization() {
       />
       <p className="chart-note text-justify" style={{ margin: "0 0 12px" }}>
         In Reacher, we sweep the first joint’s (should joint) damping coefficient beyond its
-        training range while holding the second joint’s damping fixed.
+        training range while holding the second joint’s damping fixed.<br/>
+        We report four visual metrics on <strong>open-Loop rollouts</strong> below.
       </p>
       <div className="chart-legend">
         {data.methods.map((m) => (
@@ -467,10 +557,13 @@ export function Generalization() {
         ))}
       </div>
       <p className="chart-note">
-        Mean ± SEM across 75 episodes per bin (15 damping values × 5 episodes).
+        Results are the mean values across 75 episodes.
+         We uniformly sample 15 damping values with the center given by the markers' x-axis and evaluate on 5 episodes per sampled damping value. 
+         Hence, each point is computed across 75 episodes. We report the mean values and use ± to denote the standard error of the mean.
+        {/* per bin (15 damping values × 5 episodes). */}
+        {/* Mean ± SEM across 75 episodes per bin (15 damping values × 5 episodes). */}
         {/* IC3 */}
-        Open-Loop rollout. 
-        IoU is computed over the foreground mask of the robotic arm, averaged over episodes. Joint 2's damping is fixed.
+        IoU is computed on the foreground mask of the robot arm. Only the first joint's damping is varied; the second joint's damping is held fixed to isolate its effect.
       </p>
     </div>
   );
@@ -557,10 +650,14 @@ export function InferenceSpeed() {
         </div>
       </div>
       <p className="chart-note">
-        One RTX PRO 6000 Blackwell GPU · FP32, TF32 disabled.{" "}
+        Evaluated on one RTX PRO 6000 GPU in FP32 (TF32 disabled). {" "} 
+        {/* <br /> = line break after the sentence above; swap back to {" "} to keep it on one line. */}
+        {/* <br /> */}
         {mode === 3
           ? "CEM: horizon 5, 300 samples, 30 iterations. Mean of 10 solves for one target; includes encoding, excludes simulator execution."
-          : "Mean of 100 timed calls after 20 warm-ups across 10 episodes. Includes initial observation and context encoding; excludes decoding and data I/O."}
+          : "Mean of 100 inference. The encoding of the initial observation and context clip is included; the latent to RGB image decoding is not included."}
+          {/* after 20 warm-ups across 10 episodes */}
+          {/* and data I/O */}
       </p>
     </div>
   );

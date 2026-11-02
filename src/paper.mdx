@@ -71,11 +71,39 @@ import envDemo from "./assets/images/env-demo.png";
 
 <p class="tldr text-justify"><strong>TL;DR:</strong> We propose <BrandName />, which calibrates world models to adhere to the dynamics of a novel test scene via prompting the model with an in-context interaction sequence collected within the test scene.</p>
 
+{/* Teaser video (16:10, copied from twitter_2026_1029/1_teaser.mp4; re-copy after re-rendering it).
+    Width: --teaser-width in src/styles/paper.css (shared with the TL;DR box and the teaser figure box).
+    Spacing above/below: .teaser-video in src/styles/paper.css.
+    Gray frame: p-2.5 = frame thickness (10px; p-2 = 8px, p-4 = 16px); bg-[#eef0f3] = frame color (darker hex = darker gray);
+    border-[#dfe3e8] = thin outer edge color; rounded-2xl = frame corner radius. */}
+<div class="teaser-video not-prose rounded-2xl border border-[#dfe3e8] bg-[#eef0f3] p-2.5">
+  <video
+    src={`${import.meta.env.BASE_URL}videos/teaser/teaser.mp4`}
+    autoplay
+    muted
+    loop
+    playsinline
+    controls
+    preload="metadata"
+    aria-label="PhysiCalWorld teaser video"
+    class="block h-auto w-full rounded-lg"></video>{/* rounded-lg = video corner radius */}
+  {/* Teaser video caption (inside the gray frame, under the video).
+      mt-2.5 = gap between video and caption (10px; mt-4 = 16px); mb-0.5 = gap to the frame's bottom edge (2px);
+      text-[1rem] = caption size (same as other figure captions); text-center = centered (one line, so not justified);
+      color: var(--subtle) = same gray as other figure captions. */}
+  <p class="mt-2.5 mb-0.5 text-center text-[1rem] leading-snug" style="color: var(--subtle);"><strong>In-Context Physics Calibration for World Models.</strong></p>
+</div>
+
   <Figure>
     <div slot="figure" class="w-full">
+      {/* "Method overview" label at the top of the figure box.
+          Spacing uses padding because <Figure> zeroes child margins: pb-3 = gap below the label (12px; pb-4 = 16px).
+          text-[1.1rem] = label size; font-semibold = weight (font-bold = heavier); text-center = alignment (text-left / text-right). */}
+      <p class="pb-3 text-center text-[1.1rem] font-semibold">Method Overview</p>
       <AnimatedPhysics kind="teaser" client:load />
     </div>
-    <Fragment slot="caption"><strong>In-Context Physics Calibration for World Models.</strong> In a test environment with unknown transition dynamics, an embodied agent first executes exploratory actions to collect an in-context interaction sequence. This sequence is then provided as prompt to calibrate the world model such that future predictions adhere to the actual dynamics of the test environment.</Fragment>
+    {/* <strong>In-Context Physics Calibration for World Models.</strong> */}
+    <Fragment slot="caption"> In a test environment with unknown transition dynamics, an embodied agent first executes exploratory actions to collect an in-context interaction sequence. This sequence is then provided as prompt to calibrate the world model such that future predictions adhere to the actual dynamics of the test environment.</Fragment>
   </Figure>
 
 <HighlightedSection>
@@ -88,7 +116,8 @@ We evaluate <BrandName /> across four environments covering diverse physics vari
 
 </HighlightedSection>
 
-## Method Overview
+## Method 
+{/* Overview */}
 
   <Figure justify>
     <div slot="figure" class="w-full">
@@ -111,7 +140,7 @@ We evaluate <BrandName /> across four environments covering diverse physics vari
   </Figure> */}
 
 <Tabs defaultValue="pusht">
-  <p class="mt-0 mb-3 text-justify text-[0.9em] leading-relaxed opacity-80">We evaluate on four simulation environments with diverse physics variations, including mass 📦, mass distribution 🏗️, joint damping ⚙️, surface friction 🏷️, and air drag 💨. 
+  <p class="mt-0 mb-3 text-justify text-[0.9em] leading-relaxed opacity-80">We evaluate on four simulation environments with diverse physics variations, including mass 📦, mass distribution 🏗️, joint damping ⚙️, surface friction 🏷️, and air drag 💨. <br/>
   <strong>Identical actions can lead to very different future states.</strong></p>
   <TabsList>
     <TabsTrigger value="pusht">Push-T</TabsTrigger>
@@ -121,7 +150,7 @@ We evaluate <BrandName /> across four environments covering diverse physics vari
   </TabsList>
   <TabsContent value="pusht">
     <BenchmarkComparison environment="pusht" label="Push-T">
-      <Fragment slot="caption"><strong>Push-T under Varying Center of Mass.</strong> We vary the center of mass (CoM) of the T-shaped block, marked by the purple diamond in each video. The diamond is for visualization only and is hidden from the model; see “Start Obs” for the actual model input. Under identical pushing actions, different mass distributions lead to distinct rotational and translational motions.</Fragment>
+      <Fragment slot="caption"><strong>Push-T under Varying Center of Mass.</strong> We vary the center of mass (CoM) of the T-shaped block, marked by the purple diamond in each video. The diamond is for visualization only and is hidden from the model; see "Start Obs" for the actual model input. Under identical pushing actions, different mass distributions lead to distinct rotational and translational motions.</Fragment>
     </BenchmarkComparison>
   </TabsContent>
   <TabsContent value="reacher">

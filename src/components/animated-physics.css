@@ -16,6 +16,10 @@
 .physics-artwork.method {
   min-width: 820px;
 }
+/* Teaser diagram sits in a ~594px-wide box (TL;DR width minus padding); below this width it scrolls sideways (phones). */
+.physics-artwork.teaser {
+  min-width: 520px;
+}
 .physics-animation {
   position: relative;
 }

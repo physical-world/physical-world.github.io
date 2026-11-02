@@ -187,6 +187,43 @@
   padding: 12px 16px;
   margin-top: 20px;
 }
+/* Link between the selected pair in the Push-T figure: draws in from point to point. */
+.pair-link path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: pair-draw 0.45s ease-out forwards; /* draw speed; raise for slower */
+}
+.pair-badge {
+  animation: pair-pop 0.3s 0.12s ease-out both; /* badge fade-in, starts 0.12s after the line */
+}
+@keyframes pair-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pair-pop {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pair-link path,
+  .pair-badge {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+/* close / moderate / far tag next to the value in the readout. */
+.sim-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 9px; /* inner space: top/bottom left/right */
+  border-radius: 999px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  vertical-align: 1px;
+}
 .chart-note {
   font-size: 16px;
   line-height: 1.7;

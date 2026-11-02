@@ -266,27 +266,53 @@ a.hero-btn:hover {
   transform: translateY(-1px); /* hover lift */
 }
 /* Teaser figure (the first figure, right after the header).
-   Width: add e.g. `max-width: 48rem; margin-inline: auto;` (defaults to the text column).
+   Width of the TL;DR box, teaser video and teaser figure box: --teaser-width below (one value for all three).
    Caption only for this figure: style `.paper-hero + figure figcaption`.
    All figure captions: the `figcaption` rule near the top of this file. */
 :root {
-  --teaser-width: 40rem; /* teaser figure + caption width; the TL;DR below uses it too */
+  /* ONE WIDTH for the TL;DR box, the teaser video frame and the teaser figure box (outer edges, incl. border).
+     50rem = 800px = the text column (same as the Method Overview figure and the Abstract text).
+     Lower (e.g. 44rem) = all three narrower together; higher than 50rem has no effect (capped by the column). */
+  --teaser-width: 43rem;
   --hero-pad-bottom: 25px; /* header bottom padding (below the PDF/arXiv/Code buttons) */
   --tldr-gap: 32px; /* equal space above and below the TL;DR box; must be >= --hero-pad-bottom */
 }
 .paper-hero + figure,
 .paper-hero + .mobile-toc + figure,
-.paper-hero + .mobile-toc + .tldr + figure {
-  max-width: var(--teaser-width); /* figure + caption width (set in :root above) */
+.paper-hero + .mobile-toc + .tldr + figure,
+.paper-hero + .mobile-toc + .tldr + .teaser-video + figure {
+  max-width: var(--teaser-width); /* outer width of the box = TL;DR box width (set in :root above) */
+  box-sizing: border-box; /* width includes padding + border, same as the TL;DR box */
   margin-inline: auto; /* keep it centered */
-  margin-top: 1px; /* gap below the header (counted in the TL;DR's bottom gap) */
-  margin-bottom: 25px; /* gap above the Abstract */
+  margin-top: 0px; /* gap above the box (the teaser video's margin-bottom sets the visible gap) */
+  margin-bottom: 30px; /* gap below the box (above the Abstract); raise for more space */
   animation: paper-enter 1.9s 1.28s both;
+  /* Box around the figure + caption: same outline, corners and shadow as the TL;DR box. */
+  padding: 20px 22px 16px; /* inner space: top | left/right | bottom */
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent); /* outline; raise % for darker */
+  border-radius: 16px; /* corner roundness; 0 = square */
+  background: white; /* box fill */
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--brand) 6%, transparent); /* soft lift; `none` to remove */
+}
+@media (max-width: 640px) {
+  .paper-hero + .mobile-toc + .tldr + .teaser-video + figure {
+    padding: 14px 14px 12px; /* thinner box padding on phones: top | left/right | bottom */
+  }
+}
+/* Teaser video between the TL;DR and the teaser figure (wrapper div in src/paper.mdx). */
+.teaser-video {
+  max-width: var(--teaser-width); /* video frame width = TL;DR width; edit --teaser-width above */
+  box-sizing: border-box; /* width includes the gray frame */
+  margin-inline: auto; /* centered */
+  margin-top: 0px; /* gap above the video (the TL;DR's margin-bottom sets the visible gap) */
+  margin-bottom: var(--tldr-gap); /* gap between the video and the figure box below; same as around the TL;DR */
 }
 /* TL;DR line (now above the teaser): always the same width as the teaser. */
 .tldr {
   max-width: var(--teaser-width); /* same as the teaser; edit --teaser-width above */
   margin-inline: auto; /* centered above the teaser */
+  font-size: 1.11rem; /* TL;DR text size (18px, was inherited from prose-lg); lower = smaller text */
+  line-height: 1.78; /* space between lines; lower = tighter */
   /* Space above and below the box are both --tldr-gap (edit it in :root above).
      Above = header bottom padding + this; below = this + the figure's 1px margin-top. */
   margin-top: calc(var(--tldr-gap) - var(--hero-pad-bottom));
@@ -302,15 +328,17 @@ a.hero-btn:hover {
 /* Teaser caption only (overrides the general `figcaption` rule). */
 .paper-hero + figure figcaption,
 .paper-hero + .mobile-toc + figure figcaption,
-.paper-hero + .mobile-toc + .tldr + figure figcaption {
+.paper-hero + .mobile-toc + .tldr + figure figcaption,
+.paper-hero + .mobile-toc + .tldr + .teaser-video + figure figcaption {
   text-align: justify;
-  margin-top: 9px; /* gap between the animation box and the caption; raise to push the caption down */
+  margin-top: 12px; /* gap between the diagram and the caption; raise to push the caption down */
   margin-inline: 0; /* left/right indent of the caption; e.g. 1.5rem = narrower text, 0 = full box width */
-  margin-bottom: 2px; /* gap below the caption (before the Abstract); raise for more space */
+  margin-bottom: 0px; /* gap between the caption and the box's bottom edge (box padding adds 16px) */
 }
 .paper-hero + figure .max-w-xl,
 .paper-hero + .mobile-toc + figure .max-w-xl,
-.paper-hero + .mobile-toc + .tldr + figure .max-w-xl {
+.paper-hero + .mobile-toc + .tldr + figure .max-w-xl,
+.paper-hero + .mobile-toc + .tldr + .teaser-video + figure .max-w-xl {
   max-width: 42rem;
   width: 100%;
 }
