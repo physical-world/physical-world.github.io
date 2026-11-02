@@ -31,8 +31,13 @@ const methods = methodList.map((m) => ({
   listLabel: m.label,
 }));
 // Default view (also restored by the Reset view button): DINO-WM, DINO-WM + PhysiCal, plus Ground Truth.
-const defaults = ["vanilla", "context"];
-let preference = defaults;
+// The extrapolation gallery keeps its own selection (and also shows Privileged
+// Physics by default), so it doesn't change what the other galleries show.
+const defaultsByStore: Record<string, string[]> = {
+  shared: ["vanilla", "context"],
+  extrapolation: ["vanilla", "context", "oracle"],
+};
+const preferences: Record<string, string[]> = { ...defaultsByStore };
 const listeners = new Set<() => void>();
 function subscribe(listener: () => void) {
   listeners.add(listener);
@@ -40,8 +45,8 @@ function subscribe(listener: () => void) {
     listeners.delete(listener);
   };
 }
-function choose(ids: string[]) {
-  preference = ids;
+function choose(store: string, ids: string[]) {
+  preferences[store] = ids;
   listeners.forEach((listener) => listener());
 }
 // Success times use the first successful control frame and each export's fps.
@@ -56,6 +61,7 @@ type Case = {
   environment: string;
   group: string;
   order: number;
+  damping?: number; // extrapolation only: the example's shoulder damping
   context: string;
   files: Record<string, Clip | undefined>;
 };
@@ -80,9 +86,13 @@ export default function TileVideos({
   stage,
 }: {
   environment: string;
-  stage: "openloop" | "planning";
+  stage: "openloop" | "planning" | "extrapolation";
 }) {
   const planning = stage === "planning";
+  // Extrapolation: open-loop rollouts with out-of-range physics; same layout as "openloop".
+  const extrapolation = stage === "extrapolation";
+  const store = extrapolation ? "extrapolation" : "shared";
+  const defaults = defaultsByStore[store];
   const [showGT, setShowGT] = useState(true);
   const hasGT = !planning && showGT;
   const [group, setGroup] = useState("dino");
@@ -91,7 +101,7 @@ export default function TileVideos({
   const [context, setContext] = useState(false);
   const selected = useSyncExternalStore(
     subscribe,
-    () => preference,
+    () => preferences[store],
     () => defaults,
   );
   const cases = (allCases as Case[]).filter(
@@ -296,13 +306,13 @@ export default function TileVideos({
     const ids = visible.map((m) => m.id);
     if (ids.includes(id) && ids.length === 1) return;
     const next = ids.includes(id) ? ids.filter((m) => m !== id) : [...ids, id];
-    choose([
+    choose(store, [
       ...selected.filter((id) => !available.some((m) => m.id === id)),
       ...next,
     ]);
   }
   function resetView() {
-    choose(defaults);
+    choose(store, defaults);
     setShowGT(true);
     setMask(true);
     setContext(false);
@@ -367,11 +377,16 @@ export default function TileVideos({
     <section
       ref={rootRef}
       className={`tile-gallery ${planning ? "is-planning" : "is-openloop"}`}
-      aria-label={`${labels[environment]} ${planning ? "visual planning" : "open-loop rollout"}`}
+      aria-label={`${labels[environment]} ${planning ? "visual planning" : extrapolation ? "extrapolation open-loop rollout" : "open-loop rollout"}`}
     >
       <div className="tile-toolbar">
         <strong>
-          {labels[environment]} · {planning ? "Planning" : "Open-loop rollout"}
+          {labels[environment]} ·{" "}
+          {planning
+            ? "Planning"
+            : extrapolation
+              ? "Extrapolation (open-loop)"
+              : "Open-loop rollout"}
         </strong>
         <div className="tile-switches">
           {!planning && (
@@ -619,6 +634,11 @@ export default function TileVideos({
           >
             →
           </button>
+          {current.damping !== undefined && (
+            <span className="tile-damping">
+              shoulder damping {current.damping} (training range 0.005–0.02)
+            </span>
+          )}
         </div>
       </div>
       <div className="tile-playback">
@@ -667,7 +687,9 @@ export default function TileVideos({
       <p className="tile-caption">
         {planning
           ? "The first row 'Planning Task' shows the start and goal state. Below the dashed line, each row shows one method: its world-model rollout (WM Rollout) and the executed trajectory (Exec Traj) for the same planning example. We use a translucent mask to mark the fixed goal object locations. DINO-WM-based and LeWM-based methods use separate example selections."
-          : "The start observation and action sequence fed to the world model is identical across all methods. The translucent masks show the ground-truth object locations corresponding to at each prediction frame after the initial frame."}{" "}
+          : extrapolation
+            ? "Open-loop rollouts in Reacher with shoulder damping outside the training range. The first three frames (t = 0–2) are observed inputs shared by all methods; the remaining frames are predicted from the same action sequence. The translucent masks show the ground-truth arm locations on the predicted frames."
+            : "The start observation and action sequence fed to the world model is identical across all methods. The translucent masks show the ground-truth object locations corresponding to at each prediction frame after the initial frame."}{" "}
         Toggle ‘Show context’ button above to view the exploratory interaction clip used for physics calibration.
       </p>
       {environment === "beerpong" && (
